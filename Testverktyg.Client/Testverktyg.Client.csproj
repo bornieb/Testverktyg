@@ -126,6 +126,7 @@
     <Compile Include="ViewModels\CreateQuestionViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\StudentOverviewViewModel.cs" />
+    <Compile Include="ViewModels\TeacherOverviewViewModel.cs" />
     <Compile Include="Views\CorrectExam.xaml.cs">
       <DependentUpon>CorrectExam.xaml</DependentUpon>
     </Compile>
@@ -151,7 +152,6 @@
     <Compile Include="Views\TeacherOverview.xaml.cs">
       <DependentUpon>TeacherOverview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TeacherOverviewViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

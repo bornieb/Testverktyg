@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Testverktyg.Client.Views
+namespace Testverktyg.Client.ViewModels
 {
     class TeacherOverviewViewModel
     {
