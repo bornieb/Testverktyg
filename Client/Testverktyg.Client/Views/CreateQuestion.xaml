@@ -37,5 +37,75 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <TextBlock Text="LÄGG TILL FRÅGA" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="40" />
+
+        <ComboBox 
+            x:Name="CourseDropDown"
+            Grid.ColumnSpan="3" 
+            Grid.Column="1" 
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            Width="400"
+            PlaceholderText="Välj ämne"
+            />
+        <ComboBox 
+            x:Name="QuestionTypeDropDown"
+            Grid.ColumnSpan="3" 
+            Grid.Column="1" 
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            Width="400"
+            PlaceholderText="Välj frågetyp"
+            />
+        <TextBox x:Name="QuestionTextBox" 
+                 Grid.Column="1"
+                 Grid.ColumnSpan="6"
+                 Grid.RowSpan="3"
+                 HorizontalAlignment="Left" 
+                 Grid.Row="2" 
+                 PlaceholderText="Skriv in din fråga här" 
+                 TextWrapping="Wrap" 
+                 Width="700"
+                 Height="350"
+                 />
+        <TextBox x:Name="AlternativeTextBox" 
+                 Grid.Column="1"
+                 Grid.ColumnSpan="6"
+                 Grid.Row="5"
+                 Grid.RowSpan="2"
+                 HorizontalAlignment="Left" 
+                 PlaceholderText="Skriv in ditt svarsalternativ"
+                 FontSize="30"
+                 TextWrapping="Wrap" 
+                 Width="700"
+                 Height="150"
+                 />
+        <TextBox x:Name="QuestionTagTextBox" 
+                 Grid.Column="1"
+                 Grid.ColumnSpan="6"
+                 Grid.Row="7"
+                 Grid.RowSpan="2"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 PlaceholderText="Sökord"
+                 TextWrapping="Wrap" 
+                 Width="200"
+                 Height="40"
+                 />
+        <Button x:Name="AddQuestionTag" Grid.Row="7" Grid.Column="3" VerticalAlignment="Top" Width="130" HorizontalAlignment="Center"  Content="Lägg till sökord"/>
+        <ListView x:Name="TagListView" Background="AliceBlue" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="7" Grid.RowSpan="2" Height="100" VerticalAlignment="Center" />
+
+        <StackPanel Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Center">
+            <RadioButton x:Name="RightAnswerRadioBtn" Content="Rätt svar" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock></TextBlock>
+            <RadioButton x:Name="WrongAnswerRadioBtn" Content="Fel svar" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <Button x:Name="AddAlternativeBtn" Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" Height="50" Content="Lägg till alternativ" HorizontalAlignment="Center" />
+        <ListView x:Name="AlternativeListView" Header="Tillagda alternativ:" FontSize="30" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5" Background="LightGray"/>
+
+
+        <Button Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Spara fråga" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30"></Button>
+        <Button Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
     </Grid>
 </Page>
