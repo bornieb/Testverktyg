@@ -7,7 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Left"/>
+        </TransitionCollection>
+    </Page.Transitions>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -23,7 +27,9 @@
                         
                         Click="CollapseButton_Click" 
                         />
-                <TextBlock Text="Welcome"
+                <TextBlock 
+                           x:Name="TitleTextblock" 
+                           Text="Welcome"
                            Margin="20,0,0,0"
                            FontSize="16"
                            FontFamily="Cambria"
@@ -48,23 +54,69 @@
                     <ListBox SelectionMode="Single"
                              x:Name="SplitViewMenuList"
                              SelectionChanged="SplitViewMenuList_SelectionChanged"            
-                             />
-                    <ListBoxItem
-                            x:Name="FirstListBoxItem"
+                             >
+                        <ListBoxItem
+                            x:Name="HomeListBoxItem"
                             Background="Transparent">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe UI Emoji"
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe UI Emoji"
                                        FontSize="24"
                                        Text="&#x1F3E1;"
                                        HorizontalAlignment="Left"/>
-                            <TextBlock Text="Home"
+                                <TextBlock Text="Home"
                                        FontFamily="Cambria"
                                        FontSize="16"
                                        Margin="20,0,0,0"
                                        VerticalAlignment="Center"/>
-                        </StackPanel>
-
-                    </ListBoxItem>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem
+                            x:Name="CreateQuestionListBoxitem"
+                            Background="Transparent">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe UI Emoji"
+                                       FontSize="24"
+                                       Text="&#x2754;"
+                                       HorizontalAlignment="Left"
+                                       Margin="3,0,0,0"/>
+                                <TextBlock Text="Create"
+                                       FontFamily="Cambria"
+                                       FontSize="16"
+                                       Margin="27,0,0,0"
+                                       VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem
+                            x:Name="CreateExamListBoxitem"
+                            Background="Transparent">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe UI Emoji"
+                                       FontSize="24"
+                                       Text="&#x1F4C4;"
+                                       HorizontalAlignment="Left"/>
+                                <TextBlock Text="Create"
+                                       FontFamily="Cambria"
+                                       FontSize="16"
+                                       Margin="26,0,0,0"
+                                       VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem
+                            x:Name="ExitListBoxitem"
+                            Background="Transparent">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontFamily="Segoe UI Emoji"
+                                       FontSize="24"
+                                       Text="&#x1F6AA;"
+                                       HorizontalAlignment="Left"/>
+                                <TextBlock Text="Exit"
+                                       FontFamily="Cambria"
+                                       FontSize="16"
+                                       Margin="26,0,0,0"
+                                       VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
                 </StackPanel>
             </SplitView.Pane>
 
