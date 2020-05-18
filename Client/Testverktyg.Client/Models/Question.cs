@@ -10,7 +10,7 @@ namespace Testverktyg.Client.Models
     {
         public int QuestionId { get; set; }
         public int CourseId { get; set; }
-        public
+        public GradeLevel GradeLevel { get; set; }
         public string QuestionText { get; set; }
         public QuestionType QuestionType { get; set; }
         public int QuestionValue { get; set; }
