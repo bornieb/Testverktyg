@@ -9,6 +9,26 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TextHeader" Grid.Row="0" Text="Testverktyg" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="180"/>
+        <Image x:Name="StartLogo" Grid.Row="1" Source="/Assets/götlaborgskolan.jpg"  HorizontalAlignment="Center" Height="264" VerticalAlignment="Center" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <RadioButton x:Name="RadioButtonTeacher" Content="Lärare" Margin="20,40,20,0" VerticalAlignment="Center" FontSize="20"/>
+                <RadioButton x:Name="RadioButtonStudent" Content="Student" Margin="20,0,20,20" VerticalAlignment="Center" FontSize="20"/>
+            </StackPanel>
+            <TextBox x:Name="UserNameTextBox" HorizontalAlignment="Left" Margin="20,20,20,20" TextWrapping="Wrap" VerticalAlignment="center" PlaceholderText="Användarnamn" Height="65" Width="300" FontSize="32"/>
+            <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Margin="20,20,20,20" TextWrapping="Wrap" VerticalAlignment="center" PlaceholderText="Lösenord" RenderTransformOrigin="0.5,0.539" Height="65" Width="300" FontSize="32"/>
+            <Button x:Name="Login" Content="LogIn" Margin="20,20,20,20" VerticalAlignment="center" Click="Login_Click" RenderTransformOrigin="0.5,0.484" Height="65" Width="150" CornerRadius="20" FontSize="32"/>
+        </StackPanel>
 
     </Grid>
 </Page>
