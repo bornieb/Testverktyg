@@ -146,6 +146,9 @@
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\SplitViewMenu.xaml.cs">
+      <DependentUpon>SplitViewMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StudentOverview.xaml.cs">
       <DependentUpon>StudentOverview.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SplitViewMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StudentOverview.xaml">
       <SubType>Designer</SubType>
