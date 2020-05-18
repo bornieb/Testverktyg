@@ -11,5 +11,6 @@ namespace Testverktyg.Client.Models
         public int AlternativeId { get; set; }
         public string AlternativeText { get; set; }
         public int QuestionId { get; set; }
+
     }
 }
