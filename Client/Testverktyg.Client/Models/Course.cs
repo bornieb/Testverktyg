@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Testverktyg.Client.Models
 {
-    class Course
+    public class Course
     {
+        public int CourseId { get; set; }
+        public string CourseName { get; set; }
     }
 }
