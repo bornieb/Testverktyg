@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Testverktyg.Client.Models
 {
-    class Teacher
+    public class Teacher
     {
     }
 }

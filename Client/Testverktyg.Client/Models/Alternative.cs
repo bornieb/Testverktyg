@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Testverktyg.Client.Models
 {
-    public class Student
+    public class Alternative
     {
-        public string ClassName { get; set; }
+        public int AlternativeId { get; set; }
+        public string AlternativeText { get; set; }
+        public int QuestionId { get; set; }
     }
 }

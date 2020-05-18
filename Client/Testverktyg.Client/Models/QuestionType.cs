@@ -6,8 +6,5 @@ using System.Threading.Tasks;
 
 namespace Testverktyg.Client.Models
 {
-    public class Student
-    {
-        public string ClassName { get; set; }
-    }
+    public enum QuestionType { FreeAnswer, MultipleChoice }
 }
