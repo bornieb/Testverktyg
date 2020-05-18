@@ -44,7 +44,25 @@ namespace Testverktyg.Client.Views
        
         private void SplitViewMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(CreateQuestionListBoxitem.IsSelected)
+            {
+                PageFrame.Navigate(typeof(CreateQuestion));
+                TitleTextblock.Text = "Create question";
+            }
+            else if(CreateExamListBoxitem.IsSelected)
+            {
+                PageFrame.Navigate(typeof(CreateExam));
+                TitleTextblock.Text = "Create Exam";
+            }
+            else if(HomeListBoxItem.IsSelected)
+            {
+                PageFrame.Navigate(typeof(TeacherOverview));
+                TitleTextblock.Text = "Teacher overview";
+            }
+            else if(ExitListBoxitem.IsSelected)
+            {
+                this.Frame.Navigate(typeof(MainPage));
+            }
         }
     }
 }
