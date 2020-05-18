@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Alternative.cs" />
+    <Compile Include="Models\GradeLevel.cs" />
     <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\QuestionService.cs" />
