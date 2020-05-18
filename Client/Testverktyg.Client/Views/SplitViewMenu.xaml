@@ -47,7 +47,7 @@
                 <StackPanel>
                     <ListBox SelectionMode="Single"
                              x:Name="SplitViewMenuList"
-                             SelectionChanged="SplitViewMenuList_SelectionChanged" 
+                             SelectionChanged="SplitViewMenuList_SelectionChanged"            
                              />
                     <ListBoxItem
                             x:Name="FirstListBoxItem"

@@ -41,6 +41,7 @@ namespace Testverktyg.Client.Views
             }
         }
 
+       
         private void SplitViewMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
