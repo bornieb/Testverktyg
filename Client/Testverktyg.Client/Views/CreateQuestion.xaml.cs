@@ -39,6 +39,7 @@ namespace Testverktyg.Client.Views
             ListOfCourses.Add(new Course(1, "Engelska"));
 
             QuestionTypeDropDown.ItemsSource = Enum.GetValues(typeof(QuestionType));
+            GradeLevelDropDown.ItemsSource = Enum.GetValues(typeof(GradeLevel));
         }
     }
 }

@@ -48,6 +48,8 @@
             Width="400"
             PlaceholderText="Välj ämne"
             ItemsSource="{x:Bind ListOfCourses}"
+
+
             />
         <ComboBox 
             x:Name="QuestionTypeDropDown"
@@ -57,6 +59,15 @@
             VerticalAlignment="Center"
             Width="400"
             PlaceholderText="Välj frågetyp"
+            />
+        <ComboBox 
+            x:Name="GradeLevelDropDown"
+            Grid.ColumnSpan="3" 
+            Grid.Column="1" 
+            Grid.Row="1"
+            VerticalAlignment="Bottom"
+            Width="400"
+            PlaceholderText="Välj årskurs"
             />
         <TextBox x:Name="QuestionTextBox" 
                  Grid.Column="1"

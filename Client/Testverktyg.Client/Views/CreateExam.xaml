@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    RequestedTheme="Light"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="#e7e7e7">
@@ -36,6 +37,57 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <TextBlock Text="LÄGG TILL FRÅGA" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="40" />
 
+        <ComboBox 
+            x:Name="CourseDropDown"
+            Grid.ColumnSpan="3" 
+            Grid.Column="1" 
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            Width="400"
+            PlaceholderText="Välj ämne"
+
+            />
+        <ComboBox 
+            x:Name="QuestionTypeDropDown"
+            Grid.ColumnSpan="3" 
+            Grid.Column="1" 
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            Width="400"
+            PlaceholderText="Välj frågetyp"
+            />
+        <TextBox x:Name="QuestionTagTextBox" 
+                 Grid.Column="1"
+                 Grid.ColumnSpan="6"
+                 Grid.Row="1"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Bottom"
+                 PlaceholderText="Sökord"
+                 TextWrapping="Wrap" 
+                 Width="200"
+                 Height="40"
+                 />
+        <ListView x:Name="QuestionTextBox" 
+                 Grid.Column="1"
+                 Grid.ColumnSpan="6"
+                 Grid.RowSpan="4"
+                 Grid.Row="2"
+                 HorizontalAlignment="Left" 
+                 Width="700"
+                 Height="400"
+                  Background="Black"
+                 />
+        
+        <TextBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="9" Grid.ColumnSpan="2" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" PlaceholderText="Namnge prov" />
+        
+        <TextBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="11" Grid.ColumnSpan="2" Width="250" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        
+        <ListView x:Name="AlternativeListView" Header="Tillagda alternativ:" FontSize="30" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5" Background="LightGray"/>
+
+
+        <Button x:Name="ClearFormbtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Skapa prov" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30"></Button>
+        <Button x:Name="CreateExamBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
     </Grid>
 </Page>
