@@ -69,6 +69,9 @@
                  Width="200"
                  Height="40"
                  />
+
+        <Button x:Name="SearchBtn" Content="Sök" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="38.5" />
+        
         <ListView x:Name="QuestionTextBox" 
                  Grid.Column="1"
                  Grid.ColumnSpan="6"
