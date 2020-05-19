@@ -47,6 +47,7 @@
             VerticalAlignment="Top"
             Width="400"
             PlaceholderText="Välj ämne"
+            ItemsSource="{x:Bind ListOfCourses}"
             />
         <ComboBox 
             x:Name="QuestionTypeDropDown"

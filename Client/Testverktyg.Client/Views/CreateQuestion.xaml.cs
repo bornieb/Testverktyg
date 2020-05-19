@@ -23,10 +23,22 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CreateQuestion : Page
     {
+        public List<Course> ListOfCourses = new List<Course>();
         public CreateQuestion()
         {
             this.InitializeComponent();
-            CourseDropDown.ItemsSource = Enum.GetValues(typeof(Course));
+            //CourseDropDown.ItemsSource = Enum.GetValues(typeof(Course));
+            Init();
+            
+        }
+
+        public void Init()
+        {
+            ListOfCourses.Add(new Course(1, "Matematik"));
+            ListOfCourses.Add(new Course(1, "Svenska"));
+            ListOfCourses.Add(new Course(1, "Engelska"));
+
+            QuestionTypeDropDown.ItemsSource = Enum.GetValues(typeof(QuestionType));
         }
     }
 }
