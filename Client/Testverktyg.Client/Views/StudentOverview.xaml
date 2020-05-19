@@ -37,5 +37,31 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <TextBlock x:Name="NextTestsTextBlock" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,20" Grid.Row="1" Text="Kommande prov" 
+                   TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="32"/>
+        <TextBox x:Name="Search1TextBox" Grid.Column="5" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30" 
+                 BorderBrush="black" BorderThickness="1"/>
+
+
+        <TextBlock x:Name="FinishedTests" Grid.Column="8" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,20" Grid.Row="1" Text="Avslutade prov" 
+                   TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="32"/>
+        <TextBox x:Name="Search2TextBox" Grid.Column="12" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30"
+                 BorderBrush="black" BorderThickness="1"/>
+
+        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" BorderBrush="Black" BorderThickness="1"/>
+        <ListView Grid.Column="8" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="3" Background="LightGray" BorderBrush="Black" BorderThickness="1"/>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="7">
+            <Button x:Name="DetailsButton" Content="Se detaljer" Height="40" Width="180" CornerRadius="5" HorizontalAlignment="Right" FontSize="20" 
+                    Margin="0,20,0,0" BorderBrush="Black" BorderThickness="1" />
+
+        </StackPanel>
+        <StackPanel Grid.Column="8" Grid.ColumnSpan="5"  Grid.Row="5">
+            <Button x:Name="ShowTestButton" Content="Se hela provet" Height="40" Width="180" CornerRadius="5" VerticalAlignment="Center" HorizontalAlignment="Right" 
+                    FontSize="20" Margin="0,20,0,0" BorderBrush="Black" BorderThickness="1" />
+
+        </StackPanel>
+
+
+
     </Grid>
 </Page>
