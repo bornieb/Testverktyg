@@ -155,6 +155,9 @@
     <Compile Include="Views\SplitViewMenu.xaml.cs">
       <DependentUpon>SplitViewMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SplitViewMenuStudent.xaml.cs">
+      <DependentUpon>SplitViewMenuStudent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StudentOverview.xaml.cs">
       <DependentUpon>StudentOverview.xaml</DependentUpon>
     </Compile>
@@ -203,6 +206,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SplitViewMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplitViewMenuStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
