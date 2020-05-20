@@ -7,6 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Left"/>
+        </TransitionCollection>
+    </Page.Transitions>
 
     <Grid Background="#e7e7e7">
         <Grid.ColumnDefinitions>
@@ -48,7 +53,7 @@
         <TextBox x:Name="Search2TextBox" Grid.Column="12" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30"
                  BorderBrush="black" BorderThickness="1"/>
 
-        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" BorderBrush="Black" BorderThickness="1">
+        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" BorderThickness="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
