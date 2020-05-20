@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TestverktygAPI.Models
 {
-    public class Student : User
+    public class Class
     {
         public int ClassId { get; set; }
-        public virtual Class Class { get; set; }
+        public string ClassName { get; set; }
     }
 }

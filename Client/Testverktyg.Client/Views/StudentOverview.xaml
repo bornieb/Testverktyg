@@ -48,8 +48,35 @@
         <TextBox x:Name="Search2TextBox" Grid.Column="12" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30"
                  BorderBrush="black" BorderThickness="1"/>
 
-        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" BorderBrush="Black" BorderThickness="1"/>
-        <ListView Grid.Column="8" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="3" Background="LightGray" BorderBrush="Black" BorderThickness="1"/>
+        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" BorderBrush="Black" BorderThickness="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Klass 7B"/>
+                            <TextBlock Text="Matteprov Algebra"/>
+                            <TextBlock Text="15/05/20"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="7 dagar kvar"/>
+                            <TextBlock Text="Orättade prov"/>
+                            <TextBlock Text="20"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Grid.Column="8" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="3" Background="LightGray" BorderBrush="Black" BorderThickness="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Klass 7B"/>
+                        <TextBlock Text="Matteprov Algebra"/>
+                        <TextBlock Text="15/05/20"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <StackPanel Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="7">
             <Button x:Name="DetailsButton" Content="Se detaljer" Height="40" Width="180" CornerRadius="5" HorizontalAlignment="Right" FontSize="20" 
                     Margin="0,20,0,0" BorderBrush="Black" BorderThickness="1" />

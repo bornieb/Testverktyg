@@ -11,6 +11,7 @@ namespace Testverktyg.Client.Models
         public int ExamId { get; set; }
         public DateTime StartExamDate { get; set; }
         public DateTime EndExamDate { get; set; }
+        public int ClassId { get; set; }
         public string Subject { get; set; }
         public int MaxAmountOfPoints { get; set; }
         public int NumberOfQuestions { get; set; }
