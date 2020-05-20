@@ -71,18 +71,18 @@
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem
-                            x:Name="CreateQuestionListBoxitem"
+                            x:Name="TakeExamListBoxitem"
                             Background="Transparent">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="Segoe UI Emoji"
-                                       FontSize="24"
-                                       Text="&#x2754;"
+                                       FontSize="22"
+                                       Text="&#x270F;"
                                        HorizontalAlignment="Left"
                                        Margin="3,0,0,0"/>
-                                <TextBlock Text="Create&#x0a;Question"    
+                                <TextBlock Text="Take&#x0a;Exam"    
                                        FontFamily="Cambria"
                                        FontSize="13"
-                                       Margin="27,0,0,0"
+                                       Margin="20,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
                         </ListBoxItem>
@@ -107,7 +107,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Frame x:Name="PageFrame" Margin="20,0,0,0">
+                <Frame x:Name="PageFrame">
 
                 </Frame>
             </SplitView.Content>

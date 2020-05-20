@@ -121,7 +121,7 @@
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Frame x:Name="PageFrame" Margin="20,0,0,0">
+                <Frame x:Name="PageFrame">
 
                 </Frame>
             </SplitView.Content>
