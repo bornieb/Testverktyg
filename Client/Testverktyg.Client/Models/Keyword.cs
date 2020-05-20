@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Testverktyg.Client.Models
 {
-    public class Alternative
+    public class Keyword
     {
-        public int AlternativeId { get; set; }
-        public string AlternativeText { get; set; }
+        public int KeywordId { get; set; }
+        public string KeywordText { get; set; }
         public int QuestionId { get; set; }
 
-        public Alternative(string alternative)
+        public Keyword(string keyword)
         {
-            AlternativeText = alternative;
+            KeywordText = keyword;
         }
     }
 }

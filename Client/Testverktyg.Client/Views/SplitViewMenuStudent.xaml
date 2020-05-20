@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="Testverktyg.Client.Views.SplitViewMenu"
+    x:Class="Testverktyg.Client.Views.SplitViewMenuStudent"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Testverktyg.Client.Views"
@@ -71,36 +71,22 @@
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem
-                            x:Name="CreateQuestionListBoxitem"
+                            x:Name="TakeExamListBoxitem"
                             Background="Transparent">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="Segoe UI Emoji"
-                                       FontSize="24"
-                                       Text="&#x2754;"
+                                       FontSize="22"
+                                       Text="&#x270F;"
                                        HorizontalAlignment="Left"
                                        Margin="3,0,0,0"/>
-                                <TextBlock Text="Create&#x0a;Question"    
+                                <TextBlock Text="Take&#x0a;Exam"    
                                        FontFamily="Cambria"
                                        FontSize="13"
-                                       Margin="27,0,0,0"
+                                       Margin="20,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem
-                            x:Name="CreateExamListBoxitem"
-                            Background="Transparent">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe UI Emoji"
-                                       FontSize="24"
-                                       Text="&#x1F4C4;"
-                                       HorizontalAlignment="Left"/>
-                                <TextBlock Text="Create&#x0a;Exam"
-                                       FontFamily="Cambria"
-                                       FontSize="13"
-                                       Margin="26,0,0,0"
-                                       VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListBoxItem>
+                     
                         <ListBoxItem
                             x:Name="ExitListBoxitem"
                             Background="Transparent">
