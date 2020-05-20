@@ -48,10 +48,13 @@
             VerticalAlignment="Top"
             Width="400"
             PlaceholderText="Välj ämne"
-            ItemsSource="{x:Bind ListOfCourses}"
-
-
-            />
+            ItemsSource="{x:Bind ListOfCourses}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="model:Course">
+                    <TextBlock Text="{x:Bind CourseName}" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox 
             x:Name="QuestionTypeDropDown"
             Grid.ColumnSpan="3" 
@@ -151,7 +154,7 @@
 
 
 
-        <Button Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Spara fråga" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30"></Button>
+        <Button x:Name="SaveQuestionBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Spara fråga" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Click="SaveQuestionBtn_Click"></Button>
         <Button Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
     </Grid>
 </Page>
