@@ -8,6 +8,6 @@ namespace Testverktyg.Client.Models
 {
     public class Student
     {
-        public string ClassName { get; set; }
+        public int ClassId { get; set; }
     }
 }
