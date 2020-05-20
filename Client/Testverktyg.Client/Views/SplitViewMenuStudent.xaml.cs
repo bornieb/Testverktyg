@@ -20,12 +20,12 @@ namespace Testverktyg.Client.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SplitViewMenu : Page
+    public sealed partial class SplitViewMenuStudent : Page
     {
-        public SplitViewMenu()
+        public SplitViewMenuStudent()
         {
             this.InitializeComponent();
-            PageFrame.Navigate(typeof(TeacherOverview));
+            PageFrame.Navigate(typeof(StudentOverview));
         }
 
         private void CollapseButton_Click(object sender, RoutedEventArgs e)
@@ -42,25 +42,21 @@ namespace Testverktyg.Client.Views
             }
         }
 
-       
+
         private void SplitViewMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(CreateQuestionListBoxitem.IsSelected)
+            if (TakeExamListBoxitem.IsSelected)
             {
-                PageFrame.Navigate(typeof(CreateQuestion));
-                TitleTextblock.Text = "Create question";
+                PageFrame.Navigate(typeof(TakeExam));
+                TitleTextblock.Text = "Exam";
             }
-            else if(CreateExamListBoxitem.IsSelected)
+        
+            else if (HomeListBoxItem.IsSelected)
             {
-                PageFrame.Navigate(typeof(CreateExam));
-                TitleTextblock.Text = "Create Exam";
-            }
-            else if(HomeListBoxItem.IsSelected)
-            {
-                PageFrame.Navigate(typeof(TeacherOverview));
+                PageFrame.Navigate(typeof(StudentOverview));
                 TitleTextblock.Text = "Welcome";
             }
-            else if(ExitListBoxitem.IsSelected)
+            else if (ExitListBoxitem.IsSelected)
             {
                 this.Frame.Navigate(typeof(MainPage));
             }
