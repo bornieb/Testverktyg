@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,8 +15,9 @@ namespace TestverktygAPI.Models
         public QuestionType QuestionType { get; set; }
         public int QuestionValue { get; set; }
         public string StudentsFreeAnswer { get; set; }
-        public List<Alternative> Alternatives { get; set; } = new List<Alternative>();
+        public ObservableCollection<Alternative> Alternatives { get; set; } = new ObservableCollection<Alternative>();
         public List<int> RightAnswers { get; set; } = new List<int>();
+        public ObservableCollection<Keyword> Keywords { get; set; } = new ObservableCollection<Keyword>();
 
     }
 }
