@@ -30,7 +30,14 @@ namespace Testverktyg.Client
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SplitViewMenu));
+            if (RadioButtonTeacher.IsChecked == true)
+            {
+                this.Frame.Navigate(typeof(SplitViewMenu));
+            }
+            else if (RadioButtonStudent.IsChecked == true)
+            {
+                this.Frame.Navigate(typeof(SplitViewMenuStudent));
+            }
         }
     }
 }
