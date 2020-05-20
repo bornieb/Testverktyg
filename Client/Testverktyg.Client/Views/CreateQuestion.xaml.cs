@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Testverktyg.Client.Models;
+using Testverktyg.Client.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,6 +24,8 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CreateQuestion : Page
     {
+        private CreateQuestionViewModel viewModel;
+
         public List<Course> ListOfCourses = new List<Course>();
         public CreateQuestion()
         {
@@ -40,6 +43,20 @@ namespace Testverktyg.Client.Views
 
             QuestionTypeDropDown.ItemsSource = Enum.GetValues(typeof(QuestionType));
             GradeLevelDropDown.ItemsSource = Enum.GetValues(typeof(GradeLevel));
+
+            viewModel = new CreateQuestionViewModel();
+        }
+
+        private void AddAlternativeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string alternative = AlternativeTextBox.Text;
+            viewModel.Question.AddAlternative(alternative);
+        }
+
+        private void AddKeyword_Click(object sender, RoutedEventArgs e)
+        {
+            string keyword = KeywordTextBox.Text;
+            viewModel.Question.AddKeyword(keyword);
         }
     }
 }
