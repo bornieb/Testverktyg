@@ -26,5 +26,20 @@ namespace Testverktyg.Client.Views
         {
             this.InitializeComponent();
         }
+
+        private void TestButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(MultipleChoicesGridView.Visibility == Visibility.Visible)
+            {
+                MultipleChoicesGridView.Visibility = Visibility.Collapsed;
+                FreeAnswerTextBox.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MultipleChoicesGridView.Visibility = Visibility.Visible;
+                FreeAnswerTextBox.Visibility = Visibility.Collapsed;
+            }
+            
+        }
     }
 }
