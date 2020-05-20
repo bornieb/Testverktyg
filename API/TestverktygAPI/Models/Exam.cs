@@ -8,6 +8,7 @@ namespace TestverktygAPI.Models
     public class Exam
     {
         public int ExamId { get; set; }
+        public int ClassId { get; set; }
         public DateTime StartExamDate { get; set; }
         public DateTime EndExamDate { get; set; }
         public string Subject { get; set; }
@@ -18,5 +19,6 @@ namespace TestverktygAPI.Models
         public int ExamResult { get; set; }
         public List<Question> Questions { get; set; } = new List<Question>();
         public List<ExamQuestion> ExamQuestions { get; set; } = new List<ExamQuestion>();
+        public virtual Class Class { get; set; }
     }
 }

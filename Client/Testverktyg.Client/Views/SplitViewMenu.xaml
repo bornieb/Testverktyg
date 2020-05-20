@@ -43,7 +43,7 @@
             Grid.Row="1"
             Grid.RowSpan="2"
             Grid.Column="1"
-            HorizontalAlignment="Left"
+            HorizontalAlignment="Stretch"
             DisplayMode="CompactInline"
             CompactPaneLength="56"
             OpenPaneLength="130"
