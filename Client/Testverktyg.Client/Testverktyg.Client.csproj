@@ -131,6 +131,7 @@
     <Compile Include="ViewModels\CreateQuestionViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\StudentOverviewViewModel.cs" />
+    <Compile Include="ViewModels\TakeExamViewModel.cs" />
     <Compile Include="ViewModels\TeacherOverviewViewModel.cs" />
     <Compile Include="Views\CorrectExam.xaml.cs">
       <DependentUpon>CorrectExam.xaml</DependentUpon>
@@ -156,6 +157,9 @@
     </Compile>
     <Compile Include="Views\StudentOverview.xaml.cs">
       <DependentUpon>StudentOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TakeExam.xaml.cs">
+      <DependentUpon>TakeExam.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TeacherOverview.xaml.cs">
       <DependentUpon>TeacherOverview.xaml</DependentUpon>
@@ -205,6 +209,10 @@
     <Page Include="Views\StudentOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TakeExam.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\TeacherOverview.xaml">
       <SubType>Designer</SubType>
