@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Testverktyg.Client.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,7 +29,7 @@ namespace Testverktyg.Client
             this.InitializeComponent();
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private async void Login_Click(object sender, RoutedEventArgs e)
         {
             if (RadioButtonTeacher.IsChecked == true)
             {
@@ -37,6 +38,10 @@ namespace Testverktyg.Client
             else if (RadioButtonStudent.IsChecked == true)
             {
                 this.Frame.Navigate(typeof(SplitViewMenuStudent));
+            }
+            else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+            {
+                await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
             }
         }
     }
