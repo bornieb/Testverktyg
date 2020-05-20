@@ -25,6 +25,7 @@ namespace Testverktyg.Client.Views
         public SplitViewMenu()
         {
             this.InitializeComponent();
+            PageFrame.Navigate(typeof(TeacherOverview));
         }
 
         private void CollapseButton_Click(object sender, RoutedEventArgs e)

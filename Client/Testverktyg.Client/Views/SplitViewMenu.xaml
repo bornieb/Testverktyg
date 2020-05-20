@@ -65,7 +65,7 @@
                                        HorizontalAlignment="Left"/>
                                 <TextBlock Text="Home"
                                        FontFamily="Cambria"
-                                       FontSize="16"
+                                       FontSize="13"
                                        Margin="20,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
@@ -79,9 +79,9 @@
                                        Text="&#x2754;"
                                        HorizontalAlignment="Left"
                                        Margin="3,0,0,0"/>
-                                <TextBlock Text="Create"
+                                <TextBlock Text="Create&#x0a;Question"    
                                        FontFamily="Cambria"
-                                       FontSize="16"
+                                       FontSize="13"
                                        Margin="27,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
@@ -94,9 +94,9 @@
                                        FontSize="24"
                                        Text="&#x1F4C4;"
                                        HorizontalAlignment="Left"/>
-                                <TextBlock Text="Create"
+                                <TextBlock Text="Create&#x0a;Exam"
                                        FontFamily="Cambria"
-                                       FontSize="16"
+                                       FontSize="13"
                                        Margin="26,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
@@ -111,7 +111,7 @@
                                        HorizontalAlignment="Left"/>
                                 <TextBlock Text="Exit"
                                        FontFamily="Cambria"
-                                       FontSize="16"
+                                       FontSize="13"
                                        Margin="26,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
