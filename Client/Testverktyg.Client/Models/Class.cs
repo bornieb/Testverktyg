@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace TestverktygAPI.Models
+namespace Testverktyg.Client.Models
 {
-    public class Student : User
+    public class Class
     {
         public int ClassId { get; set; }
-        public virtual Class Class { get; set; }
+        public string ClassName { get; set; }
     }
 }
