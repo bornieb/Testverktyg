@@ -19,5 +19,20 @@ namespace Testverktyg.Client.Models
         public int CurrentQuestion { get; set; }
         public int ExamResult { get; set; }
         public List<Question> Questions { get; set; } = new List<Question>();
+
+        public Exam(int examid, DateTime startdate, DateTime enddate, int classid, string subject, int maxpoints, int numquestions, int grade, int currentq, int examresult)
+        {
+            ExamId = examid;
+            StartExamDate = startdate;
+            EndExamDate = enddate;
+            ClassId = classid;
+            Subject = subject;
+            MaxAmountOfPoints = maxpoints;
+            NumberOfQuestions = numquestions;
+            GradeScale = grade;
+            CurrentQuestion = currentq;
+            ExamResult = examresult;
+            Questions = new List<Question>();
+        }
     }
 }
