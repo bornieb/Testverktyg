@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TestverktygAPI.Models
 {
-    public abstract class User
+    public class User
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }
