@@ -17,8 +17,8 @@ namespace TestverktygAPI.Models
         public int GradeScale { get; set; }
         public int CurrentQuestion { get; set; }
         public int ExamResult { get; set; }
-        public List<Question> Questions { get; set; } = new List<Question>();
-        public List<ExamQuestion> ExamQuestions { get; set; } = new List<ExamQuestion>();
+        public virtual List<Question> Questions { get; set; } = new List<Question>();
+        public virtual List<ExamQuestion> ExamQuestions { get; set; } = new List<ExamQuestion>();
         public virtual Class Class { get; set; }
     }
 }

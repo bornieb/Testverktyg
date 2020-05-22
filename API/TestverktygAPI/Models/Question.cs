@@ -16,7 +16,6 @@ namespace TestverktygAPI.Models
         public int QuestionValue { get; set; }
         public string StudentsFreeAnswer { get; set; }
         public ObservableCollection<Alternative> Alternatives { get; set; } = new ObservableCollection<Alternative>();
-        public List<int> RightAnswers { get; set; } = new List<int>();
         public ObservableCollection<Keyword> Keywords { get; set; } = new ObservableCollection<Keyword>();
 
     }

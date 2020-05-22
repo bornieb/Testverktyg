@@ -37,5 +37,46 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <TextBlock Text="Rätta prov" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="40" Foreground="Black"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Orientation="Horizontal" Spacing="20">
+            <Border Background="White" Height="30">
+                <TextBlock x:Name="ExamNameTextBlock" Text="Prov i Matematik: Algebra" VerticalAlignment="Center" Padding="5"/>
+            </Border>
+            <Border Background="White" Height="30">
+                <TextBlock x:Name="StudentNameTextBlock" Text="Elev: Jöns Glennson" VerticalAlignment="Center"  Padding="5"/>
+            </Border>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="3" Orientation="Horizontal" Spacing="20">
+            <Border Background="White" Height="30">
+                <TextBlock x:Name="ResultTextBlock" Text="Resultat:"  VerticalAlignment="Center"  Padding="5"/>
+            </Border>
+            <Border Background="White" Height="30">
+                <TextBlock x:Name="GradeTextBlock"  Text="Betyg:" VerticalAlignment="Center"  Padding="5" />
+            </Border>
+            <Border Background="White" Height="30">
+                <TextBlock x:Name="ClassTextBlock"  Text="Klass: 7B" VerticalAlignment="Center"  Padding="5" />
+            </Border>
+        </StackPanel>
+
+        <ListView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="12" Grid.RowSpan="5" Background="Aqua">
+            
+        </ListView>
+
+        <Border Background="White" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3">
+            <TextBlock  />
+        </Border>
+
+        <Button  VerticalAlignment="Center" HorizontalAlignment="Right" Content="Klar" Width="270" Height="90" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Grid.Row="7" Grid.Column="11" Grid.ColumnSpan="2"></Button>
+        <Button  VerticalAlignment="Center" HorizontalAlignment="Right" Content="Ångra" Width="270" Height="90" CornerRadius="25" Background="Red" Foreground="White" FontSize="30" Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="2"></Button>
+
+
+
+
+
+
+
+
     </Grid>
 </Page>

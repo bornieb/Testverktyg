@@ -18,7 +18,6 @@ namespace Testverktyg.Client.Models
         public int QuestionValue { get; set; }
         public string StudentsFreeAnswer { get; set; }
         public ObservableCollection<Alternative> Alternatives { get; } = new ObservableCollection<Alternative>();
-        public List<int> RightAnswers { get; set; } = new List<int>();
         public ObservableCollection<Keyword> Keywords { get; } = new ObservableCollection<Keyword>();
 
         public Question()
@@ -26,9 +25,9 @@ namespace Testverktyg.Client.Models
 
         }
 
-        public void AddAlternative(string alternative)
+        public void AddAlternative(string alternative, bool isCorrect)
         {
-            Alternative alternative1 = new Alternative(alternative);
+            Alternative alternative1 = new Alternative(alternative, isCorrect);
             Alternatives.Add(alternative1);
         }
 

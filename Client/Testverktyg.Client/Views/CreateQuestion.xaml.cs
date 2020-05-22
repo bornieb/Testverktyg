@@ -50,13 +50,22 @@ namespace Testverktyg.Client.Views
         private void AddAlternativeBtn_Click(object sender, RoutedEventArgs e)
         {
             string alternative = AlternativeTextBox.Text;
-            viewModel.Question.AddAlternative(alternative);
+            bool isCorrect = RightAnswerRadioBtn.IsChecked ?? false;
+            viewModel.Question.AddAlternative(alternative, isCorrect);
         }
 
         private void AddKeyword_Click(object sender, RoutedEventArgs e)
         {
             string keyword = KeywordTextBox.Text;
             viewModel.Question.AddKeyword(keyword);
+        }
+
+        private void SaveQuestionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Question.QuestionText = QuestionTextBox.Text;
+            viewModel.Question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
+            viewModel.Question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
+            viewModel.Question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
         }
     }
 }
