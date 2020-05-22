@@ -26,5 +26,35 @@ namespace Testverktyg.Client.Views
         {
             this.InitializeComponent();
         }
+
+        private void CreateTestButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Remove1Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CorrectTestButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReUseButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Remove2Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
