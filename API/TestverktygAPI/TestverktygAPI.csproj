@@ -5,6 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200522104709_Initial.cs" />
+    <Compile Remove="Migrations\20200522104709_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200522105228_Initial.cs" />
+    <Compile Remove="Migrations\20200522105228_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200522105448_Initial.cs" />
+    <Compile Remove="Migrations\20200522105448_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200522110602_Initial.cs" />
+    <Compile Remove="Migrations\20200522110602_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200522110702_Initial.cs" />
+    <Compile Remove="Migrations\20200522110702_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200522110759_Initial.cs" />
+    <Compile Remove="Migrations\20200522110759_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200522111442_Initial.cs" />
+    <Compile Remove="Migrations\20200522111442_Initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">

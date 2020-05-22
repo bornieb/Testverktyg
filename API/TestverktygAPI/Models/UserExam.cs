@@ -9,7 +9,7 @@ namespace TestverktygAPI.Models
     {
         public int UserId { get; set; }
         public int ExamId { get; set; }
-        public virtual User User { get; set; }
-        public virtual Exam Exam { get; set; }
+        public User User { get; set; }
+        public Exam Exam { get; set; }
     }
 }

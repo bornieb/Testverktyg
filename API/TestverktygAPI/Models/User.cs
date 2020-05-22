@@ -12,7 +12,7 @@ namespace TestverktygAPI.Models
         public string LastName { get; set; }
         public string UserNameEmail { get; set; }
         public string PassWord { get; set; }
-        public List<Exam> Exams { get; set; } = new List<Exam>();
-        public List<UserExam> UserExams { get; set; } = new List<UserExam>();
+        public virtual List<Exam> Exams { get; set; } = new List<Exam>();
+        public virtual List<UserExam> UserExams { get; set; } = new List<UserExam>();
     }
 }

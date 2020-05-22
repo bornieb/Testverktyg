@@ -21,6 +21,8 @@ namespace TestverktygAPI.Data
             modelBuilder.Entity<Models.CourseQuestion>().HasKey(sc => new { sc.CourseId, sc.QuestionId });
             modelBuilder.Entity<Models.ExamQuestion>().HasKey(sc => new { sc.ExamId, sc.QuestionId });
             modelBuilder.Entity<Models.UserExam>().HasKey(sc => new { sc.UserId, sc.ExamId });
+            modelBuilder.Entity<Models.UserExam>().HasOne<Models.User>(ue => ue.User).WithMany(u => u.UserExams).HasForeignKey(ue => ue.UserId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Models.UserExam>().HasOne<Models.Exam>(ue => ue.Exam).WithMany().HasForeignKey(ue => ue.ExamId).OnDelete(DeleteBehavior.NoAction);
         }
 
         public DbSet<TestverktygAPI.Models.Alternative> Alternative { get; set; }
