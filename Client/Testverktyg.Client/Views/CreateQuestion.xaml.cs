@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Testverktyg.Client.Models;
 using Testverktyg.Client.ViewModels;
+using Testverktyg.Client.Services;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,7 +27,10 @@ namespace Testverktyg.Client.Views
     {
         private CreateQuestionViewModel viewModel;
 
-        public List<Course> ListOfCourses = new List<Course>();
+        public List<Course> ListOfCourses;
+        private CourseService courseService = new CourseService();
+        private QuestionService questionService = new QuestionService();
+
         public CreateQuestion()
         {
             this.InitializeComponent();
@@ -37,9 +41,7 @@ namespace Testverktyg.Client.Views
 
         public void Init()
         {
-            ListOfCourses.Add(new Course(1, "Matematik"));
-            ListOfCourses.Add(new Course(1, "Svenska"));
-            ListOfCourses.Add(new Course(1, "Engelska"));
+            ListOfCourses = courseService.GetCourses();
 
             QuestionTypeDropDown.ItemsSource = Enum.GetValues(typeof(QuestionType));
             GradeLevelDropDown.ItemsSource = Enum.GetValues(typeof(GradeLevel));
@@ -66,6 +68,7 @@ namespace Testverktyg.Client.Views
             viewModel.Question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
             viewModel.Question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
             viewModel.Question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
+            questionService.AddQuestion(viewModel.Question);
         }
     }
 }

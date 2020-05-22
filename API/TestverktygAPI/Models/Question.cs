@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TestverktygAPI.Models
 {
@@ -15,8 +11,8 @@ namespace TestverktygAPI.Models
         public QuestionType QuestionType { get; set; }
         public int QuestionValue { get; set; }
         public string StudentsFreeAnswer { get; set; }
-        public ObservableCollection<Alternative> Alternatives { get; set; } = new ObservableCollection<Alternative>();
-        public ObservableCollection<Keyword> Keywords { get; set; } = new ObservableCollection<Keyword>();
+        public List<Alternative> Alternatives { get; set; } = new List<Alternative>();
+        public List<Keyword> Keywords { get; set; } = new List<Keyword>();
 
     }
 }
