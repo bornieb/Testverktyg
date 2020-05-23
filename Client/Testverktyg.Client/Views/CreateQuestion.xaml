@@ -123,9 +123,26 @@
                   Height="100" 
                   VerticalAlignment="Center"
                   ItemsSource="{x:Bind viewModel.Question.Keywords}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Keyword">
-                    <TextBlock Text="{x:Bind KeywordText}"/>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{x:Bind KeywordText}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Button x:Name="RemoveKeywordBtn" Content="-" Click="RemoveKeywordBtn_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -147,9 +164,26 @@
                   Grid.RowSpan="5" 
                   Background="LightGray"
                   ItemsSource="{x:Bind viewModel.Question.Alternatives}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Alternative">
-                    <TextBlock Text="{x:Bind AlternativeText}" />
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{x:Bind AlternativeText}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Button x:Name="RemoveAlternativeBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveAlternativeBtn_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

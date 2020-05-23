@@ -31,10 +31,20 @@ namespace Testverktyg.Client.Models
             Alternatives.Add(alternative1);
         }
 
+        public void RemoveAlternative(Alternative alternative)
+        {
+            Alternatives.Remove(alternative);
+        }
+
         public void AddKeyword(string keyword)
         {
             Keyword keyword1 = new Keyword(keyword);
             Keywords.Add(keyword1);
+        }
+
+        public void RemoveKeyword(Keyword keyword)
+        {
+            Keywords.Remove(keyword);
         }
     }
 }
