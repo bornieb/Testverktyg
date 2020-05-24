@@ -122,7 +122,7 @@
                   Grid.RowSpan="2" 
                   Height="100" 
                   VerticalAlignment="Center"
-                  ItemsSource="{x:Bind viewModel.Question.Keywords}">
+                  ItemsSource="{x:Bind viewModel.Keywords}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -163,7 +163,7 @@
                   Grid.Row="2" 
                   Grid.RowSpan="5" 
                   Background="LightGray"
-                  ItemsSource="{x:Bind viewModel.Question.Alternatives}">
+                  ItemsSource="{x:Bind viewModel.Alternatives}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -194,6 +194,6 @@
 
 
         <Button x:Name="SaveQuestionBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Spara fråga" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Click="SaveQuestionBtn_Click"></Button>
-        <Button Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
+        <Button x:Name="ClearInputBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30" Click="ClearInputBtn_Click"></Button>
     </Grid>
 </Page>

@@ -54,36 +54,39 @@ namespace Testverktyg.Client.Views
         {
             string alternative = AlternativeTextBox.Text;
             bool isCorrect = RightAnswerRadioBtn.IsChecked ?? false;
-            viewModel.Question.AddAlternative(alternative, isCorrect);
+            viewModel.AddAlternative(alternative, isCorrect);
         }
 
         private void AddKeyword_Click(object sender, RoutedEventArgs e)
         {
             string keyword = KeywordTextBox.Text;
-            viewModel.Question.AddKeyword(keyword);
+            viewModel.AddKeyword(keyword);
         }
 
         private async void SaveQuestionBtn_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.Question.QuestionText = QuestionTextBox.Text;
-            viewModel.Question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
-            viewModel.Question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
-            viewModel.Question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
-            questionService.AddQuestion(viewModel.Question);
+            Question question = new Question();
+            question.QuestionText = QuestionTextBox.Text;
+            question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
+            question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
+            question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
+            question.Alternatives.AddRange(viewModel.Alternatives);
+            question.Keywords.AddRange(viewModel.Keywords);
+            questionService.AddQuestion(question);
             await new MessageDialog("Din fråga har sparats").ShowAsync();
-            Init();
+            ClearAllInputs();
         }
 
         private void RemoveAlternativeBtn_Click(object sender, RoutedEventArgs e)
         {
             Alternative alternative = (Alternative)((Button)sender).DataContext;
-            viewModel.Question.RemoveAlternative(alternative);
+            viewModel.RemoveAlternative(alternative);
         }
 
         private void RemoveKeywordBtn_Click(object sender, RoutedEventArgs e)
         {
             Keyword keyword = (Keyword)((Button)sender).DataContext;
-            viewModel.Question.RemoveKeyword(keyword);
+            viewModel.RemoveKeyword(keyword);
         }
 
         private void ClearAllInputs()
@@ -93,6 +96,13 @@ namespace Testverktyg.Client.Views
             AlternativeTextBox.Text = "";
             RightAnswerRadioBtn.IsChecked = false;
             WrongAnswerRadioBtn.IsChecked = false;
+            viewModel.Alternatives.Clear();
+            viewModel.Keywords.Clear();
+        }
+
+        private void ClearInputBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAllInputs();
         }
     }
 }
