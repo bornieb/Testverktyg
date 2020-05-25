@@ -17,24 +17,14 @@ namespace Testverktyg.Client.Models
         public QuestionType QuestionType { get; set; }
         public int QuestionValue { get; set; }
         public string StudentsFreeAnswer { get; set; }
-        public ObservableCollection<Alternative> Alternatives { get; } = new ObservableCollection<Alternative>();
-        public ObservableCollection<Keyword> Keywords { get; } = new ObservableCollection<Keyword>();
+        public List<Alternative> Alternatives { get; set; } = new List<Alternative>();
+        public List<Keyword> Keywords { get; set; } = new List<Keyword>();
 
         public Question()
         {
 
         }
 
-        public void AddAlternative(string alternative, bool isCorrect)
-        {
-            Alternative alternative1 = new Alternative(alternative, isCorrect);
-            Alternatives.Add(alternative1);
-        }
-
-        public void AddKeyword(string keyword)
-        {
-            Keyword keyword1 = new Keyword(keyword);
-            Keywords.Add(keyword1);
-        }
+      
     }
 }

@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Testverktyg.Client.Models;
 using Testverktyg.Client.ViewModels;
+using Testverktyg.Client.Services;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,7 +28,10 @@ namespace Testverktyg.Client.Views
     {
         private CreateQuestionViewModel viewModel;
 
-        public List<Course> ListOfCourses = new List<Course>();
+        public List<Course> ListOfCourses;
+        private CourseService courseService = new CourseService();
+        private QuestionService questionService = new QuestionService();
+
         public CreateQuestion()
         {
             this.InitializeComponent();
@@ -37,9 +42,7 @@ namespace Testverktyg.Client.Views
 
         public void Init()
         {
-            ListOfCourses.Add(new Course(1, "Matematik"));
-            ListOfCourses.Add(new Course(1, "Svenska"));
-            ListOfCourses.Add(new Course(1, "Engelska"));
+            ListOfCourses = courseService.GetCourses();
 
             QuestionTypeDropDown.ItemsSource = Enum.GetValues(typeof(QuestionType));
             GradeLevelDropDown.ItemsSource = Enum.GetValues(typeof(GradeLevel));
@@ -51,21 +54,55 @@ namespace Testverktyg.Client.Views
         {
             string alternative = AlternativeTextBox.Text;
             bool isCorrect = RightAnswerRadioBtn.IsChecked ?? false;
-            viewModel.Question.AddAlternative(alternative, isCorrect);
+            viewModel.AddAlternative(alternative, isCorrect);
         }
 
         private void AddKeyword_Click(object sender, RoutedEventArgs e)
         {
             string keyword = KeywordTextBox.Text;
-            viewModel.Question.AddKeyword(keyword);
+            viewModel.AddKeyword(keyword);
         }
 
-        private void SaveQuestionBtn_Click(object sender, RoutedEventArgs e)
+        private async void SaveQuestionBtn_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.Question.QuestionText = QuestionTextBox.Text;
-            viewModel.Question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
-            viewModel.Question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
-            viewModel.Question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
+            Question question = new Question();
+            question.QuestionText = QuestionTextBox.Text;
+            question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
+            question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
+            question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
+            question.Alternatives.AddRange(viewModel.Alternatives);
+            question.Keywords.AddRange(viewModel.Keywords);
+            questionService.AddQuestion(question);
+            await new MessageDialog("Din fråga har sparats").ShowAsync();
+            ClearAllInputs();
+        }
+
+        private void RemoveAlternativeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Alternative alternative = (Alternative)((Button)sender).DataContext;
+            viewModel.RemoveAlternative(alternative);
+        }
+
+        private void RemoveKeywordBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Keyword keyword = (Keyword)((Button)sender).DataContext;
+            viewModel.RemoveKeyword(keyword);
+        }
+
+        private void ClearAllInputs()
+        {
+            QuestionTextBox.Text = "";
+            KeywordTextBox.Text = "";
+            AlternativeTextBox.Text = "";
+            RightAnswerRadioBtn.IsChecked = false;
+            WrongAnswerRadioBtn.IsChecked = false;
+            viewModel.Alternatives.Clear();
+            viewModel.Keywords.Clear();
+        }
+
+        private void ClearInputBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAllInputs();
         }
     }
 }

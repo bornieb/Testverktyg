@@ -122,10 +122,27 @@
                   Grid.RowSpan="2" 
                   Height="100" 
                   VerticalAlignment="Center"
-                  ItemsSource="{x:Bind viewModel.Question.Keywords}">
+                  ItemsSource="{x:Bind viewModel.Keywords}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Keyword">
-                    <TextBlock Text="{x:Bind KeywordText}"/>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{x:Bind KeywordText}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Button x:Name="RemoveKeywordBtn" Content="-" Click="RemoveKeywordBtn_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -146,10 +163,27 @@
                   Grid.Row="2" 
                   Grid.RowSpan="5" 
                   Background="LightGray"
-                  ItemsSource="{x:Bind viewModel.Question.Alternatives}">
+                  ItemsSource="{x:Bind viewModel.Alternatives}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:Alternative">
-                    <TextBlock Text="{x:Bind AlternativeText}" />
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{x:Bind AlternativeText}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Button x:Name="RemoveAlternativeBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveAlternativeBtn_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -160,6 +194,6 @@
 
 
         <Button x:Name="SaveQuestionBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Spara fråga" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Click="SaveQuestionBtn_Click"></Button>
-        <Button Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
+        <Button x:Name="ClearInputBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30" Click="ClearInputBtn_Click"></Button>
     </Grid>
 </Page>
