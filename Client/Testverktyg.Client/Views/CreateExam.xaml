@@ -47,11 +47,11 @@
 
         <ComboBox 
             x:Name="CourseDropDown"
-            Grid.ColumnSpan="3" 
+            Grid.ColumnSpan="4"
             Grid.Column="1" 
             Grid.Row="1"
             VerticalAlignment="Top"
-            Width="400"
+            HorizontalAlignment="Stretch"
             PlaceholderText="Välj ämne"
             ItemsSource="{x:Bind ListOfCourses}"
             >
@@ -66,11 +66,11 @@
         </ComboBox>
         <ComboBox 
             x:Name="ExamTypeDropDown"
-            Grid.ColumnSpan="3" 
+            Grid.ColumnSpan="4" 
             Grid.Column="1" 
             Grid.Row="1"
             VerticalAlignment="Center"
-            Width="400"
+             HorizontalAlignment="Stretch"
             PlaceholderText="Välj provtyp">
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="local1:QuestionType">
@@ -80,51 +80,50 @@
         </ComboBox>
         <TextBox x:Name="QuestionTagTextBox" 
                  Grid.Column="1"
-                 Grid.ColumnSpan="6"
+                 Grid.ColumnSpan="3"
                  Grid.Row="1"
-                 HorizontalAlignment="Left"
+                 HorizontalAlignment="Stretch"
                  VerticalAlignment="Bottom"
                  PlaceholderText="Sökord"
                  TextWrapping="Wrap" 
-                 Width="200"
-                 Height="40"
+
                  />
 
-        <Button x:Name="SearchBtn" Content="Sök" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="38.5" />
+        <Button x:Name="SearchBtn" Content="Sök" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
 
-        <ListView x:Name="QuestionTextBox" 
-                 Grid.Column="1"
-                 Grid.ColumnSpan="6"
+            <ListView x:Name="QuestionTextBox" 
+                Grid.Column="1"
+                 Grid.ColumnSpan="5"
                  Grid.RowSpan="4"
-                 Grid.Row="2"
-                 HorizontalAlignment="Left" 
-                 Width="700"
-                 Height="400"
+                 Grid.Row="2" 
+                 HorizontalAlignment="Stretch" 
                  Background="LightGray"
+                 Margin="10"
                  ItemsSource="{x:Bind createExamViewModel.ListOfQuestions}" 
                   >
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local1:Question">
-                    <TextBlock Text="{Binding QuestionText}"></TextBlock>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button x:Name="AddToQCart" Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center" Content="Lägg till fråga" Width="100" Height="37" CornerRadius="10" Background="Green" Foreground="White" FontSize="12" Click="AddToQCart_Click"></Button>
-        
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local1:Question">
+                        <TextBlock Text="{Binding QuestionText}"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        <Button x:Name="AddToQCart" Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" Content="Lägg till fråga" Width="100" Height="37" CornerRadius="10" Background="Green" Foreground="White" FontSize="12" Click="AddToQCart_Click"></Button>
+
         <StackPanel Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Vertical">
 
             <TextBlock Text="Prov" FontSize="30"/>
             <TextBlock></TextBlock>
-            <DatePicker x:Name="ExamDatePicker"/>
+            <DatePicker x:Name="ExamDatePicker"  HorizontalAlignment="Stretch"/>
             <TextBlock></TextBlock>
-            <TimePicker x:Name="ExamStartTimePicker"></TimePicker>
+            <TimePicker x:Name="ExamStartTimePicker"  HorizontalAlignment="Stretch"></TimePicker>
             <TextBlock></TextBlock>
-            <TextBox x:Name="TimeLimitTextBox" PlaceholderText="Provtid i minuter"/>
+            <TextBox x:Name="TimeLimitTextBox" PlaceholderText="Provtid i minuter"  HorizontalAlignment="Stretch"/>
             <!--<TextBlock Text="Slutdatum"/>
             <DatePicker x:Name="ExamEndDatePicker"/>
             <TimePicker x:Name="ExamEndTime"></TimePicker>-->
         </StackPanel>
-        
+
 
         <TextBox x:Name="SubjectTextBox" Grid.Row="1" Grid.RowSpan="1" Grid.Column="9" Grid.ColumnSpan="2" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" PlaceholderText="Namnge prov" />
 
@@ -138,7 +137,7 @@
                   PlaceholderText="Klass"
                   ItemsSource="{x:Bind createExamViewModel.ListOfClasses}"
                   >
-                  
+
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding ClassName}"></TextBlock>
@@ -149,6 +148,12 @@
         <TextBlock x:Name="AmountOfQTextBlock" Text="Antal frågor: " Grid.Row="1" Grid.RowSpan="1" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="25"></TextBlock>
 
         <ListView x:Name="QuestionCartListView" FontSize="30" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5" Background="LightGray" ItemsSource="{x:Bind createExamViewModel.QuestionCart}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Question">
                     <StackPanel>
@@ -156,6 +161,7 @@
                         <TextBlock Text="{Binding QuestionType}"></TextBlock>
                         <TextBlock Text="{Binding Alternatives}"></TextBlock>
                         <TextBlock Text="{Binding Keywords}"></TextBlock>
+                        <Button x:Name="RemoveQuestionBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveQuestionBtn_Click"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

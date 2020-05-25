@@ -28,6 +28,11 @@ namespace Testverktyg.Client.ViewModels
             QuestionCart.Add(question);
         }
 
+        public void RemoveQuestion(Question question)
+        {
+            QuestionCart.Remove(question);
+        }
+
         public void CourseData()
         {
             ListOfClasses.Add(new Class(1, "7A"));

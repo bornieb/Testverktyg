@@ -44,10 +44,8 @@ namespace Testverktyg.Client.Views
             createExamViewModel = new CreateExamViewModel();
             examService = new ExamService();
             questionService = new QuestionService();
-
             createExamViewModel.CourseData();
-            courseService.GetCourses();
-            ClassDropDown.ItemsSource = createExamViewModel.ListOfClasses;
+            ListOfCourses= courseService.GetCourses();
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
             GetQuestions();
         }
@@ -119,6 +117,12 @@ namespace Testverktyg.Client.Views
             }
         }
 
-
+        private void RemoveQuestionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Question question = (Question)((Button)sender).DataContext;
+            createExamViewModel.RemoveQuestion(question);
+            TotalPointsTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
+            AmountOfQTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
+        }
     }
 }
