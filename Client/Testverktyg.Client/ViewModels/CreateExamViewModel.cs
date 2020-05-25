@@ -1,20 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
+using Testverktyg.Client.Services;
 
 namespace Testverktyg.Client.ViewModels
 {
     class CreateExamViewModel
     {
-
-        public List<Question> ListOfQuestions = new List<Question>();
+        ExamService examService;
+        public ObservableCollection<Question> ListOfQuestions = new ObservableCollection<Question>();
         public List<Exam> ListOfExams = new List<Exam>();
         public List<Course> ListOfCourses = new List<Course>();
         public List<GradeLevel> ListOfGrades = new List<GradeLevel>();
         public List<Class> ListOfClasses = new List<Class>();
+
+        public CreateExamViewModel()
+        {
+            examService = new ExamService();
+        }
         public void CreateExamData()
         {
             ListOfQuestions.Add(new Question());
@@ -40,9 +47,11 @@ namespace Testverktyg.Client.ViewModels
 
         }
 
-        public bool CreateExam()
+        public bool CreateExam(Exam exam)
         {
+            examService.PostExam(exam);
             bool success = true;
+            
             return success;
         }
     }

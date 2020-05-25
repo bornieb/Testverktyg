@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,7 +21,7 @@ namespace Testverktyg.Client.Models
         public int GradeScale { get; set; }
         public int CurrentQuestion { get; set; }
         public int ExamResult { get; set; }
-        public List<Question> Questions { get; set; } = new List<Question>();
+        public ObservableCollection<Question> Questions { get; set; } = new ObservableCollection<Question>();
 
         //public Exam(int examid,  int classid, string subject, int maxpoints, int numquestions, int grade, int currentq, int examresult)
         //{

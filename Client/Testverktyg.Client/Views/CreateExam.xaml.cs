@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Testverktyg.Client.ViewModels;
 using Testverktyg.Client.Services;
+using System.Security.Cryptography.X509Certificates;
+using System.Collections.ObjectModel;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,8 +28,12 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CreateExam : Page
     {
+        public List<Course> ListOfCourses;
         CreateExamViewModel createExamViewModel;
         ExamService examService;
+        CourseService courseService;
+        QuestionService questionService;
+        public ObservableCollection<Question> QuestionCart = new ObservableCollection<Question>();
         public CreateExam()
         {
             this.InitializeComponent();
@@ -34,14 +41,17 @@ namespace Testverktyg.Client.Views
         }
         public void Init()
         {
+            courseService = new CourseService();
             createExamViewModel = new CreateExamViewModel();
             examService = new ExamService();
+            questionService = new QuestionService();
             createExamViewModel.CourseData();
-
+            courseService.GetCourses();
             ClassDropDown.ItemsSource = createExamViewModel.ListOfClasses;
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
+            GetQuestions();
         }
-        private void CreateExamBtn_Click(object sender, RoutedEventArgs e)
+        private async void CreateExamBtn_Click(object sender, RoutedEventArgs e)
         {
 
             Exam exam = new Exam();
@@ -64,30 +74,51 @@ namespace Testverktyg.Client.Views
             }
 
             //ClassID
-            exam.ClassId = ((Class)CourseDropDown.SelectedValue).ClassId;
+            exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
 
             //Subject
             exam.Subject = SubjectTextBox.Text;
 
             //MaxAmountOfPoints
-            //int totalPoints = questionlista.count;
-            //foreach (Question question in *questionlista*)
-            //{
-            //totalPoints = question.
-            //}
-
+            //TotalPointsTextBlock.Text = *Questionslista.Count*
+            exam.MaxAmountOfPoints = QuestionCart.Count;
             //NumberOfQuestions
             //*Questionslista.Count*
+            exam.NumberOfQuestions = QuestionCart.Count;
 
             //GradeScale?!?!
+            int gradeScale = Convert.ToInt32(GradeScaleTextBox.Text);
 
-            //ExamResult null
+            //Examresult
+            exam.ExamResult = 0;
 
-            //foreach (Question question in *questionlista*)
-            //{
-            //lokalLista.Add(new Question());
-            //}
+            //Questioncart
+            exam.Questions = QuestionCart;
 
+            createExamViewModel.CreateExam(exam);
+            MessageDialog msg = new MessageDialog("Provet skapat!");
+            await msg.ShowAsync();
+
+        }
+
+        private void AddToQCart_Click(object sender, RoutedEventArgs e)
+        {
+            AddQuestion((Question)QuestionTextBox.SelectedItem);
+        }
+        public void AddQuestion(Question question)
+        {
+            QuestionCart.Add(question);
+            TotalPointsTextBlock.Text = QuestionCart.Count.ToString();
+            AmountOfQTextBlock.Text = QuestionCart.Count.ToString();
+        }
+
+        private async void GetQuestions()
+        {
+            var questions = await questionService.GetQuestionsAsync();
+            foreach (Question question in questions)
+            {
+                createExamViewModel.ListOfQuestions.Add(question);
+            }
         }
     }
 }
