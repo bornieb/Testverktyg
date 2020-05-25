@@ -40,5 +40,8 @@ namespace Testverktyg.Client.Models
         {
 
         }
+
+        public string DisplayAmountOfQuestions { get { return $"Antal frågor: {NumberOfQuestions}"; } }
+        public string DisplayTotalPoints { get { return $"Maxpoäng: {MaxAmountOfPoints}"; } }
     }
 }

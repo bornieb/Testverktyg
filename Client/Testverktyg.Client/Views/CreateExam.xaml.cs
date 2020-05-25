@@ -33,7 +33,6 @@ namespace Testverktyg.Client.Views
         ExamService examService;
         CourseService courseService;
         QuestionService questionService;
-        public ObservableCollection<Question> QuestionCart = new ObservableCollection<Question>();
         public CreateExam()
         {
             this.InitializeComponent();
@@ -45,6 +44,7 @@ namespace Testverktyg.Client.Views
             createExamViewModel = new CreateExamViewModel();
             examService = new ExamService();
             questionService = new QuestionService();
+
             createExamViewModel.CourseData();
             courseService.GetCourses();
             ClassDropDown.ItemsSource = createExamViewModel.ListOfClasses;
@@ -62,6 +62,7 @@ namespace Testverktyg.Client.Views
 
             //ExamTimeSpan
             int examTimeSpan = Convert.ToInt32(TimeLimitTextBox.Text);
+
             if (examTimeSpan < 60)
             {
                 exam.ExamTimeSpan = new TimeSpan(0, examTimeSpan, 0);
@@ -81,19 +82,19 @@ namespace Testverktyg.Client.Views
 
             //MaxAmountOfPoints
             //TotalPointsTextBlock.Text = *Questionslista.Count*
-            exam.MaxAmountOfPoints = QuestionCart.Count;
+            exam.MaxAmountOfPoints = createExamViewModel.QuestionCart.Count;
             //NumberOfQuestions
             //*Questionslista.Count*
-            exam.NumberOfQuestions = QuestionCart.Count;
+            exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
 
             //GradeScale?!?!
-            int gradeScale = Convert.ToInt32(GradeScaleTextBox.Text);
+            exam.GradeScale = Convert.ToInt32(GradeScaleTextBox.Text);
 
             //Examresult
             exam.ExamResult = 0;
 
             //Questioncart
-            exam.Questions = QuestionCart;
+            exam.Questions = createExamViewModel.QuestionCart;
 
             createExamViewModel.CreateExam(exam);
             MessageDialog msg = new MessageDialog("Provet skapat!");
@@ -103,14 +104,11 @@ namespace Testverktyg.Client.Views
 
         private void AddToQCart_Click(object sender, RoutedEventArgs e)
         {
-            AddQuestion((Question)QuestionTextBox.SelectedItem);
+            createExamViewModel.AddQuestion((Question)QuestionTextBox.SelectedItem);
+            TotalPointsTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
+            AmountOfQTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
         }
-        public void AddQuestion(Question question)
-        {
-            QuestionCart.Add(question);
-            TotalPointsTextBlock.Text = QuestionCart.Count.ToString();
-            AmountOfQTextBlock.Text = QuestionCart.Count.ToString();
-        }
+
 
         private async void GetQuestions()
         {
@@ -120,5 +118,7 @@ namespace Testverktyg.Client.Views
                 createExamViewModel.ListOfQuestions.Add(question);
             }
         }
+
+
     }
 }

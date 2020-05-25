@@ -13,38 +13,29 @@ namespace Testverktyg.Client.ViewModels
     {
         ExamService examService;
         public ObservableCollection<Question> ListOfQuestions = new ObservableCollection<Question>();
+        public ObservableCollection<Question> QuestionCart = new ObservableCollection<Question>();
         public List<Exam> ListOfExams = new List<Exam>();
         public List<Course> ListOfCourses = new List<Course>();
-        public List<GradeLevel> ListOfGrades = new List<GradeLevel>();
         public List<Class> ListOfClasses = new List<Class>();
 
         public CreateExamViewModel()
         {
             examService = new ExamService();
         }
-        public void CreateExamData()
+
+        public void AddQuestion(Question question)
         {
-            ListOfQuestions.Add(new Question());
+            QuestionCart.Add(question);
         }
 
         public void CourseData()
         {
-            ListOfCourses.Add(new Course(1, "Svenska"));
-            ListOfCourses.Add(new Course(1, "Engelska"));
-            ListOfCourses.Add(new Course(1, "Matematik"));
-
-
             ListOfClasses.Add(new Class(1, "7A"));
-            ListOfClasses.Add(new Class(1, "7B"));
-            ListOfClasses.Add(new Class(1, "8A"));
-            ListOfClasses.Add(new Class(1, "8B"));
-            ListOfClasses.Add(new Class(1, "9A"));
-            ListOfClasses.Add(new Class(1, "9B"));
-        }
-
-        public void GradeLevel()
-        {
-
+            ListOfClasses.Add(new Class(2, "7B"));
+            ListOfClasses.Add(new Class(3, "8A"));
+            ListOfClasses.Add(new Class(4, "8B"));
+            ListOfClasses.Add(new Class(5, "9A"));
+            ListOfClasses.Add(new Class(6, "9B"));
         }
 
         public bool CreateExam(Exam exam)
