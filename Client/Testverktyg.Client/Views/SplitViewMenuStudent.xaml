@@ -35,6 +35,14 @@
                            FontFamily="Cambria"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
+                <TextBlock
+                            x:Name="LoginTextBlock"
+                            Text="{x:Bind}"
+                            Margin="20,0,0,0"
+                            FontSize="16"
+                            FontFamily="Cambria"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
 
             </StackPanel>
         </RelativePanel>
