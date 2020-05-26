@@ -108,7 +108,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-        <Button x:Name="AddToQCart" Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" Content="Lägg till fråga" Width="100" Height="37" CornerRadius="10" Background="Green" Foreground="White" FontSize="12" Click="AddToQCart_Click"></Button>
+        <Button x:Name="AddToQCart" Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Lägg till fråga" Width="100" Height="37" CornerRadius="10" Background="Green" Foreground="White" FontSize="12" Click="AddToQCart_Click"></Button>
 
         <StackPanel Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Vertical">
 
@@ -156,17 +156,25 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Question">
-                    <StackPanel>
-                        <TextBlock Text="{Binding QuestionText}"></TextBlock>
-                        <TextBlock Text="{Binding QuestionType}"></TextBlock>
-                        <TextBlock Text="{Binding Alternatives}"></TextBlock>
-                        <TextBlock Text="{Binding Keywords}"></TextBlock>
-                        <Button x:Name="RemoveQuestionBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveQuestionBtn_Click"/>
-                    </StackPanel>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{Binding QuestionText}"></TextBlock>
+                            <TextBlock Text="{Binding QuestionType}"></TextBlock>
+                            <TextBlock Text="{Binding Alternatives}"></TextBlock>
+                            <TextBlock Text="{Binding Keywords}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <Button x:Name="RemoveQuestionBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveQuestionBtn_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock x:Name="TotalPointsTextBlock" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="7" Text="Totalpoäng:" FontSize="20"></TextBlock>
+        <TextBlock x:Name="TotalPointsTextBlock" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="7" Text="Maxpoäng: " FontSize="20"></TextBlock>
         <TextBox x:Name="GradeScaleTextBox" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Top" PlaceholderText="Betygsgräns" Width="200"></TextBox>
 
 

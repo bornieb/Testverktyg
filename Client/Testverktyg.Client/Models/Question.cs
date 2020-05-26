@@ -24,7 +24,5 @@ namespace Testverktyg.Client.Models
         {
 
         }
-
-      
     }
 }

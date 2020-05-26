@@ -17,12 +17,14 @@ namespace Testverktyg.Client.ViewModels
         public List<Exam> ListOfExams = new List<Exam>();
         public List<Course> ListOfCourses = new List<Course>();
         public List<Class> ListOfClasses = new List<Class>();
-
+        public Exam exam { get; set; }
         public CreateExamViewModel()
         {
             examService = new ExamService();
+            exam = new Exam();
         }
 
+        
         public void AddQuestion(Question question)
         {
             QuestionCart.Add(question);

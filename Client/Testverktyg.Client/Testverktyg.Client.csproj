@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Models\Alternative.cs" />
     <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\Examstatus.cs" />
     <Compile Include="Models\ExamType.cs" />
     <Compile Include="Models\GradeLevel.cs" />
     <Compile Include="Models\Keyword.cs" />

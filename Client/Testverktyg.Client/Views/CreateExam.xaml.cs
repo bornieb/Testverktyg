@@ -45,7 +45,7 @@ namespace Testverktyg.Client.Views
             examService = new ExamService();
             questionService = new QuestionService();
             createExamViewModel.CourseData();
-            ListOfCourses= courseService.GetCourses();
+            ListOfCourses = courseService.GetCourses();
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
             GetQuestions();
         }
@@ -54,11 +54,9 @@ namespace Testverktyg.Client.Views
 
             Exam exam = new Exam();
 
-            //ExamDate
             exam.ExamDate = new DateTime(ExamDatePicker.Date.Year, ExamDatePicker.Date.Month, ExamDatePicker.Date.Day,
             ExamStartTimePicker.Time.Hours, ExamStartTimePicker.Time.Minutes, ExamStartTimePicker.Time.Seconds);
 
-            //ExamTimeSpan
             int examTimeSpan = Convert.ToInt32(TimeLimitTextBox.Text);
 
             if (examTimeSpan < 60)
@@ -72,29 +70,18 @@ namespace Testverktyg.Client.Views
                 exam.ExamTimeSpan = new TimeSpan(hours, minutes, 0);
             }
 
-            //ClassID
             exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
-
-            //Subject
             exam.Subject = SubjectTextBox.Text;
-
-            //MaxAmountOfPoints
-            //TotalPointsTextBlock.Text = *Questionslista.Count*
-            exam.MaxAmountOfPoints = createExamViewModel.QuestionCart.Count;
-            //NumberOfQuestions
-            //*Questionslista.Count*
+            exam.TotalPoints = createExamViewModel.QuestionCart.Count;
             exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
-
-            //GradeScale?!?!
             exam.GradeScale = Convert.ToInt32(GradeScaleTextBox.Text);
-
-            //Examresult
             exam.ExamResult = 0;
-
-            //Questioncart
+            exam.ExamStatus = ExamStatus.Template;
+            exam.ExamType = ((ExamType)ExamTypeDropDown.SelectedValue);
             exam.Questions = createExamViewModel.QuestionCart;
-
-            createExamViewModel.CreateExam(exam);
+            
+            //Skapar provet
+            //createExamViewModel.CreateExam(exam);
             MessageDialog msg = new MessageDialog("Provet skapat!");
             await msg.ShowAsync();
 
@@ -103,8 +90,8 @@ namespace Testverktyg.Client.Views
         private void AddToQCart_Click(object sender, RoutedEventArgs e)
         {
             createExamViewModel.AddQuestion((Question)QuestionTextBox.SelectedItem);
-            TotalPointsTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
-            AmountOfQTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
+            AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
+            TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
         }
 
 
@@ -121,8 +108,9 @@ namespace Testverktyg.Client.Views
         {
             Question question = (Question)((Button)sender).DataContext;
             createExamViewModel.RemoveQuestion(question);
-            TotalPointsTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
-            AmountOfQTextBlock.Text = createExamViewModel.QuestionCart.Count.ToString();
+            AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
+            TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
+
         }
     }
 }
