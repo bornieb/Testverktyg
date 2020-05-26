@@ -54,6 +54,8 @@ namespace Testverktyg.Client.Views
 
             Exam exam = new Exam();
 
+            exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
+
             exam.ExamDate = new DateTime(ExamDatePicker.Date.Year, ExamDatePicker.Date.Month, ExamDatePicker.Date.Day,
             ExamStartTimePicker.Time.Hours, ExamStartTimePicker.Time.Minutes, ExamStartTimePicker.Time.Seconds);
 
@@ -70,20 +72,29 @@ namespace Testverktyg.Client.Views
                 exam.ExamTimeSpan = new TimeSpan(hours, minutes, 0);
             }
 
-            exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
+
             exam.Subject = SubjectTextBox.Text;
             exam.TotalPoints = createExamViewModel.QuestionCart.Count;
             exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
             exam.GradeScale = Convert.ToInt32(GradeScaleTextBox.Text);
+            exam.CurrentQuestion = 0;
             exam.ExamResult = 0;
             exam.ExamStatus = ExamStatus.Template;
             exam.ExamType = ((ExamType)ExamTypeDropDown.SelectedValue);
             exam.Questions = createExamViewModel.QuestionCart;
-            
+
             //Skapar provet
-            createExamViewModel.CreateExam(exam);
+
             MessageDialog msg = new MessageDialog("Provet skapat!");
             await msg.ShowAsync();
+
+            string Summary = $"Datum: {exam.ExamDate} Tid: {exam.ExamTimeSpan} Klass: {exam.ClassId} Ämne: {exam.Subject} Maxpoäng: {exam.TotalPoints} Antal frågor: {exam.NumberOfQuestions}" +
+                $"{exam.GradeScale}{exam.ExamResult}{exam.ExamStatus}{exam.ExamType}";
+
+            MessageDialog sum = new MessageDialog(Summary);
+            await sum.ShowAsync();
+
+            await createExamViewModel.CreateExamAsync(exam);
 
         }
 

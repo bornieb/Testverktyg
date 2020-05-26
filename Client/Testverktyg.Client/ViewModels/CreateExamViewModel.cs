@@ -45,12 +45,9 @@ namespace Testverktyg.Client.ViewModels
             ListOfClasses.Add(new Class(6, "9B"));
         }
 
-        public bool CreateExam(Exam exam)
+        public async Task CreateExamAsync(Exam exam)
         {
-            examService.PostExam(exam);
-            bool success = true;
-            
-            return success;
+            await examService.PostExam(exam);
         }
     }
 }
