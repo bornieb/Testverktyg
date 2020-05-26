@@ -10,7 +10,7 @@ namespace Testverktyg.Client.Services
         private WebClient webClient = new WebClient();
         private const string url = "http://localhost:60485/api/course";
 
-        public List<Course> GetCourses()
+        public List<Course> GetCourses()git 
         {
             var jsonCourses = webClient.DownloadString(url);
             return JsonConvert.DeserializeObject<List<Course>>(jsonCourses);

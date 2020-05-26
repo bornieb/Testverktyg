@@ -64,14 +64,16 @@ namespace TestverktygAPI.Migrations
                     ExamId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClassId = table.Column<int>(nullable: false),
-                    StartExamDate = table.Column<DateTime>(nullable: false),
-                    EndExamDate = table.Column<DateTime>(nullable: false),
+                    ExamDate = table.Column<DateTime>(nullable: false),
+                    ExamTimeSpan = table.Column<TimeSpan>(nullable: false),
                     Subject = table.Column<string>(nullable: true),
-                    MaxAmountOfPoints = table.Column<int>(nullable: false),
+                    TotalPoints = table.Column<int>(nullable: false),
                     NumberOfQuestions = table.Column<int>(nullable: false),
                     GradeScale = table.Column<int>(nullable: false),
                     CurrentQuestion = table.Column<int>(nullable: false),
                     ExamResult = table.Column<int>(nullable: false),
+                    ExamStatus = table.Column<int>(nullable: false),
+                    ExamType = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -170,7 +172,8 @@ namespace TestverktygAPI.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AlternativeText = table.Column<string>(nullable: true),
                     QuestionId = table.Column<int>(nullable: false),
-                    IsCorrect = table.Column<bool>(nullable: false)
+                    IsCorrect = table.Column<bool>(nullable: false),
+                    StudentAnswer = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

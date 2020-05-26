@@ -35,6 +35,9 @@ namespace TestverktygAPI.Migrations
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("StudentAnswer")
+                        .HasColumnType("bit");
+
                     b.HasKey("AlternativeId");
 
                     b.HasIndex("QuestionId");
@@ -115,26 +118,32 @@ namespace TestverktygAPI.Migrations
                     b.Property<int>("CurrentQuestion")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndExamDate")
+                    b.Property<DateTime>("ExamDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ExamResult")
                         .HasColumnType("int");
 
-                    b.Property<int>("GradeScale")
+                    b.Property<int>("ExamStatus")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaxAmountOfPoints")
+                    b.Property<TimeSpan>("ExamTimeSpan")
+                        .HasColumnType("time");
+
+                    b.Property<int>("ExamType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GradeScale")
                         .HasColumnType("int");
 
                     b.Property<int>("NumberOfQuestions")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("StartExamDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalPoints")
+                        .HasColumnType("int");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");

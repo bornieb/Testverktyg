@@ -10,5 +10,11 @@ namespace Testverktyg.Client.Models
     {
         public int ClassId { get; set; }
         public string ClassName { get; set; }
+
+        public Class(int classid, string classname)
+        {
+            ClassId = classid;
+            ClassName = classname;
+        }
     }
 }

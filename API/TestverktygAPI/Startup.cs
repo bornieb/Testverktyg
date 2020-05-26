@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using TestverktygAPI.Data;
+using Microsoft.OpenApi.Models;
 
 namespace TestverktygAPI
 {
@@ -29,6 +30,11 @@ namespace TestverktygAPI
         {
             services.AddControllers();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Testverktyg API", Version = "v1" });
+            });
+
             services.AddDbContext<TestverktygAPIContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TestverktygAPIContext")));
         }
@@ -40,6 +46,14 @@ namespace TestverktygAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Testverktyg API v1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseHttpsRedirection();
 
