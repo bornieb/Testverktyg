@@ -12,6 +12,7 @@ namespace Testverktyg.Client.Models
         public string AlternativeText { get; }
         public int QuestionId { get; set; }
         public bool IsCorrect { get; }
+        public bool StudentAnswer { get; set; }
 
         public Alternative(string alternative, bool isCorrect)
         {

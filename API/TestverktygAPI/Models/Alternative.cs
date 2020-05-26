@@ -6,5 +6,6 @@
         public string AlternativeText { get; set; }
         public int QuestionId { get; set; }
         public bool IsCorrect { get; set; }
+        public bool StudentAnswer { get; set; }
     }
 }

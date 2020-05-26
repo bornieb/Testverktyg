@@ -137,9 +137,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{x:Bind KeywordText}"/>
+                            <TextBlock Text="{x:Bind KeywordText}" TextWrapping="Wrap"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="1">
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <Button x:Name="RemoveKeywordBtn" Content="-" Click="RemoveKeywordBtn_Click"/>
                         </StackPanel>
                     </Grid>
@@ -178,9 +178,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{x:Bind AlternativeText}"/>
+                            <TextBlock Text="{x:Bind AlternativeText}" TextWrapping="Wrap"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="1">
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <Button x:Name="RemoveAlternativeBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveAlternativeBtn_Click"/>
                         </StackPanel>
                     </Grid>
