@@ -26,10 +26,10 @@ namespace Testverktyg.Client.Services
 
         public async Task PostExam(Exam exam)
         {
-            var jsonExam1 = JsonConvert.SerializeObject(exam);
-            var webClient = new WebClient();
-            webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-            var response = webClient.UploadString(url, "POST", jsonExam1);
+            //var jsonExam1 = JsonConvert.SerializeObject(exam);
+            //var webClient = new WebClient();
+            //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+            //var response = webClient.UploadString(url, "POST", jsonExam1);
 
             var jsonExam = JsonConvert.SerializeObject(exam);
             HttpContent httpContent = new StringContent(jsonExam);
@@ -38,10 +38,10 @@ namespace Testverktyg.Client.Services
 
 
             //OUTPUT FÖR ATT KOLLA JSON
-            MessageDialog msg = new MessageDialog(jsonExam1);
-            await msg.ShowAsync();
-            MessageDialog msg1 = new MessageDialog(response);
-            await msg1.ShowAsync();
+            //MessageDialog msg = new MessageDialog(jsonExam1);
+            //await msg.ShowAsync();
+            //MessageDialog msg1 = new MessageDialog(response);
+            //await msg1.ShowAsync();
             MessageDialog msg2 = new MessageDialog(jsonExam);
             await msg2.ShowAsync();
             MessageDialog msg3 = new MessageDialog(jsonExamDB.ToString());
