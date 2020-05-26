@@ -81,7 +81,7 @@ namespace Testverktyg.Client.Views
             exam.Questions = createExamViewModel.QuestionCart;
             
             //Skapar provet
-            //createExamViewModel.CreateExam(exam);
+            createExamViewModel.CreateExam(exam);
             MessageDialog msg = new MessageDialog("Provet skapat!");
             await msg.ShowAsync();
 
