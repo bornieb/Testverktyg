@@ -15,5 +15,9 @@ namespace Testverktyg.Client.Models
         {
             ClassId = classid;
         }
+        public Student()
+        {
+
+        }
     }
 }

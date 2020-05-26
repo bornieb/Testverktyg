@@ -44,7 +44,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="NextTestsTextBlock" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,20" Grid.Row="1" Text="Kommande prov" 
+        <TextBlock x:Name="NextTestsTextBlock" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="0,0,0,20" Grid.Row="1" x:DefaultBindMode="TwoWay"
+                   Text="{x:Bind studentOverviewViewModel.myStudent.FirstName}" 
                    TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="32"/>
         <TextBox x:Name="Search1TextBox" Grid.Column="5" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30" 
                  BorderBrush="black" BorderThickness="1"/>
