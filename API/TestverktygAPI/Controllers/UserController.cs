@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using TestverktygAPI.Data;
 using TestverktygAPI.Models;
@@ -105,6 +106,15 @@ namespace TestverktygAPI.Controllers
         private bool UserExists(int id)
         {
             return _context.User.Any(e => e.UserId == id);
+        }
+
+        [HttpGet("checkuser")]
+        public ActionResult<User> CheckUser(string userName, string password)
+        {
+            var user = _context.User
+                .Where(u => u.UserNameEmail == userName && u.PassWord == password)
+                .FirstOrDefault();
+            return user;
         }
     }
 }
