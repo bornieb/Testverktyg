@@ -25,6 +25,7 @@ namespace Testverktyg.Client.Views
         public StudentOverview()
         {
             this.InitializeComponent();
+
         }
     }
 }
