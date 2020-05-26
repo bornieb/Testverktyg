@@ -44,10 +44,10 @@ namespace Testverktyg.Client.Models
 
         }
 
-        string displayQtn = "";
-        string displayPts = "";
-        public string DisplayAmountOfQuestions { get { return $"Antal frågor: {NumberOfQuestions.ToString()}"; } set { displayQtn = value; NotifyPropertyChanged("DisplayAmountOfQuestions"); } }
-        public string DisplayTotalPoints { get { return $"Maxpoäng: {MaxAmountOfPoints}"; } }
+        //string displayQtn = "";
+        //string displayPts = "";
+        //public string DisplayAmountOfQuestions { get { return $"Antal frågor: {NumberOfQuestions.ToString()}"; } set { displayQtn = value; NotifyPropertyChanged("DisplayAmountOfQuestions"); } }
+        //public string DisplayTotalPoints { get { return $"Maxpoäng: {MaxAmountOfPoints}"; } }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
