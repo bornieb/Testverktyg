@@ -2,9 +2,10 @@
     x:Class="Testverktyg.Client.Views.CreateExam"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Testverktyg.Client.Views"
+    xmlns:local="using:Testverktyg.Client.ViewModels"
+    xmlns:local1="using:Testverktyg.Client.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d"
     RequestedTheme="Light"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -46,62 +47,140 @@
 
         <ComboBox 
             x:Name="CourseDropDown"
-            Grid.ColumnSpan="3" 
+            Grid.ColumnSpan="4"
             Grid.Column="1" 
             Grid.Row="1"
             VerticalAlignment="Top"
-            Width="400"
+            HorizontalAlignment="Stretch"
             PlaceholderText="Välj ämne"
-
-            />
+            ItemsSource="{x:Bind ListOfCourses}"
+            >
+            <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="local1:Course">
+                    <StackPanel>
+                        <TextBlock Text="{Binding CourseName}">
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox 
-            x:Name="QuestionTypeDropDown"
-            Grid.ColumnSpan="3" 
+            x:Name="ExamTypeDropDown"
+            Grid.ColumnSpan="4" 
             Grid.Column="1" 
             Grid.Row="1"
             VerticalAlignment="Center"
-            Width="400"
-            PlaceholderText="Välj frågetyp"
-            />
+             HorizontalAlignment="Stretch"
+            PlaceholderText="Välj provtyp">
+            <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="local1:QuestionType">
+                    <TextBlock Text="{Binding }"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBox x:Name="QuestionTagTextBox" 
                  Grid.Column="1"
-                 Grid.ColumnSpan="6"
+                 Grid.ColumnSpan="3"
                  Grid.Row="1"
-                 HorizontalAlignment="Left"
+                 HorizontalAlignment="Stretch"
                  VerticalAlignment="Bottom"
                  PlaceholderText="Sökord"
                  TextWrapping="Wrap" 
-                 Width="200"
-                 Height="40"
+
                  />
 
-        <Button x:Name="SearchBtn" Content="Sök" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="38.5" />
-        
-        <ListView x:Name="QuestionTextBox" 
-                 Grid.Column="1"
-                 Grid.ColumnSpan="6"
+        <Button x:Name="SearchBtn" Content="Sök" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+
+            <ListView x:Name="QuestionTextBox" 
+                Grid.Column="1"
+                 Grid.ColumnSpan="5"
                  Grid.RowSpan="4"
-                 Grid.Row="2"
-                 HorizontalAlignment="Left" 
-                 Width="700"
-                 Height="400"
-                  Background="Black"
-                 />
-        <StackPanel Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3">
-            <TextBox x:Name="TimelimitTextBox" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Top" />
-            <TextBlock/>
-            <DatePicker Width="410" Grid.ColumnSpan="3"/>
+                 Grid.Row="2" 
+                 HorizontalAlignment="Stretch" 
+                 Background="LightGray"
+                 Margin="10"
+                 ItemsSource="{x:Bind createExamViewModel.ListOfQuestions}" 
+                  >
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local1:Question">
+                        <TextBlock Text="{Binding QuestionText}"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        <Button x:Name="AddToQCart" Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Lägg till fråga" Width="100" Height="37" CornerRadius="10" Background="Green" Foreground="White" FontSize="12" Click="AddToQCart_Click"></Button>
+
+        <StackPanel Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Vertical">
+
+            <TextBlock Text="Prov" FontSize="30"/>
+            <TextBlock></TextBlock>
+            <DatePicker x:Name="ExamDatePicker"  HorizontalAlignment="Stretch"/>
+            <TextBlock></TextBlock>
+            <TimePicker x:Name="ExamStartTimePicker"  HorizontalAlignment="Stretch"></TimePicker>
+            <TextBlock></TextBlock>
+            <TextBox x:Name="TimeLimitTextBox" PlaceholderText="Provtid i minuter"  HorizontalAlignment="Stretch"/>
+            <!--<TextBlock Text="Slutdatum"/>
+            <DatePicker x:Name="ExamEndDatePicker"/>
+            <TimePicker x:Name="ExamEndTime"></TimePicker>-->
         </StackPanel>
-        
 
-        <TextBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="9" Grid.ColumnSpan="2" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" PlaceholderText="Namnge prov" />
-        
-        <TextBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="11" Grid.ColumnSpan="2" Width="250" HorizontalAlignment="Right" VerticalAlignment="Center" />
-        
-        <ListView x:Name="AlternativeListView" Header="Tillagda alternativ:" FontSize="30" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5" Background="LightGray"/>
-        
 
-        <Button x:Name="ClearFormbtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Skapa prov" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30"></Button>
-        <Button x:Name="CreateExamBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
+        <TextBox x:Name="SubjectTextBox" Grid.Row="1" Grid.RowSpan="1" Grid.Column="9" Grid.ColumnSpan="2" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" PlaceholderText="Namnge prov" />
+
+        <ComboBox x:Name="ClassDropDown" 
+                  Grid.Row="1" Grid.RowSpan="1" 
+                  Grid.Column="11" 
+                  Grid.ColumnSpan="2" 
+                  Width="250" 
+                  HorizontalAlignment="Right" 
+                  VerticalAlignment="Center"  
+                  PlaceholderText="Klass"
+                  ItemsSource="{x:Bind createExamViewModel.ListOfClasses}"
+                  >
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ClassName}"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock x:Name="AmountOfQTextBlock" Text="Antal frågor: " Grid.Row="1" Grid.RowSpan="1" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="25"></TextBlock>
+
+        <ListView x:Name="QuestionCartListView" FontSize="30" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5" Background="LightGray" ItemsSource="{x:Bind createExamViewModel.QuestionCart}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:Question">
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="9*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{Binding QuestionText}"></TextBlock>
+                            <TextBlock Text="{Binding QuestionType}"></TextBlock>
+                            <TextBlock Text="{Binding Alternatives}"></TextBlock>
+                            <TextBlock Text="{Binding Keywords}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <Button x:Name="RemoveQuestionBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveQuestionBtn_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock x:Name="TotalPointsTextBlock" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="7" Text="Maxpoäng: " FontSize="20"></TextBlock>
+        <TextBox x:Name="GradeScaleTextBox" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Top" PlaceholderText="Betygsgräns" Width="200"></TextBox>
+
+
+        <Button x:Name="CreateExamBtn" Grid.Row="8" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Skapa prov" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Click="CreateExamBtn_Click"></Button>
+        <Button x:Name="ClearFormBtn" Grid.Row="8" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
+
+        <TextBlock x:Name="CheckValues" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="8" FontSize="20" Text="TEXTBLOCK" ></TextBlock>
     </Grid>
 </Page>
