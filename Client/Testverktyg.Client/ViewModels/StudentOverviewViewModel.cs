@@ -22,7 +22,9 @@ namespace Testverktyg.Client.ViewModels
         public StudentOverviewViewModel()
         {
             myStudent = new Student(1,"Glenn", "Jönsson", "glennj83@hotmail.com", "glenn", 2);
-            Student myStudent1 = studentService.GetUserAsync(1);
+
+            
+            //Student myStudent1 = studentService.GetUserAsync(1);
         }
 
 
