@@ -56,21 +56,19 @@
         <TextBox x:Name="Search2TextBox" Grid.Column="12" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30"
                  BorderBrush="black" BorderThickness="1"/>
 
-        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" BorderThickness="2">
+        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" 
+                  BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" BorderThickness="2"
+                  ItemsSource="{x:Bind studentOverviewViewModel.myStudent.Exams}">
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
+                <DataTemplate x:DataType="data:Exam">
+       
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Klass 7B"/>
-                            <TextBlock Text="Matteprov Algebra"/>
-                            <TextBlock Text="15/05/20"/>
+                            <TextBlock Text="{x:Bind ClassIdKlass}"/>
+                            <TextBlock Text="{x:Bind Subject}"/>
+                            <TextBlock Text="{x:Bind ExamDate}"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="7 dagar kvar"/>
-                            <TextBlock Text="Orättade prov"/>
-                            <TextBlock Text="20"/>
-                        </StackPanel>
-                    </StackPanel>
+
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

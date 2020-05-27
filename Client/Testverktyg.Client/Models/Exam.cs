@@ -14,10 +14,16 @@ namespace Testverktyg.Client.Models
     {
         public int ExamId { get; set; }
         public int ClassId { get; set; }
-        public DateTime ExamDate { get; set; }
-        public TimeSpan ExamTimeSpan { get; set; }
+        public string ClassIdKlass
+        {
+            get { return "Klass " + ClassId; }
+        }
+        //public DateTime ExamDate { get; set; }
+        //public TimeSpan ExamTimeSpan { get; set; }
+        public string ExamDate { get; set; }
+        public string ExamTimeSpan { get; set; }
         public string Subject { get; set; }
-        public int TotalPoints { get; set; }
+        public int MaxAmountOfPoints { get; set; }
         public int NumberOfQuestions { get; set; }
         public int GradeScale { get; set; }
         public int CurrentQuestion { get; set; }
@@ -26,18 +32,23 @@ namespace Testverktyg.Client.Models
         public ExamType ExamType { get; set; }
         public ObservableCollection<Question> Questions { get; set; } = new ObservableCollection<Question>();
 
-        //public Exam(int examid,  int classid, string subject, int maxpoints, int numquestions, int grade, int currentq, int examresult)
-        //{
-        //    ExamId = examid;
-        //    ClassId = classid;
-        //    Subject = subject;
-        //    MaxAmountOfPoints = maxpoints;
-        //    NumberOfQuestions = numquestions;
-        //    GradeScale = grade;
-        //    CurrentQuestion = currentq;
-        //    ExamResult = examresult;
-        //    Questions = new List<Question>();
-        //}
+        public Exam(int examid, int classid, string examDate, string examTimeSpan, string subject, int maxpoints, int numquestions, int grade, 
+            int currentq, int examresult, ExamStatus examStatus, ExamType examType)
+        {
+            ExamId = examid;
+            ClassId = classid;
+            ExamDate = examDate;
+            ExamTimeSpan = examTimeSpan;
+            Subject = subject;
+            MaxAmountOfPoints = maxpoints;
+            NumberOfQuestions = numquestions;
+            GradeScale = grade;
+            CurrentQuestion = currentq;
+            ExamResult = examresult;
+            ExamStatus = examStatus;
+            ExamType = examType;
+            Questions = new ObservableCollection<Question>();
+        }
 
         public Exam()
         {
