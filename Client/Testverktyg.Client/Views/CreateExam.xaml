@@ -53,7 +53,7 @@
             VerticalAlignment="Top"
             HorizontalAlignment="Stretch"
             PlaceholderText="Välj ämne"
-            ItemsSource="{x:Bind ListOfCourses}"
+            ItemsSource="{x:Bind createExamViewModel.ListOfCourses}"
             >
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="local1:Course">

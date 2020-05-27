@@ -28,11 +28,7 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CreateExam : Page
     {
-        public List<Course> ListOfCourses;
         CreateExamViewModel createExamViewModel;
-        ExamService examService;
-        CourseService courseService;
-        QuestionService questionService;
         public CreateExam()
         {
             this.InitializeComponent();
@@ -40,15 +36,11 @@ namespace Testverktyg.Client.Views
         }
         public void Init()
         {
-            courseService = new CourseService();
             createExamViewModel = new CreateExamViewModel();
-            examService = new ExamService();
-            questionService = new QuestionService();
-            ListOfCourses = courseService.GetCourses();
+            createExamViewModel.GetCourses();
             createExamViewModel.GetClasses();
             createExamViewModel.GetQuestions();
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
-            
         }
         private async void CreateExamBtn_Click(object sender, RoutedEventArgs e)
         {
