@@ -44,6 +44,18 @@ namespace Testverktyg.Client.Models
 
         }
 
+
+        //int numberOfQuestions = 0;
+        //public int NumberOfQuestions
+        //{
+        //    get { return numberOfQuestions; }
+        //    set
+        //    {
+        //        numberOfQuestions = value;
+        //        NotifyPropertyChanged("NumberOfQuestions");
+        //    }
+        //}
+
         //string displayQtn = "";
         //string displayPts = "";
         //public string DisplayAmountOfQuestions { get { return $"Antal frågor: {NumberOfQuestions.ToString()}"; } set { displayQtn = value; NotifyPropertyChanged("DisplayAmountOfQuestions"); } }

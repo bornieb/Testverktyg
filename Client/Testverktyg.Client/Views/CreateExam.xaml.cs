@@ -73,7 +73,6 @@ namespace Testverktyg.Client.Views
                 exam.ExamTimeSpan = new TimeSpan(hours, minutes, 0);
             }
 
-
             exam.Subject = SubjectTextBox.Text;
             exam.TotalPoints = createExamViewModel.QuestionCart.Count;
             exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
@@ -85,7 +84,6 @@ namespace Testverktyg.Client.Views
             exam.Questions = createExamViewModel.QuestionCart;
 
             //Skapar provet
-
             MessageDialog msg = new MessageDialog("Provet skapat!");
             await msg.ShowAsync();
 
@@ -97,7 +95,6 @@ namespace Testverktyg.Client.Views
 
 
             await createExamViewModel.CreateExamAsync(exam);
-
         }
 
         private void AddToQCart_Click(object sender, RoutedEventArgs e)
@@ -105,6 +102,8 @@ namespace Testverktyg.Client.Views
             createExamViewModel.AddQuestion((Question)QuestionTextBox.SelectedItem);
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
+            //AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.exam.NumberOfQuestions}";
+
         }
 
         private void RemoveQuestionBtn_Click(object sender, RoutedEventArgs e)
@@ -113,7 +112,6 @@ namespace Testverktyg.Client.Views
             createExamViewModel.RemoveQuestion(question);
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
-
         }
     }
 }

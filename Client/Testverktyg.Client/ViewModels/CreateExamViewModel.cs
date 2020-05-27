@@ -30,7 +30,6 @@ namespace Testverktyg.Client.ViewModels
             exam = new Exam();
         }
 
-        
         public void AddQuestion(Question question)
         {
             QuestionCart.Add(question);
@@ -67,16 +66,6 @@ namespace Testverktyg.Client.ViewModels
                 ListOfCourses.Add(course);
             }
         }
-
-        //public void CourseData()
-        //{
-        //    ListOfClasses.Add(new Class(1, "7A"));
-        //    ListOfClasses.Add(new Class(2, "7B"));
-        //    ListOfClasses.Add(new Class(3, "8A"));
-        //    ListOfClasses.Add(new Class(4, "8B"));
-        //    ListOfClasses.Add(new Class(5, "9A"));
-        //    ListOfClasses.Add(new Class(6, "9B"));
-        //}
 
         public async Task CreateExamAsync(Exam exam)
         {

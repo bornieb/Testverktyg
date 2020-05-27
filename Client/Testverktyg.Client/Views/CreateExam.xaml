@@ -145,7 +145,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <TextBlock x:Name="AmountOfQTextBlock" Text="Antal frågor: " Grid.Row="1" Grid.RowSpan="1" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="25"></TextBlock>
+        <TextBlock x:Name="AmountOfQTextBlock" Text="Antal frågor: " x:DefaultBindMode="TwoWay" Grid.Row="1" Grid.RowSpan="1" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="25"></TextBlock>
 
         <ListView x:Name="QuestionCartListView" FontSize="30" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5" Background="LightGray" ItemsSource="{x:Bind createExamViewModel.QuestionCart}">
             <ListView.ItemContainerStyle>
