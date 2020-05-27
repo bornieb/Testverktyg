@@ -44,10 +44,11 @@ namespace Testverktyg.Client.Views
             createExamViewModel = new CreateExamViewModel();
             examService = new ExamService();
             questionService = new QuestionService();
-            createExamViewModel.CourseData();
             ListOfCourses = courseService.GetCourses();
+            createExamViewModel.GetClasses();
+            createExamViewModel.GetQuestions();
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
-            GetQuestions();
+            
         }
         private async void CreateExamBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -94,6 +95,7 @@ namespace Testverktyg.Client.Views
             MessageDialog sum = new MessageDialog(Summary);
             await sum.ShowAsync();
 
+
             await createExamViewModel.CreateExamAsync(exam);
 
         }
@@ -103,16 +105,6 @@ namespace Testverktyg.Client.Views
             createExamViewModel.AddQuestion((Question)QuestionTextBox.SelectedItem);
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
-        }
-
-
-        private async void GetQuestions()
-        {
-            var questions = await questionService.GetQuestionsAsync();
-            foreach (Question question in questions)
-            {
-                createExamViewModel.ListOfQuestions.Add(question);
-            }
         }
 
         private void RemoveQuestionBtn_Click(object sender, RoutedEventArgs e)
