@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,17 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class StudentOverview : Page
     {
+        private StudentOverviewViewModel viewModel;
         public StudentOverview()
         {
             this.InitializeComponent();
+            viewModel = StudentOverviewViewModel.Instance;
+            viewModel.GetExams();
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
         }
     }
 }

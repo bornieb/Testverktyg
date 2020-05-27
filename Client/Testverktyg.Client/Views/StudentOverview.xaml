@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:data="using:Testverktyg.Client.ViewModels"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Transitions>
         <TransitionCollection>
@@ -53,7 +54,15 @@
         <TextBox x:Name="Search2TextBox" Grid.Column="12" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30"
                  BorderBrush="black" BorderThickness="1"/>
 
-        <ListView Grid.Column="1" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="5" Background="LightGray" BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" BorderThickness="2">
+        <ListView 
+            Grid.Column="1" 
+            Grid.ColumnSpan="5" 
+            Grid.Row="2" 
+            Grid.RowSpan="5" 
+            Background="LightGray" 
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
+            BorderThickness="2"
+            ItemsSource="{x:Bind viewModel.AllExams, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -71,7 +80,14 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView Grid.Column="8" Grid.ColumnSpan="5"  Grid.Row="2" Grid.RowSpan="3" Background="LightGray" BorderBrush="Black" BorderThickness="1">
+        <ListView 
+            Grid.Column="8" 
+            Grid.ColumnSpan="5"  
+            Grid.Row="2" 
+            Grid.RowSpan="3" 
+            Background="LightGray" 
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
+            BorderThickness="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
