@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.Services;
 using Testverktyg.Client.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -24,6 +25,8 @@ namespace Testverktyg.Client
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private UserService userService = new UserService();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -31,18 +34,24 @@ namespace Testverktyg.Client
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
-            if (RadioButtonTeacher.IsChecked == true)
-            {
-                this.Frame.Navigate(typeof(SplitViewMenu));
-            }
-            else if (RadioButtonStudent.IsChecked == true)
-            {
-                this.Frame.Navigate(typeof(SplitViewMenuStudent));
-            }
-            else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
-            {
-                await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
-            }
+            string userName = UserNameTextBox.Text;
+            string password = PasswordTextBox.Text;
+
+            var user = await userService.GetUser(userName, password);
+
+
+            //if (RadioButtonTeacher.IsChecked == true)
+            //{
+            //    this.Frame.Navigate(typeof(SplitViewMenu));
+            //}
+            //else if (RadioButtonStudent.IsChecked == true)
+            //{
+            //    this.Frame.Navigate(typeof(SplitViewMenuStudent));
+            //}
+            //else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+            //{
+            //    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+            //}
         }
     }
 }

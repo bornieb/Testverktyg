@@ -129,6 +129,7 @@
     <Compile Include="Services\CourseService.cs" />
     <Compile Include="Services\ExamService.cs" />
     <Compile Include="Services\QuestionService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\CorrectExamViewModel.cs" />
     <Compile Include="ViewModels\CreateExamViewModel.cs" />
     <Compile Include="ViewModels\CreateQuestionViewModel.cs" />
