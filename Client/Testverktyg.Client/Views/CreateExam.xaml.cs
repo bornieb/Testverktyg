@@ -28,11 +28,7 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CreateExam : Page
     {
-        public List<Course> ListOfCourses;
         CreateExamViewModel createExamViewModel;
-        ExamService examService;
-        CourseService courseService;
-        QuestionService questionService;
         public CreateExam()
         {
             this.InitializeComponent();
@@ -40,19 +36,18 @@ namespace Testverktyg.Client.Views
         }
         public void Init()
         {
-            courseService = new CourseService();
             createExamViewModel = new CreateExamViewModel();
-            examService = new ExamService();
-            questionService = new QuestionService();
-            createExamViewModel.CourseData();
-            ListOfCourses = courseService.GetCourses();
+            createExamViewModel.GetCourses();
+            createExamViewModel.GetClasses();
+            createExamViewModel.GetQuestions();
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
-            GetQuestions();
         }
         private async void CreateExamBtn_Click(object sender, RoutedEventArgs e)
         {
 
             Exam exam = new Exam();
+
+            exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
 
             exam.ExamDate = new DateTime(ExamDatePicker.Date.Year, ExamDatePicker.Date.Month, ExamDatePicker.Date.Day,
             ExamStartTimePicker.Time.Hours, ExamStartTimePicker.Time.Minutes, ExamStartTimePicker.Time.Seconds);
@@ -70,21 +65,28 @@ namespace Testverktyg.Client.Views
                 exam.ExamTimeSpan = new TimeSpan(hours, minutes, 0);
             }
 
-            exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
             exam.Subject = SubjectTextBox.Text;
             exam.TotalPoints = createExamViewModel.QuestionCart.Count;
             exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
             exam.GradeScale = Convert.ToInt32(GradeScaleTextBox.Text);
+            exam.CurrentQuestion = 0;
             exam.ExamResult = 0;
             exam.ExamStatus = ExamStatus.Template;
             exam.ExamType = ((ExamType)ExamTypeDropDown.SelectedValue);
             exam.Questions = createExamViewModel.QuestionCart;
-            
+
             //Skapar provet
-            //createExamViewModel.CreateExam(exam);
             MessageDialog msg = new MessageDialog("Provet skapat!");
             await msg.ShowAsync();
 
+            string Summary = $"Datum: {exam.ExamDate} Tid: {exam.ExamTimeSpan} Klass: {exam.ClassId} Ämne: {exam.Subject} Maxpoäng: {exam.TotalPoints} Antal frågor: {exam.NumberOfQuestions}" +
+                $"{exam.GradeScale}{exam.ExamResult}{exam.ExamStatus}{exam.ExamType}";
+
+            MessageDialog sum = new MessageDialog(Summary);
+            await sum.ShowAsync();
+
+
+            await createExamViewModel.CreateExamAsync(exam);
         }
 
         private void AddToQCart_Click(object sender, RoutedEventArgs e)
@@ -92,16 +94,8 @@ namespace Testverktyg.Client.Views
             createExamViewModel.AddQuestion((Question)QuestionTextBox.SelectedItem);
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
-        }
+            //AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.exam.NumberOfQuestions}";
 
-
-        private async void GetQuestions()
-        {
-            var questions = await questionService.GetQuestionsAsync();
-            foreach (Question question in questions)
-            {
-                createExamViewModel.ListOfQuestions.Add(question);
-            }
         }
 
         private void RemoveQuestionBtn_Click(object sender, RoutedEventArgs e)
@@ -110,7 +104,6 @@ namespace Testverktyg.Client.Views
             createExamViewModel.RemoveQuestion(question);
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
-
         }
     }
 }
