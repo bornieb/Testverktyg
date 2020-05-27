@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Testverktyg.Client.Views"
+    xmlns:local1="using:Testverktyg.Client.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -54,28 +55,28 @@
         <TextBox x:Name="Search2TextBox" Grid.Column="12" Margin="0,0,0,20" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" PlaceholderText="Sök" Height="30"
                  BorderBrush="black" BorderThickness="1"/>
 
-        <ListView 
+        <ListView
             Grid.Column="1" 
             Grid.ColumnSpan="5" 
             Grid.Row="2" 
             Grid.RowSpan="5" 
-            Background="LightGray" 
+            
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2"
             ItemsSource="{x:Bind viewModel.AllExams, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local1:Exam">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Klass 7B"/>
+                            <TextBlock Text="{x:Bind Subject}"/>
                             <TextBlock Text="Matteprov Algebra"/>
                             <TextBlock Text="15/05/20"/>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal">
+                        <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="7 dagar kvar"/>
                             <TextBlock Text="Orättade prov"/>
                             <TextBlock Text="20"/>
-                        </StackPanel>
+                        </StackPanel>-->
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

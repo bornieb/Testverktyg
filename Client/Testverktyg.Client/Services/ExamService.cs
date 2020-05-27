@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
@@ -51,10 +53,8 @@ namespace Testverktyg.Client.Services
             var exams = new List<Exam>();
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage responseMessage;
-                responseMessage = await client.GetAsync($"{url}");
-                string examString;
-                examString = await responseMessage.Content.ReadAsStringAsync();
+                HttpResponseMessage responseMessage = await client.GetAsync($"{url}");
+                string examString = await responseMessage.Content.ReadAsStringAsync();
                 exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
                 return exams;
             }
