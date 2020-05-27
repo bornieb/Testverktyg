@@ -80,7 +80,16 @@ namespace TestverktygAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Exam>> PostExam(Exam exam)
         {
+            var examQuestions = exam.Questions
+                .Select(q => new ExamQuestion
+                {
+                    QuestionId = q.QuestionId,
+                    Exam = exam
+                }).ToList();
+            exam.Questions.Clear();
+            _context.ExamQuestion.AddRange(examQuestions);
             _context.Exam.Add(exam);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetExam", new { id = exam.ExamId }, exam);

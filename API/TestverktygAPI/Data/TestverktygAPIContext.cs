@@ -20,6 +20,8 @@ namespace TestverktygAPI.Data
             modelBuilder.Entity<Models.CourseExam>().HasKey(sc => new { sc.CourseId, sc.ExamId });
             modelBuilder.Entity<Models.CourseQuestion>().HasKey(sc => new { sc.CourseId, sc.QuestionId });
             modelBuilder.Entity<Models.ExamQuestion>().HasKey(sc => new { sc.ExamId, sc.QuestionId });
+            modelBuilder.Entity<Models.ExamQuestion>().HasOne(eq => eq.Exam).WithMany(e => e.ExamQuestions).HasForeignKey(eq => eq.ExamId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Models.ExamQuestion>().HasOne(eq => eq.Question).WithMany().HasForeignKey(eq => eq.QuestionId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Models.UserExam>().HasKey(sc => new { sc.UserId, sc.ExamId });
             modelBuilder.Entity<Models.UserExam>().HasOne<Models.User>(ue => ue.User).WithMany(u => u.UserExams).HasForeignKey(ue => ue.UserId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Models.UserExam>().HasOne<Models.Exam>(ue => ue.Exam).WithMany().HasForeignKey(ue => ue.ExamId).OnDelete(DeleteBehavior.NoAction);
@@ -42,5 +44,7 @@ namespace TestverktygAPI.Data
         public DbSet<TestverktygAPI.Models.Teacher> Teacher { get; set; }
 
         public DbSet<TestverktygAPI.Models.User> User { get; set; }
+
+        public DbSet<TestverktygAPI.Models.ExamQuestion> ExamQuestion { get; set; }
     }
 }
