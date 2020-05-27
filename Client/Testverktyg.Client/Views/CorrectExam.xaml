@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Testverktyg.Client.Views"
+    xmlns:local1="using:Testverktyg.Client.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -60,8 +61,26 @@
             </Border>
         </StackPanel>
 
-        <ListView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="12" Grid.RowSpan="5" Background="Aqua">
-            
+        <ListView x:Name="QuestionListView" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="12" Grid.RowSpan="5" Background="White" ItemsSource="{x:Bind correctExamViewModel.ListOfExams}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:Exam" >
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind ExamDate}"/>
+                        <TextBlock Text="{x:Bind Subject}"/>
+      
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local1:Question">
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind QuestionText}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
         </ListView>
 
         <Border Background="White" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3">

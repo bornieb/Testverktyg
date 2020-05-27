@@ -46,6 +46,21 @@ namespace Testverktyg.Client.Services
             await msg2.ShowAsync();
             MessageDialog msg3 = new MessageDialog(jsonExamDB.ToString());
             await msg3.ShowAsync();
+
+
+        }
+        public async Task<List<Exam>> GetExam()
+        {
+            var exams = new List<Exam>();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage responseMessage;
+                responseMessage = await client.GetAsync($"{url}");
+                string examString;
+                examString = await responseMessage.Content.ReadAsStringAsync();
+                exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
+                return exams;
+            }
         }
     }
 }
