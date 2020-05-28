@@ -27,7 +27,7 @@ namespace Testverktyg.Client.ViewModels
         {
             exam = new Exam();
             AllExams = new ObservableCollection<Exam>();
-            GetExams();
+            //GetExams();
         }
       public async void GetExams()
         {

@@ -28,7 +28,9 @@ namespace Testverktyg.Client.Views
         {
             this.InitializeComponent();
             viewModel = StudentOverviewViewModel.Instance;
+            viewModel.AllExams.Clear();
             viewModel.GetExams();
+            
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
