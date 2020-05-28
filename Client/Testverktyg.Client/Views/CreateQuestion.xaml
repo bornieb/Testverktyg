@@ -43,7 +43,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="LÄGG TILL FRÅGA" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="40" />
+        <TextBlock 
+            Text="LÄGG TILL FRÅGA" 
+            Grid.Column="1" 
+            Grid.ColumnSpan="4" 
+            VerticalAlignment="Center" 
+            FontSize="40" 
+            FontFamily="Cambria"/>
 
         <ComboBox 
             x:Name="CourseDropDown"
@@ -53,6 +59,7 @@
             VerticalAlignment="Top"
             Width="400"
             PlaceholderText="Välj ämne"
+            FontFamily="Cambria"
             ItemsSource="{x:Bind ListOfCourses}">
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="model:Course">
@@ -68,6 +75,7 @@
             VerticalAlignment="Center"
             Width="400"
             PlaceholderText="Välj frågetyp"
+            FontFamily="Cambria"
             />
         <ComboBox 
             x:Name="GradeLevelDropDown"
@@ -77,6 +85,7 @@
             VerticalAlignment="Bottom"
             Width="400"
             PlaceholderText="Välj årskurs"
+            FontFamily="Cambria"
             />
         <TextBox x:Name="QuestionTextBox" 
                  Grid.Column="1"
@@ -88,6 +97,7 @@
                  TextWrapping="Wrap" 
                  Width="700"
                  Height="350"
+                 FontFamily="Cambria"
                  />
         <TextBox x:Name="AlternativeTextBox" 
                  Grid.Column="1"
@@ -100,6 +110,7 @@
                  TextWrapping="Wrap" 
                  Width="700"
                  Height="150"
+                 FontFamily="Cambria"
                  />
         <TextBox x:Name="KeywordTextBox" 
                  Grid.Column="1"
@@ -112,8 +123,18 @@
                  TextWrapping="Wrap" 
                  Width="200"
                  Height="40"
+                 FontFamily="Cambria"
                  />
-        <Button x:Name="AddKeyword" Grid.Row="7" Grid.Column="3" VerticalAlignment="Top" Width="130" HorizontalAlignment="Center"  Content="Lägg till sökord" Click="AddKeyword_Click"/>
+        <Button 
+            x:Name="AddKeyword" 
+            Grid.Row="7" 
+            Grid.Column="3" 
+            VerticalAlignment="Top"
+            Width="130"
+            HorizontalAlignment="Center"  
+            Content="Lägg till sökord" 
+            Click="AddKeyword_Click"
+            FontFamily="Cambria"/>
         <ListView x:Name="KeywordListView" 
                   Background="AliceBlue" 
                   Grid.Column="1" 
@@ -122,6 +143,7 @@
                   Grid.RowSpan="2" 
                   Height="100" 
                   VerticalAlignment="Center"
+                  FontFamily="Cambria"
                   ItemsSource="{x:Bind viewModel.Keywords}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -148,13 +170,39 @@
         </ListView>
         
 
-            <StackPanel Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Center">
-            <RadioButton x:Name="RightAnswerRadioBtn" Content="Rätt svar" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <StackPanel 
+                Grid.Column="6" 
+                Grid.ColumnSpan="2" 
+                Grid.Row="5" 
+                Grid.RowSpan="2" 
+                VerticalAlignment="Center">
+            <RadioButton
+                x:Name="RightAnswerRadioBtn" 
+                Content="Rätt svar"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                FontFamily="Cambria"/>
             <TextBlock></TextBlock>
-            <RadioButton x:Name="WrongAnswerRadioBtn" Content="Fel svar" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+            <RadioButton 
+                x:Name="WrongAnswerRadioBtn" 
+                Content="Fel svar" 
+                VerticalAlignment="Center"  
+                HorizontalAlignment="Center"
+                FontFamily="Cambria"/>
         </StackPanel>
 
-        <Button x:Name="AddAlternativeBtn" Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="150" Height="50" Content="Lägg till alternativ" HorizontalAlignment="Center" Click="AddAlternativeBtn_Click" />
+        <Button 
+            x:Name="AddAlternativeBtn" 
+            Grid.Row="5" 
+            Grid.Column="7" 
+            Grid.ColumnSpan="2" 
+            Grid.RowSpan="2" 
+            Width="150" 
+            Height="50" 
+            Content="Lägg till alternativ" 
+            HorizontalAlignment="Center"
+            Click="AddAlternativeBtn_Click" 
+            FontFamily="Cambria"/>
         <ListView x:Name="AlternativeListView" 
                   Header="Tillagda alternativ:" 
                   FontSize="30" 
@@ -163,6 +211,7 @@
                   Grid.Row="2" 
                   Grid.RowSpan="5" 
                   Background="LightGray"
+                  FontFamily="Cambria"
                   ItemsSource="{x:Bind viewModel.Alternatives}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -181,7 +230,13 @@
                             <TextBlock Text="{x:Bind AlternativeText}"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <Button x:Name="RemoveAlternativeBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveAlternativeBtn_Click"/>
+                            <Button 
+                                x:Name="RemoveAlternativeBtn" 
+                                Content="-" 
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Click="RemoveAlternativeBtn_Click"
+                                FontFamily="Cambria"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -193,7 +248,42 @@
 
 
 
-        <Button x:Name="SaveQuestionBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Spara fråga" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Click="SaveQuestionBtn_Click"></Button>
-        <Button x:Name="ClearInputBtn" Grid.Row="7" Grid.RowSpan="2" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30" Click="ClearInputBtn_Click"></Button>
+        <Button 
+            x:Name="SaveQuestionBtn" 
+            Grid.Row="7" 
+            Grid.RowSpan="2" 
+            Grid.Column="11" 
+            Grid.ColumnSpan="2" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Right"
+            Content="Spara fråga" 
+            Width="200"
+            Height="75" 
+            CornerRadius="25" 
+            Background="Green" 
+            Foreground="White" 
+            FontSize="30" 
+            Click="SaveQuestionBtn_Click"
+            FontFamily="Cambria">
+        </Button>
+        <Button 
+            x:Name="ClearInputBtn" 
+            Grid.Row="7" 
+            Grid.RowSpan="2" 
+            Grid.Column="9" 
+            Grid.ColumnSpan="2" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Left" 
+            Content="Rensa fält" 
+            Width="200" 
+            Height="75" 
+            CornerRadius="25" 
+            Background="#990000" 
+            Foreground="White" 
+            FontSize="30" 
+            Click="ClearInputBtn_Click"
+            FontFamily="Cambria">
+            
+        </Button>
     </Grid>
 </Page>

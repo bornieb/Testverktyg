@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,13 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class TakeExam : Page
     {
+        private TakeExamViewModel viewModel;
         public TakeExam()
         {
             this.InitializeComponent();
+            viewModel = TakeExamViewModel.Instance;
+            viewModel.Questions.Clear();
+            viewModel.QuestionsInTest();
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
@@ -40,6 +45,11 @@ namespace Testverktyg.Client.Views
                 FreeAnswerTextBox.Visibility = Visibility.Collapsed;
             }
             
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+                        
         }
     }
 }

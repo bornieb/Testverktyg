@@ -33,7 +33,7 @@ namespace Testverktyg.Client.ViewModels
         {
             try
             {
-                List<Exam> temp = await ExamService.GetExam();
+                List<Exam> temp = await ExamService.GetExamAsync();
                 foreach (Exam exam in temp)
                 {
                     AllExams.Add(exam);

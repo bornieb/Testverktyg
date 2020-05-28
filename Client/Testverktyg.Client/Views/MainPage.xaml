@@ -27,7 +27,8 @@
             Text="Testverktyg" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
-            FontSize="180"/>
+            FontSize="180"
+            FontFamily="Cambria"/>
         <Image 
             x:Name="StartLogo" 
             Grid.Row="1" 
@@ -46,25 +47,31 @@
                     x:Name="RadioButtonTeacher" 
                     Content="Lärare" 
                     Margin="20,40,20,0" 
-                    VerticalAlignment="Center" 
-                    FontSize="20"/>
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontFamily="Cambria"/>
                 <RadioButton 
                     x:Name="RadioButtonStudent" 
                     Content="Student" 
                     Margin="20,0,20,20" 
                     VerticalAlignment="Center" 
-                    FontSize="20"/>
+                    FontSize="20"
+                    FontFamily="Cambria"/>
             </StackPanel>
             <TextBox 
                 x:Name="UserNameTextBox" 
                 HorizontalAlignment="Left" 
                 Margin="20,20,20,20" 
                 TextWrapping="Wrap"
-                VerticalAlignment="center" 
-                PlaceholderText="Användarnamn" 
+                VerticalAlignment="Center" 
+                PlaceholderText="Användarnamn"
+                
                 Height="65" 
                 Width="300" 
-                FontSize="32"/>
+                FontSize="16"
+                FontFamily="Cambria"
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="2"/>
             <TextBox 
                 x:Name="PasswordTextBox"
                 HorizontalAlignment="Left" 
@@ -75,7 +82,11 @@
                 RenderTransformOrigin="0.5,0.539" 
                 Height="65" 
                 Width="300"
-                FontSize="32"/>
+                FontSize="16"
+                FontFamily="Cambria"
+                
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="2"/>
             <Button 
                 x:Name="Login" 
                 Content="LogIn" 
@@ -85,7 +96,11 @@
                 RenderTransformOrigin="0.5,0.484"
                 Height="65" Width="150" 
                 CornerRadius="20" 
-                FontSize="32"/>
+                FontSize="32"
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="2"
+                Background="Transparent"
+                />
         </StackPanel>
 
     </Grid>

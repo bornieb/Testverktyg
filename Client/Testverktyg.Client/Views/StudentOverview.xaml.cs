@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Testverktyg.Client.Views;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,18 +25,19 @@ namespace Testverktyg.Client.Views
     public sealed partial class StudentOverview : Page
     {
         private StudentOverviewViewModel viewModel;
+        private TakeExamViewModel viewModelExam;
         public StudentOverview()
         {
             this.InitializeComponent();
             viewModel = StudentOverviewViewModel.Instance;
             viewModel.AllExams.Clear();
             viewModel.GetExams();
-            
+            viewModelExam = TakeExamViewModel.Instance;
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            
         }
     }
 }
