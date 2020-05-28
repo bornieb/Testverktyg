@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.Models;
 using Testverktyg.Client.Services;
 using Testverktyg.Client.Views;
 using Windows.Foundation;
@@ -37,20 +38,27 @@ namespace Testverktyg.Client
             string userName = UserNameTextBox.Text;
             string password = PasswordTextBox.Text;
 
-            //var user = await userService.GetUser(userName, password);
+            var user = await userService.GetUser(userName, password);
+            if (user != null)
+            {
 
-
-            if (RadioButtonTeacher.IsChecked == true)
-            {
-                this.Frame.Navigate(typeof(SplitViewMenu));
-            }
-            else if (RadioButtonStudent.IsChecked == true)
-            {
-                this.Frame.Navigate(typeof(SplitViewMenuStudent));
-            }
-            else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
-            {
-                await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+                if (RadioButtonTeacher.IsChecked == true /*&& user.GetType() == typeof(Teacher) && user.GetType() != typeof(Student)*/)
+                {
+                    //if(user.GetType() == typeof(Teacher) && user.GetType() != typeof(Student))
+                    //{
+                    //    await new MessageDialog($"Incorrect choice").ShowAsync();
+                    //}
+                    this.Frame.Navigate(typeof(SplitViewMenu));
+                    
+                }
+                else if (RadioButtonStudent.IsChecked == true /*&& user.GetType() == typeof(Student) && user.GetType() != typeof(Teacher)*/)
+                {
+                    this.Frame.Navigate(typeof(SplitViewMenuStudent));
+                }
+                else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+                {
+                    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+                }
             }
         }
     }
