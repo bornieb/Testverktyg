@@ -37,20 +37,22 @@ namespace Testverktyg.Client
             string userName = UserNameTextBox.Text;
             string password = PasswordTextBox.Text;
 
-            //var user = await userService.GetUser(userName, password);
+            var user = await userService.GetUser(userName, password);
 
-
-            if (RadioButtonTeacher.IsChecked == true)
+            if (user != null)
             {
-                this.Frame.Navigate(typeof(SplitViewMenu));
-            }
-            else if (RadioButtonStudent.IsChecked == true)
-            {
-                this.Frame.Navigate(typeof(SplitViewMenuStudent));
-            }
-            else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
-            {
-                await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+                if (RadioButtonTeacher.IsChecked == true)
+                {
+                    this.Frame.Navigate(typeof(SplitViewMenu));
+                }
+                else if (RadioButtonStudent.IsChecked == true)
+                {
+                    this.Frame.Navigate(typeof(SplitViewMenuStudent));
+                }
+                else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+                {
+                    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+                }
             }
         }
     }

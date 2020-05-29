@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
 using Testverktyg.Client.Services;
+using Windows.UI.Text.Core;
 
 namespace Testverktyg.Client.ViewModels
 {
@@ -65,6 +66,31 @@ namespace Testverktyg.Client.ViewModels
             {
                 ListOfCourses.Add(course);
             }
+        }
+
+        public bool ValidateDateField(DateTime dateTime)
+        {
+            bool success = false;
+
+            if(DateTime.TryParse(dateTime.ToString(), out DateTime result))
+            {
+                success = true;
+            }
+            else
+            {
+                return success;
+            }
+            return success;
+        }
+
+        public bool ValidateTimeSpan(string timeSpan)
+        {
+            bool success = false;
+            if(int.TryParse(timeSpan, out int result))
+            {
+                success = true;
+            }
+            return success;
         }
 
         public async Task CreateExamAsync(Exam exam)
