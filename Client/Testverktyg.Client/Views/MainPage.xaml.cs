@@ -39,19 +39,35 @@ namespace Testverktyg.Client
 
             //var user = await userService.GetUser(userName, password);
 
+            var teacher = await userService.GetTeacher(userName, password);
 
-            if (RadioButtonTeacher.IsChecked == true)
-            {
-                this.Frame.Navigate(typeof(SplitViewMenu));
-            }
-            else if (RadioButtonStudent.IsChecked == true)
-            {
-                this.Frame.Navigate(typeof(SplitViewMenuStudent));
-            }
-            else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
-            {
-                await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
-            }
+            //if (RadioButtonTeacher.IsChecked == true)
+            //{
+            //    var teacher = await userService.GetTeacher(userName, password);
+            //    this.Frame.Navigate(typeof(SplitViewMenu));
+            //}
+            //else if (RadioButtonStudent.IsChecked == true)
+            //{
+            //    var student = await userService.GetStudent(userName, password);
+            //    this.Frame.Navigate(typeof(SplitViewMenuStudent));
+            //}
+            //else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+            //{
+            //    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+            //}
+
+            //if (RadioButtonTeacher.IsChecked == true)
+            //{
+            //    this.Frame.Navigate(typeof(SplitViewMenu));
+            //}
+            //else if (RadioButtonStudent.IsChecked == true)
+            //{
+            //    this.Frame.Navigate(typeof(SplitViewMenuStudent));
+            //}
+            //else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+            //{
+            //    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+            //}
         }
     }
 }
