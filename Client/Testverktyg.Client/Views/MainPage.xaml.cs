@@ -37,20 +37,21 @@ namespace Testverktyg.Client
         {
             string userName = UserNameTextBox.Text;
             string password = PasswordTextBox.Text;
-
+           
             //var user = await userService.GetUser(userName, password);
+                               
             //if (user != null)
             //{
 
-                if (RadioButtonTeacher.IsChecked == true /*&& user.GetType() == typeof(Teacher) && user.GetType() != typeof(Student)*/)
+                if (RadioButtonTeacher.IsChecked == true)
                 {
-                    //if(user.GetType() == typeof(Teacher) && user.GetType() != typeof(Student))
+                    //if (user.GetType() == typeof(Teacher) && user.GetType() != typeof(Student))
                     //{
                     //    await new MessageDialog($"Incorrect choice").ShowAsync();
                     //}
                     this.Frame.Navigate(typeof(SplitViewMenu));
-                    
-                    
+
+
                 }
                 else if (RadioButtonStudent.IsChecked == true /*&& user.GetType() == typeof(Student) && user.GetType() != typeof(Teacher)*/)
                 {
@@ -61,6 +62,7 @@ namespace Testverktyg.Client
                     await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
                 }
             //}
+            
         }
 
        

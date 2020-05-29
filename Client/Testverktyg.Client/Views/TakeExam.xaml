@@ -32,15 +32,15 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <!--Listview vänster sida med översikt-->
@@ -52,13 +52,13 @@
             Background="White"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
             ItemsSource="{x:Bind viewModel.Questions, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
-        <ListView.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Exam">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{x:Bind Questions}"/>
                     </StackPanel>
                 </DataTemplate>
-        </ListView.ItemTemplate>
+            </ListView.ItemTemplate>
         </ListView>
         <!--Textblock med frågan-->
         <Border Background="White" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="8" Grid.RowSpan="2">
