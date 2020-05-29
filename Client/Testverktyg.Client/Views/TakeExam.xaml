@@ -50,8 +50,8 @@
             Grid.ColumnSpan="3" 
             Grid.RowSpan="7" 
             Background="White"
-            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
-            <!--ItemsSource="{}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick"-->>
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}">
+            <!--ItemsSource="{}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick"-->
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Exam">
                     <StackPanel Orientation="Horizontal">
