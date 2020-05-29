@@ -89,7 +89,8 @@
                 BorderThickness="2"/>
             <Button 
                 x:Name="Login" 
-                Content="LogIn" 
+                Content="Log in" 
+                FontFamily="Cambria"
                 Margin="20,20,20,20" 
                 VerticalAlignment="center"
                 Click="Login_Click" 

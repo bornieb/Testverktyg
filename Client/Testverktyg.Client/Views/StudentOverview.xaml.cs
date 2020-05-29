@@ -32,7 +32,7 @@ namespace Testverktyg.Client.Views
             viewModel = StudentOverviewViewModel.Instance;
             viewModel.AllExams.Clear();
             viewModel.GetExams();
-            viewModelExam = TakeExamViewModel.Instance;
+            //viewModelExam = TakeExamViewModel.Instance;
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)

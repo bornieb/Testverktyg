@@ -27,9 +27,9 @@ namespace Testverktyg.Client.Views
         public TakeExam()
         {
             this.InitializeComponent();
-            viewModel = TakeExamViewModel.Instance;
-            viewModel.Questions.Clear();
-            viewModel.QuestionsInTest();
+            //    viewModel = TakeExamViewModel.Instance;
+            //    viewModel.Questions.Clear();
+            //    viewModel.QuestionsInTest();
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)

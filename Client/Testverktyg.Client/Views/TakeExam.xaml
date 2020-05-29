@@ -32,15 +32,15 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="120"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!--Listview vänster sida med översikt-->
@@ -51,7 +51,7 @@
             Grid.RowSpan="7" 
             Background="White"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
-            ItemsSource="{x:Bind viewModel.Questions, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            <!--ItemsSource="{}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick"-->>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Exam">
                     <StackPanel Orientation="Horizontal">
@@ -61,8 +61,20 @@
             </ListView.ItemTemplate>
         </ListView>
         <!--Textblock med frågan-->
-        <Border Background="White" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="8" Grid.RowSpan="2">
-            <TextBlock Text="asdf" Foreground="Black" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Border 
+            Background="White" 
+            Grid.Row="1" 
+            Grid.Column="5" 
+            Grid.ColumnSpan="8" 
+            Grid.RowSpan="2">
+            
+        <TextBlock 
+            Text="" 
+            Foreground="Black" 
+            FontSize="30" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+            FontFamily="Cambria"/>
         </Border>
 
         <!--Gridview med knappar för svarsalternativ-->
@@ -85,8 +97,8 @@
             Grid.ColumnSpan="8" 
             Grid.RowSpan="4" 
             Background="Aqua"
-            Visibility="Collapsed"/>
-
+            Visibility="Collapsed"
+            FontFamily="Cambria"/>
         <StackPanel 
             Grid.Row="9" 
             Grid.Column="5"
@@ -103,7 +115,8 @@
                 CornerRadius="25" 
                 Background="Green" 
                 Foreground="White" 
-                FontSize="25"/>
+                FontSize="25"
+                FontFamily="Cambria"/>
             <Button 
                 Content="Föregående fråga" 
                 Width="250" 
@@ -111,7 +124,8 @@
                 CornerRadius="25" 
                 Background="Green" 
                 Foreground="White" 
-                FontSize="25"/>
+                FontSize="25"
+                FontFamily="Cambria"/>
             <Button 
                 Content="Nästa fråga"      
                 Width="250"
@@ -119,9 +133,8 @@
                 CornerRadius="25" 
                 Background="Green" 
                 Foreground="White" 
-                FontSize="25"/>
+                FontSize="25"
+                FontFamily="Cambria"/>
         </StackPanel>
-
-
     </Grid>
 </Page>
