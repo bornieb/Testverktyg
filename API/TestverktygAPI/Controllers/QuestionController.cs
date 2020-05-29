@@ -40,6 +40,30 @@ namespace TestverktygAPI.Controllers
             return question;
         }
 
+        // GET: api/Question/ExamId
+        [HttpGet("e/{ExamId}")]
+        public async Task<ActionResult<Question>> GetExamQuestion(int examId)
+        {
+            var result = await _context.Exam.Include(q => q.Questions)//Questionslista
+               .Select(q => new
+               {
+                   q.ExamId,
+                   question = q.Questions.Select
+                    (qn => new
+                    {qn.QuestionId,
+                    qn.CourseId,
+                    qn.GradeLevel,
+                    qn.QuestionText,
+                    qn.QuestionType,
+                    qn.QuestionValue,
+                    qn.StudentsFreeAnswer
+
+                    })
+               }).Where(x => x.ExamId == examId).FirstOrDefaultAsync();
+
+            return Ok(result);
+        }
+
         // PUT: api/Question/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
