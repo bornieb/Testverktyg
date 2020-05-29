@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
 using Windows.UI.Popups;
+using Testverktyg.Client.ViewModels;
 
 namespace Testverktyg.Client.Services
 {
@@ -47,5 +48,32 @@ namespace Testverktyg.Client.Services
             MessageDialog msg3 = new MessageDialog(jsonExamDB.ToString());
             await msg3.ShowAsync();
         }
+
+        public static async Task<List<Exam>> GetExamAsync()
+        {
+            var exams = new List<Exam>();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage responseMessage = await client.GetAsync($"{url}");
+                string examString = await responseMessage.Content.ReadAsStringAsync();
+                exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
+                return exams;
+            }
+        }
+
+        //public static async Task<List<Question>> GetExamQuestionsAsync()
+        //{
+        //    var questionExam = new List<Question>();
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        string convertString = JsonConvert.SerializeObject(TakeExamViewModel.Instance.Questions);
+        //        HttpContent content = new StringContent(convertString);
+        //        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        //        HttpResponseMessage responseMessage = await client.GetAsync($"{url}/5");
+        //        string questionString = await responseMessage.Content.ReadAsStringAsync();
+        //        questionExam = JsonConvert.DeserializeObject<List<Question>>(questionString);
+        //        return questionExam;
+        //    }
+        //}
     }
 }
