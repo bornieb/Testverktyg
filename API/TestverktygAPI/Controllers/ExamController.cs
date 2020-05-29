@@ -25,7 +25,37 @@ namespace TestverktygAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Exam>>> GetExam()
         {
-            return await _context.Exam.ToListAsync();
+            var result = await _context.Exam.Include(e => e.ExamQuestions)//Questionlista
+            .ThenInclude(eq => eq.Question)//Question
+            .Select(e => new
+            {
+            e.ExamId,
+            e.ClassId,
+            e.ExamDate,
+            e.ExamTimeSpan,
+            e.Subject,
+            e.TotalPoints,
+            e.GradeScale,
+            e.CurrentQuestion,
+            e.ExamResult,
+            e.ExamStatus,
+            e.ExamType,
+            question = e.ExamQuestions.Select
+            (eq => new
+            {
+                eq.Question.QuestionId,
+                eq.Question.CourseId,
+                eq.Question.GradeLevel,
+                eq.Question.QuestionText,
+                eq.Question.QuestionType,
+                            //eq.Question.QuestionValue,
+                            eq.Question.StudentsFreeAnswer,
+            }
+            )
+            }).ToListAsync();
+
+            return Ok(result);
+            //return await _context.Exam.ToListAsync();
         }
 
         // GET: api/Exam/5
