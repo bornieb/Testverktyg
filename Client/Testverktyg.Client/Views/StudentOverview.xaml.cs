@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,16 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class StudentOverview : Page
     {
+        private Student _student;
+
         public StudentOverview()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _student = (Student)e.Parameter;
         }
     }
 }
