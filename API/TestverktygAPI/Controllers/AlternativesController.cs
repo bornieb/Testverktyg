@@ -42,6 +42,28 @@ namespace TestverktygAPI.Controllers
             return alternative;
         }
 
+        // GET: api/Alternatives/QuestionId
+        [HttpGet("q/{QuestionId}")]
+        public async Task<ActionResult<Alternative>> GetQuestionAlternative(int qId)
+        {
+            var result = await _context.Question.Include(a => a.Alternatives)//Alternatvilista
+               .Select(a => new
+               {
+                   a.QuestionId,
+                   alternativ = a.Alternatives.Select
+                    (al => new
+                    {
+                        al.AlternativeId,
+                        al.AlternativeText,
+                        al.QuestionId,
+                        al.IsCorrect,
+                        al.StudentAnswer
+                    })
+               }).Where(x => x.QuestionId == qId).FirstOrDefaultAsync();
+
+            return Ok(result);
+        }
+
         // PUT: api/Alternatives/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

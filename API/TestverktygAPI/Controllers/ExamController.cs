@@ -48,8 +48,8 @@ namespace TestverktygAPI.Controllers
                 eq.Question.GradeLevel,
                 eq.Question.QuestionText,
                 eq.Question.QuestionType,
-                            //eq.Question.QuestionValue,
-                            eq.Question.StudentsFreeAnswer,
+                //eq.Question.QuestionValue,
+                eq.Question.StudentsFreeAnswer,
             }
             )
             }).ToListAsync();
