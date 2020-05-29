@@ -44,22 +44,43 @@ namespace TestverktygAPI.Controllers
         [HttpGet("e/{ExamId}")]
         public async Task<ActionResult<Question>> GetExamQuestion(int examId)
         {
-            var result = await _context.Exam.Include(q => q.Questions)//Questionslista
-               .Select(q => new
-               {
-                   q.ExamId,
-                   question = q.Questions.Select
-                    (qn => new
-                    {qn.QuestionId,
-                    qn.CourseId,
-                    qn.GradeLevel,
-                    qn.QuestionText,
-                    qn.QuestionType,
-                    qn.QuestionValue,
-                    qn.StudentsFreeAnswer
+            //var result = await _context.Exam.Include(q => q.Questions)//Questionslista
+            //   .Select(q => new
+            //   {
+            //       q.ExamId,
+            //       question = q.Questions.Select
+            //        (qn => new
+            //        {
+            //            qn.QuestionId,
+            //            qn.CourseId,
+            //            qn.GradeLevel,
+            //            qn.QuestionText,
+            //            qn.QuestionType,
+            //            qn.QuestionValue,
+            //            qn.StudentsFreeAnswer
 
-                    })
-               }).Where(x => x.ExamId == examId).FirstOrDefaultAsync();
+            //        })
+            //   }).Where(x => x.ExamId == examId).FirstOrDefaultAsync();
+
+            //return Ok(result);
+
+            var result = await _context.Exam.Include(eq => eq.ExamQuestions)//Questionslista
+              .Select(eq => new
+              {
+                  eq.ExamId,
+                  question = eq.Questions.Select
+                   (qn => new
+                   {
+                       qn.QuestionId,
+                       qn.CourseId,
+                       qn.GradeLevel,
+                       qn.QuestionText,
+                       qn.QuestionType,
+                       qn.QuestionValue,
+                       qn.StudentsFreeAnswer
+
+                   })
+              }).Where(x => x.ExamId == examId).FirstOrDefaultAsync();
 
             return Ok(result);
         }
