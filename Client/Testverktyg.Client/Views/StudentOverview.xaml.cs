@@ -32,16 +32,17 @@ namespace Testverktyg.Client.Views
         public StudentOverview()
         {
             this.InitializeComponent();
-            Init();
-            viewModel = StudentOverviewViewModel.Instance;
-            viewModel.AllExams.Clear();
-            viewModel.GetExams();
+            viewModel = new StudentOverviewViewModel();
+            //viewModel = StudentOverviewViewModel.Instance;
+            //viewModel.AllExams.Clear();
+            //viewModel.GetExams();
             //viewModelExam = TakeExamViewModel.Instance;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _student = (Student)e.Parameter;
+            Init();
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
@@ -51,7 +52,7 @@ namespace Testverktyg.Client.Views
 
         private void Init()
         {
-            viewModel = new StudentOverviewViewModel();
+            viewModel.LoadData(_student);
         }
 
 

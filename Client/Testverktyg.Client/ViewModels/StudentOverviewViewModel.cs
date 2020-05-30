@@ -12,45 +12,53 @@ namespace Testverktyg.Client.ViewModels
 {
     public class StudentOverviewViewModel
     {
-        public List<Exam> Exams { get; set; } = new List<Exam>();
+        public Student Student { get; set; }
+        public List<Exam> ExamsToBeTaken { get; set; } = new List<Exam>();
+        public List<Exam> CorrectedExams { get; set; } = new List<Exam>();
 
-        public void LoadData()
+        public StudentOverviewViewModel()
         {
+        }
+
+        public void LoadData(Student student)
+        {
+            Student = student;
             var examService = new ExamService();
-            //examService.GetStudentExams()
+            ExamsToBeTaken = examService.GetStudentExams(Student.UserId, ExamStatus.Template);
+            CorrectedExams = examService.GetStudentExams(Student.UserId, ExamStatus.Corrected);
         }
         
-        private static StudentOverviewViewModel instance;
-        public Exam exam { get; set; }
-        public ObservableCollection<Exam> AllExams;
+      //  private static StudentOverviewViewModel instance;
+      //  public Exam exam { get; set; }
+      //  public ObservableCollection<Exam> AllExams;
 
-        public static StudentOverviewViewModel Instance
-        { get { if (instance == null)
-                    instance = new StudentOverviewViewModel();
-                return instance;
-              }
+      //  public static StudentOverviewViewModel Instance
+      //  { get { if (instance == null)
+      //              instance = new StudentOverviewViewModel();
+      //          return instance;
+      //        }
 
-        }
-        private StudentOverviewViewModel()
-        {
-            exam = new Exam();
-            AllExams = new ObservableCollection<Exam>();
-            //GetExams();
-        }
-      public async void GetExams()
-        {
-            try
-            {
-                List<Exam> temp = await ExamService.GetExamAsync();
-                foreach (Exam exam in temp)
-                {
-                    AllExams.Add(exam);
-                }
-            }
-            catch (System.Net.Http.HttpRequestException ex)
-            {
-                await new MessageDialog(ex.Message).ShowAsync();
-            }
-        }
+      //  }
+      //  private StudentOverviewViewModel()
+      //  {
+      //      exam = new Exam();
+      //      AllExams = new ObservableCollection<Exam>();
+      //      //GetExams();
+      //  }
+      //public async void GetExams()
+      //  {
+      //      try
+      //      {
+      //          List<Exam> temp = await ExamService.GetExamAsync();
+      //          foreach (Exam exam in temp)
+      //          {
+      //              AllExams.Add(exam);
+      //          }
+      //      }
+      //      catch (System.Net.Http.HttpRequestException ex)
+      //      {
+      //          await new MessageDialog(ex.Message).ShowAsync();
+      //      }
+      //  }
     }
 }

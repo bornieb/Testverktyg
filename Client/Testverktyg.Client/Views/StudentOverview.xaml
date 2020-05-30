@@ -103,14 +103,13 @@
             
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2"
-            ItemsSource="{x:Bind viewModel.AllExams, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            ItemsSource="{x:Bind viewModel.ExamsToBeTaken, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Exam">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Bind Subject}"/>
-                            <TextBlock Text="Matteprov Algebra"/>
-                            <TextBlock Text="15/05/20"/>
+                            <TextBlock Text="{x:Bind ExamDate}"/>
                         </StackPanel>
                         <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="7 dagar kvar"/>
@@ -128,13 +127,14 @@
             Grid.RowSpan="3" 
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2"
-            FontFamily="Cambria">
+            FontFamily="Cambria"
+            ItemsSource="{x:Bind viewModel.CorrectedExams, Mode=OneWay}">
             <ListView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local1:Exam">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Klass 7B"/>
-                        <TextBlock Text="Matteprov Algebra"/>
-                        <TextBlock Text="15/05/20"/>
+                        <TextBlock Text="{x:Bind Subject}"/>
+                        <TextBlock Text="{x:Bind ExamDate}"/>
+                        <TextBlock Text="{x:Bind ExamResult}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
