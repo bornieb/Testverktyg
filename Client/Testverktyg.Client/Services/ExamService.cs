@@ -47,5 +47,13 @@ namespace Testverktyg.Client.Services
             MessageDialog msg3 = new MessageDialog(jsonExamDB.ToString());
             await msg3.ShowAsync();
         }
+
+        public List<Exam> GetStudentExams(int studentId, ExamStatus examStatus)
+        {
+            var requestUrl = $"{url}/student/{studentId}/{examStatus}";
+            var jsonExams = webClient.DownloadString(requestUrl);
+            var exams = JsonConvert.DeserializeObject<List<Exam>>(jsonExams);
+            return exams;
+        }
     }
 }
