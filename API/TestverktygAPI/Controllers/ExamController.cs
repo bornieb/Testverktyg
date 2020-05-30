@@ -58,6 +58,34 @@ namespace TestverktygAPI.Controllers
             //return await _context.Exam.ToListAsync();
         }
 
+        [HttpGet("student/{studentId}/{status}")]
+        public async Task<ActionResult<IEnumerable<Exam>>> GetStudentExams(int studentId, ExamStatus status)
+        {
+            var student = await _context.Student.FindAsync(studentId);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            var exams = await _context.Exam
+                .Include(e => e.ExamQuestions)
+                    .ThenInclude(eq => eq.Question)
+                        .ThenInclude(q => q.Alternatives)
+                .Include(e => e.ExamQuestions)
+                    .ThenInclude(eq => eq.Question)
+                        .ThenInclude(q => q.Keywords)
+                .Where(e => e.ClassId == student.ClassId && e.ExamStatus == status)
+                .ToListAsync();
+
+            return exams;
+
+            //var result = await _context.Exam.Include(e => e.ExamQuestions)
+            //    .ThenInclude(eq => eq.Question)
+            //    .Select()
+        }
+            
+
         // GET: api/Exam/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Exam>> GetExam(int id)
