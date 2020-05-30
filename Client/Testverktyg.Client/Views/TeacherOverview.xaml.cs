@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,16 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class TeacherOverview : Page
     {
+        private Teacher _teacher;
+
         public TeacherOverview()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _teacher = (Teacher)e.Parameter;
         }
 
         private void CreateTestButton_Click(object sender, RoutedEventArgs e)

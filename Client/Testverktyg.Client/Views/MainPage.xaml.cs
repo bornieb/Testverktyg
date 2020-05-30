@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Testverktyg.Client.Services;
 using Testverktyg.Client.Views;
 using Windows.Foundation;
@@ -37,21 +38,52 @@ namespace Testverktyg.Client
             string userName = UserNameTextBox.Text;
             string password = PasswordTextBox.Text;
 
-            //var user = await userService.GetUser(userName, password);
-
-
             if (RadioButtonTeacher.IsChecked == true)
             {
-                this.Frame.Navigate(typeof(SplitViewMenu));
+                var teacher = await userService.GetTeacher(userName, password);
+                if (teacher == null)
+                {
+                    await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                }
+                else
+                {
+                    this.Frame.Navigate(typeof(SplitViewMenu), teacher);
+                }
             }
             else if (RadioButtonStudent.IsChecked == true)
             {
-                this.Frame.Navigate(typeof(SplitViewMenuStudent));
+                var student = await userService.GetStudent(userName, password);
+                if (student == null)
+                {
+                    await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                }
+                else
+                {
+                    this.Frame.Navigate(typeof(SplitViewMenuStudent), student);
+                }
             }
             else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
             {
-                await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+                await DisplayError("You have to choose either Teacher or Student");
             }
+
+            //if (RadioButtonTeacher.IsChecked == true)
+            //{
+            //    this.Frame.Navigate(typeof(SplitViewMenu));
+            //}
+            //else if (RadioButtonStudent.IsChecked == true)
+            //{
+            //    this.Frame.Navigate(typeof(SplitViewMenuStudent));
+            //}
+            //else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+            //{
+            //    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+            //}
+        }
+
+        private async Task DisplayError(string message)
+        {
+            await new MessageDialog(message).ShowAsync();
         }
     }
 }

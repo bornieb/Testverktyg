@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.Models;
 using Testverktyg.Client.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -13,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Testverktyg.Client.Views;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,11 +26,27 @@ namespace Testverktyg.Client.Views
     public sealed partial class StudentOverview : Page
     {
         private StudentOverviewViewModel viewModel;
+        private TakeExamViewModel viewModelExam;
+        private Student _student;
 
         public StudentOverview()
         {
             this.InitializeComponent();
             Init();
+            viewModel = StudentOverviewViewModel.Instance;
+            viewModel.AllExams.Clear();
+            viewModel.GetExams();
+            //viewModelExam = TakeExamViewModel.Instance;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _student = (Student)e.Parameter;
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            
         }
 
         private void Init()

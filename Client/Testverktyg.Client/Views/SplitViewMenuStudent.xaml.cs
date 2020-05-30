@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,10 +23,17 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class SplitViewMenuStudent : Page
     {
+        private Student _student;
+
         public SplitViewMenuStudent()
         {
             this.InitializeComponent();
-            PageFrame.Navigate(typeof(StudentOverview));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _student = (Student)e.Parameter;
+            PageFrame.Navigate(typeof(StudentOverview), _student);
         }
 
         private void CollapseButton_Click(object sender, RoutedEventArgs e)
@@ -47,17 +55,18 @@ namespace Testverktyg.Client.Views
         {
             if (TakeExamListBoxitem.IsSelected)
             {
-                PageFrame.Navigate(typeof(TakeExam));
+                PageFrame.Navigate(typeof(TakeExam), _student);
                 TitleTextblock.Text = "Exam";
             }
         
             else if (HomeListBoxItem.IsSelected)
             {
-                PageFrame.Navigate(typeof(StudentOverview));
+                PageFrame.Navigate(typeof(StudentOverview), _student);
                 TitleTextblock.Text = "Welcome";
             }
             else if (ExitListBoxitem.IsSelected)
             {
+                _student = null;
                 this.Frame.Navigate(typeof(MainPage));
             }
         }

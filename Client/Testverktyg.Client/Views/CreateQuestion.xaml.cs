@@ -31,6 +31,7 @@ namespace Testverktyg.Client.Views
         public List<Course> ListOfCourses;
         private CourseService courseService = new CourseService();
         private QuestionService questionService = new QuestionService();
+        private Teacher _teacher;
 
         public CreateQuestion()
         {
@@ -48,6 +49,11 @@ namespace Testverktyg.Client.Views
             GradeLevelDropDown.ItemsSource = Enum.GetValues(typeof(GradeLevel));
 
             viewModel = new CreateQuestionViewModel();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _teacher = (Teacher)e.Parameter;
         }
 
         private void AddAlternativeBtn_Click(object sender, RoutedEventArgs e)

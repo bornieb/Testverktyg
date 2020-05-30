@@ -29,6 +29,8 @@ namespace Testverktyg.Client.Views
     public sealed partial class CreateExam : Page
     {
         CreateExamViewModel createExamViewModel;
+        private Teacher _teacher;
+
         public CreateExam()
         {
             this.InitializeComponent();
@@ -42,6 +44,12 @@ namespace Testverktyg.Client.Views
             createExamViewModel.GetQuestions();
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _teacher = (Teacher)e.Parameter;
+        }
+
         private async void CreateExamBtn_Click(object sender, RoutedEventArgs e)
         {
 

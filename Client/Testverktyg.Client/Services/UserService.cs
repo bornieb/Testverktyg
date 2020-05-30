@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
 
@@ -12,18 +8,26 @@ namespace Testverktyg.Client.Services
     public class UserService
     {
         private HttpClient httpClient;
-        string url = "http://localhost:60485/api/user";
+        private const string studentUrl = "http://localhost:60485/api/student";
+        private const string teacherUrl = "http://localhost:60485/api/teacher";
 
         public UserService()
         {
             httpClient = new HttpClient();
         }
 
-        public async Task<User> GetUser(string userName, string password)
+        public async Task<Teacher> GetTeacher(string userName, string password)
         {
-            var jsonUser = await httpClient.GetStringAsync(url+$"/checkuser?userName={userName}&password={password}");
-            var user = JsonConvert.DeserializeObject<User>(jsonUser);
-            return user;
+            var jsonTeacher = await httpClient.GetStringAsync(teacherUrl+$"/checkteacher?userName={userName}&password={password}");
+            var teacher = JsonConvert.DeserializeObject<Teacher>(jsonTeacher);
+            return teacher;
+        }
+
+        public async Task<Student> GetStudent(string userName, string password)
+        {
+            var jsonStudent = await httpClient.GetStringAsync(studentUrl+$"/checkstudent?userName={userName}&password={password}");
+            var student = JsonConvert.DeserializeObject<Student>(jsonStudent);
+            return student;
         }
     }
 }
