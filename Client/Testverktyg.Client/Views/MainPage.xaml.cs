@@ -40,45 +40,49 @@ namespace Testverktyg.Client
 
             if (RadioButtonTeacher.IsChecked == true)
             {
-                var teacher = await userService.GetTeacher(userName, password);
-                if (teacher == null)
+                try
                 {
-                    await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    var teacher = await userService.GetTeacher(userName, password);
+
+                    if (teacher == null)
+                    {
+                        await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    }
+                    else
+                    {
+                        this.Frame.Navigate(typeof(SplitViewMenu), teacher);
+                    }
                 }
-                else
+                catch(System.Net.Http.HttpRequestException ex)
                 {
-                    this.Frame.Navigate(typeof(SplitViewMenu), teacher);
+                    await DisplayError($"{ex.Message}\nNågot blev fel");
                 }
             }
             else if (RadioButtonStudent.IsChecked == true)
             {
-                var student = await userService.GetStudent(userName, password);
-                if (student == null)
+                try
                 {
-                    await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    var student = await userService.GetStudent(userName, password);
+
+                    if (student == null)
+                    {
+                        await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    }
+                    else
+                    {
+                        this.Frame.Navigate(typeof(SplitViewMenuStudent), student);
+                    }
                 }
-                else
+                catch (System.Net.Http.HttpRequestException ex)
                 {
-                    this.Frame.Navigate(typeof(SplitViewMenuStudent), student);
+                    await DisplayError($"{ex.Message}\nNågot blev fel");
                 }
             }
             else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
             {
-                await DisplayError("You have to choose either Teacher or Student");
+                await DisplayError("Du måste välja lärare eller student");
             }
-
-            //if (RadioButtonTeacher.IsChecked == true)
-            //{
-            //    this.Frame.Navigate(typeof(SplitViewMenu));
-            //}
-            //else if (RadioButtonStudent.IsChecked == true)
-            //{
-            //    this.Frame.Navigate(typeof(SplitViewMenuStudent));
-            //}
-            //else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
-            //{
-            //    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
-            //}
+                       
         }
 
         private async Task DisplayError(string message)

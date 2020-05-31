@@ -67,21 +67,6 @@ namespace Testverktyg.Client.Services
                 exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
                 return exams;
             }
-        }
-
-        //public static async Task<List<Question>> GetExamQuestionsAsync()
-        //{
-        //    var questionExam = new List<Question>();
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        string convertString = JsonConvert.SerializeObject(TakeExamViewModel.Instance.Questions);
-        //        HttpContent content = new StringContent(convertString);
-        //        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-        //        HttpResponseMessage responseMessage = await client.GetAsync($"{url}/5");
-        //        string questionString = await responseMessage.Content.ReadAsStringAsync();
-        //        questionExam = JsonConvert.DeserializeObject<List<Question>>(questionString);
-        //        return questionExam;
-        //    }
-        //}
+        }              
     }
 }
