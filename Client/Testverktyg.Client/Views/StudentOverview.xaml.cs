@@ -54,7 +54,6 @@ namespace Testverktyg.Client.Views
 
         private async void DetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            Exam exam = (Exam)((FrameworkElement)sender).DataContext;
             await ContentTest.ShowAsync();
         }
     }
