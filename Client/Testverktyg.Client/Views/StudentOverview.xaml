@@ -100,7 +100,7 @@
             Grid.ColumnSpan="5" 
             Grid.Row="2" 
             Grid.RowSpan="5" 
-            
+            FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2"
             ItemsSource="{x:Bind viewModel.ExamsToBeTaken, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
