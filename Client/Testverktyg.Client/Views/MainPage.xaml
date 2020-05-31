@@ -64,8 +64,8 @@
                 Margin="20,20,20,20" 
                 TextWrapping="Wrap"
                 VerticalAlignment="Center" 
-                PlaceholderText="Användarnamn"
-                
+                PlaceholderText="Skriv in ditt användarnamn"
+                Header="Användarnamn"
                 Height="65" 
                 Width="300" 
                 FontSize="16"
@@ -74,11 +74,13 @@
                 BorderThickness="2"/>
             <PasswordBox 
                 x:Name="PasswordTextBox"
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Left"
+                Header="Lösenord"
                 Margin="20,20,20,20" 
                 VerticalAlignment="Center"
-                PlaceholderText="Lösenord" 
+                PlaceholderText="Skriv in ditt lösenord" 
                 RenderTransformOrigin="0.5,0.539" 
+                PasswordChar="☺"
                 Height="65" 
                 Width="300"
                 FontSize="16"

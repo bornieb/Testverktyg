@@ -55,17 +55,17 @@ namespace Testverktyg.Client.Views
             if(CreateQuestionListBoxitem.IsSelected)
             {
                 PageFrame.Navigate(typeof(CreateQuestion), _teacher);
-                TitleTextblock.Text = "Create question";
+                TitleTextblock.Text = "Skapa fråga";
             }
             else if(CreateExamListBoxitem.IsSelected)
             {
                 PageFrame.Navigate(typeof(CreateExam), _teacher);
-                TitleTextblock.Text = "Create Exam";
+                TitleTextblock.Text = "Skapa prov";
             }
             else if(HomeListBoxItem.IsSelected)
             {
                 PageFrame.Navigate(typeof(TeacherOverview), _teacher);
-                TitleTextblock.Text = "Welcome";
+                TitleTextblock.Text = "Välkommen";
             }
             else if(ExitListBoxitem.IsSelected)
             {

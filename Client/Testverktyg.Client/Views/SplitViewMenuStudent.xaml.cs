@@ -56,13 +56,13 @@ namespace Testverktyg.Client.Views
             if (TakeExamListBoxitem.IsSelected)
             {
                 PageFrame.Navigate(typeof(TakeExam), _student);
-                TitleTextblock.Text = "Exam";
+                TitleTextblock.Text = "Prov";
             }
         
             else if (HomeListBoxItem.IsSelected)
             {
                 PageFrame.Navigate(typeof(StudentOverview), _student);
-                TitleTextblock.Text = "Welcome";
+                TitleTextblock.Text = "Välkommen";
             }
             else if (ExitListBoxitem.IsSelected)
             {

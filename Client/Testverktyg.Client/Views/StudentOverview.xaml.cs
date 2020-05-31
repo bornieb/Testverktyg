@@ -26,17 +26,14 @@ namespace Testverktyg.Client.Views
     public sealed partial class StudentOverview : Page
     {
         private StudentOverviewViewModel viewModel;
-        private TakeExamViewModel viewModelExam;
+       
         private Student _student;
 
         public StudentOverview()
         {
             this.InitializeComponent();
             viewModel = new StudentOverviewViewModel();
-            //viewModel = StudentOverviewViewModel.Instance;
-            //viewModel.AllExams.Clear();
-            //viewModel.GetExams();
-            //viewModelExam = TakeExamViewModel.Instance;
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
