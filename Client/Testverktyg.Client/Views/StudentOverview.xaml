@@ -108,8 +108,11 @@
                 <DataTemplate x:DataType="local1:Exam">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{x:Bind Subject}"/>
-                            <TextBlock Text="{x:Bind ExamDate}"/>
+                            <TextBlock 
+                                Text="{x:Bind Subject}"/>
+                            <TextBlock 
+                                Text="{x:Bind ExamDate}"
+                                Margin="250,0,0,0"/>
                         </StackPanel>
                         <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="7 dagar kvar"/>
