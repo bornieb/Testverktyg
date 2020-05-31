@@ -161,7 +161,8 @@
                 Margin="0,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                 BorderThickness="2" 
-                FontFamily="Cambria"/>
+                FontFamily="Cambria"
+                Click="DetailsButton_Click"/>
 
         </StackPanel>
         <StackPanel Grid.Column="8" Grid.ColumnSpan="5"  Grid.Row="5">
@@ -179,5 +180,52 @@
                 BorderThickness="2"
                 FontFamily="Cambria"/>
         </StackPanel>
+        <ContentDialog
+            x:Name="ContentTest"
+            
+            FontFamily="Cambria"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Top"
+            CloseButtonText="Ok">
+            <ListView
+                ItemsSource="{x:Bind viewModel.ExamsToBeTaken, Mode = OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local1:Exam">
+                        <StackPanel 
+                Orientation="Horizontal"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch">
+                            <TextBlock
+                                Text="Ämne: "
+                                FontFamily="Cambria"
+                                FontWeight="Bold"
+                                Margin="20,0,0,0"/>
+                            <TextBlock 
+                     Text="{x:Bind Subject}"
+                    FontFamily="Cambria"
+                                Margin="20,0,0,0"/>
+                            <TextBlock
+                                Text="Typ av prov: "
+                                FontFamily="Cambria"
+                                FontWeight="Bold"
+                                Margin="20,0,0,0"/>
+                            <TextBlock 
+                        Text="{x:Bind ExamType}"
+                        FontFamily="Cambria"
+                        Margin="20,0,0,0"/>
+                            <TextBlock
+                                Text="Max poäng: "
+                                FontFamily="Cambria"
+                                FontWeight="Bold"
+                                Margin="20,0,0,0"/>
+                            <TextBlock
+                         Text="{x:Bind TotalPoints}"
+                                FontFamily="Cambria"
+                                Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ContentDialog>
     </Grid>
 </Page>
