@@ -30,9 +30,6 @@ namespace Testverktyg.Client.Views
         public TakeExam()
         {
             this.InitializeComponent();
-            //    viewModel = TakeExamViewModel.Instance;
-            //    viewModel.Questions.Clear();
-            //    viewModel.QuestionsInTest();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

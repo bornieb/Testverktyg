@@ -72,12 +72,11 @@
                 FontFamily="Cambria"
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
                 BorderThickness="2"/>
-            <TextBox 
+            <PasswordBox 
                 x:Name="PasswordTextBox"
                 HorizontalAlignment="Left" 
                 Margin="20,20,20,20" 
-                TextWrapping="Wrap"
-                VerticalAlignment="center" 
+                VerticalAlignment="Center"
                 PlaceholderText="Lösenord" 
                 RenderTransformOrigin="0.5,0.539" 
                 Height="65" 

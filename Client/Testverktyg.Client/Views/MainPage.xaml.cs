@@ -36,7 +36,7 @@ namespace Testverktyg.Client
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
             string userName = UserNameTextBox.Text;
-            string password = PasswordTextBox.Text;
+            string password = PasswordTextBox.Password;
 
             if (RadioButtonTeacher.IsChecked == true)
             {
