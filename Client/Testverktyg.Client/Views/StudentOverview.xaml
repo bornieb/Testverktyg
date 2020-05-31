@@ -109,10 +109,12 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
-                                Text="{x:Bind Subject}"/>
+                                Text="{x:Bind Subject}"
+                                FontFamily="Cambria"/>
                             <TextBlock 
                                 Text="{x:Bind ExamDate}"
-                                Margin="250,0,0,0"/>
+                                Margin="250,0,0,0"
+                                FontFamily="Cambria"/>
                         </StackPanel>
                         <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="7 dagar kvar"/>

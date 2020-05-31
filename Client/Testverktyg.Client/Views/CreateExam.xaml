@@ -119,7 +119,8 @@
                  FontFamily="Cambria">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:Question">
-                        <TextBlock Text="{Binding QuestionText}"></TextBlock>
+                        <TextBlock Text="{Binding QuestionText}"
+                                   FontFamily="Cambria"></TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

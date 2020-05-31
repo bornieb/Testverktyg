@@ -161,10 +161,15 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{x:Bind KeywordText}"/>
+                            <TextBlock Text="{x:Bind KeywordText}"
+                                       FontFamily="Cambria"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <Button x:Name="RemoveKeywordBtn" Content="-" Click="RemoveKeywordBtn_Click"/>
+                            <Button 
+                                x:Name="RemoveKeywordBtn" 
+                                Content="-" 
+                                Click="RemoveKeywordBtn_Click"
+                                />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -229,7 +234,8 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{x:Bind AlternativeText}"/>
+                            <TextBlock Text="{x:Bind AlternativeText}"
+                                       FontFamily="Cambria"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
                             <Button 
