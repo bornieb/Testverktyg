@@ -79,23 +79,38 @@
             
         <TextBlock 
             x:Name="QuestionTextBlock"
-            Text="{x:Bind ((local: Question)CurrentQuestion.SelectedItem).QuestionText}"
+            Text="{x:Bind currentQuestion}"
             Foreground="Black" 
             FontSize="30" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
             FontFamily="Cambria"
+            x:DefaultBindMode="TwoWay"
             
             />
         </Border>
 
         <!--Gridview med knappar för svarsalternativ-->
-        <GridView x:Name="MultipleChoicesGridView" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="8" Grid.RowSpan="4" Background="white" Visibility="Visible">
+        <GridView
+            x:Name="MultipleChoicesGridView" 
+            Grid.Row="4" 
+            Grid.Column="5" 
+            Grid.ColumnSpan="8" 
+            Grid.RowSpan="4" 
+            Background="white" 
+            Visibility="Visible"
+            ItemsSource="{x:Bind CurrentQuestionAlternatives}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Alternative">
                     <StackPanel>
                         <StackPanel>
-                            <Button/>
+                            <Button 
+                                x:Name="Alternative"
+                                Content="{x:Bind AlternativeText}"
+                                Height="Auto"
+                                Width="Auto"
+                                FontFamily="Cambria"
+                                FontSize="36"/>
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
@@ -130,6 +145,7 @@
                 FontSize="25"
                 FontFamily="Cambria"/>
             <Button 
+                x:Name="PreviousQuestionButton"
                 Content="Föregående fråga" 
                 Width="250" 
                 Height="75"
@@ -137,8 +153,10 @@
                 Background="Green" 
                 Foreground="White" 
                 FontSize="25"
-                FontFamily="Cambria"/>
+                FontFamily="Cambria"
+                Click="PreviousQuestionButton_Click"/>
             <Button 
+                x:Name="NextQuestionButton"
                 Content="Nästa fråga"      
                 Width="250"
                 Height="75" 
@@ -146,7 +164,8 @@
                 Background="Green" 
                 Foreground="White" 
                 FontSize="25"
-                FontFamily="Cambria"/>
+                FontFamily="Cambria"
+                Click="NextQuestionButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

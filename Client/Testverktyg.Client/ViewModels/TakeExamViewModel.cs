@@ -14,7 +14,7 @@ namespace Testverktyg.Client.ViewModels
     class TakeExamViewModel
     {
         public StudentOverviewViewModel _model = new StudentOverviewViewModel();
-        List<Question> _questions;
+        
 
         //public void LoadQuestions()
         //{

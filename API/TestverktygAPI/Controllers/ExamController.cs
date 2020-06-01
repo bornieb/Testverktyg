@@ -81,8 +81,15 @@ namespace TestverktygAPI.Controllers
             foreach(var exam in exams)
             {
                 exam.Questions = exam.ExamQuestions.Select(eq => eq.Question).ToList();
+
+                foreach (var alt in exam.Questions)
+                {
+                    alt.Alternatives.ToList();
+                }
                 exam.ExamQuestions.Clear();
             }
+
+            
 
             return exams;
 
