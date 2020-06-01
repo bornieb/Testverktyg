@@ -45,17 +45,26 @@
 
         <!--Listview vänster sida med översikt-->
         <ListView 
+            x:Name="CurrentQuestion"
             Grid.Row="1" 
             Grid.Column="1" 
             Grid.ColumnSpan="3" 
             Grid.RowSpan="7" 
             Background="White"
-            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}">
-            <!--ItemsSource="{}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick"-->
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            ItemsSource="{x:Bind _exam.Questions}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Exam">
+                <DataTemplate x:DataType="local:Question">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{x:Bind Questions}"/>
+                        <TextBlock 
+                            Text="Fråga nummer: "
+                            Height="Auto"
+                            Width="300"/>
+                        <TextBlock 
+                            Text="{x:Bind QuestionId}"
+                            Margin="20,0,0,0"
+                            Height="Auto"
+                            Width="150"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -69,12 +78,15 @@
             Grid.RowSpan="2">
             
         <TextBlock 
-            Text="" 
+            x:Name="QuestionTextBlock"
+            Text="{x:Bind ((local: Question)CurrentQuestion.SelectedItem).QuestionText}"
             Foreground="Black" 
             FontSize="30" 
             HorizontalAlignment="Center" 
             VerticalAlignment="Center"
-            FontFamily="Cambria"/>
+            FontFamily="Cambria"
+            
+            />
         </Border>
 
         <!--Gridview med knappar för svarsalternativ-->

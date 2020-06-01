@@ -26,25 +26,26 @@ namespace Testverktyg.Client.Views
     public sealed partial class StudentOverview : Page
     {
         private StudentOverviewViewModel viewModel;
-       
+        private SplitViewMenuStudent split;
         private Student _student;
 
         public StudentOverview()
         {
             this.InitializeComponent();
             viewModel = new StudentOverviewViewModel();
-            
+            split = new SplitViewMenuStudent();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             _student = (Student)e.Parameter;
             Init();
+         
         }
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+           this.Frame.Navigate(typeof(TakeExam),e.ClickedItem);
         }
 
         private void Init()
@@ -56,5 +57,7 @@ namespace Testverktyg.Client.Views
         {
             await ContentTest.ShowAsync();
         }
+
+       
     }
 }

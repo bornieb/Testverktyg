@@ -44,7 +44,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock 
-            Text="LÄGG TILL FRÅGA" 
+            Text="Skapa fråga" 
             Grid.Column="1" 
             Grid.ColumnSpan="4" 
             VerticalAlignment="Center" 

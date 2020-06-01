@@ -325,15 +325,5 @@
             FontSize="30"
             FontFamily="Cambria">
         </Button>
-
-        <TextBlock 
-            x:Name="CheckValues" 
-            Grid.Column="1" 
-            Grid.ColumnSpan="3" 
-            Grid.Row="8" 
-            FontSize="20"
-            Text="TEXTBLOCK" 
-            FontFamily="Cambria">
-        </TextBlock>
     </Grid>
 </Page>

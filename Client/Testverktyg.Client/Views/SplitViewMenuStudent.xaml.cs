@@ -24,10 +24,11 @@ namespace Testverktyg.Client.Views
     public sealed partial class SplitViewMenuStudent : Page
     {
         private Student _student;
-
+        
         public SplitViewMenuStudent()
         {
             this.InitializeComponent();
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -50,6 +51,7 @@ namespace Testverktyg.Client.Views
             }
         }
 
+       
 
         private void SplitViewMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

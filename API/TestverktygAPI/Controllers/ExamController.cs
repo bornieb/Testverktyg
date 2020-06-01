@@ -78,6 +78,12 @@ namespace TestverktygAPI.Controllers
                 .Where(e => e.ClassId == student.ClassId && e.ExamStatus == status)
                 .ToListAsync();
 
+            foreach(var exam in exams)
+            {
+                exam.Questions = exam.ExamQuestions.Select(eq => eq.Question).ToList();
+                exam.ExamQuestions.Clear();
+            }
+
             return exams;
 
             //var result = await _context.Exam.Include(e => e.ExamQuestions)

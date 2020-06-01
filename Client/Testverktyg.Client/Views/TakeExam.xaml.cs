@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,15 +27,18 @@ namespace Testverktyg.Client.Views
     {
         private TakeExamViewModel viewModel;
         private Student _student;
+        private Exam _exam;
 
         public TakeExam()
         {
             this.InitializeComponent();
+            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            _student = (Student)e.Parameter;
+            //_student = (Student)e.Parameter;
+            _exam = (Exam)e.Parameter;
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
@@ -54,7 +58,20 @@ namespace Testverktyg.Client.Views
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-                        
+            //QuestionTextBlock.Text = CurrentQuestion.SelectedValue.ToString(); 
         }
+
+        //private void ExamLogic()
+        //{
+        //    string questionText = "";
+        //    for (int i = 0; i <= _exam.Questions.Count; i++)
+        //    {
+        //        foreach (Question q in _exam.Questions)
+        //        {
+        //            questionText = q.QuestionText;
+        //        }
+        //        QuestionTextBlock.Text = $"{questionText}";
+        //    }
+        //}
     }
 }

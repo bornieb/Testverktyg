@@ -13,23 +13,20 @@ namespace Testverktyg.Client.ViewModels
 {
     class TakeExamViewModel
     {
-        //private static TakeExamViewModel instance;
-        //public Question question { get; set; }
-        //public ObservableCollection<Question> Questions;
+        public StudentOverviewViewModel _model = new StudentOverviewViewModel();
+        List<Question> _questions;
 
-        //public static TakeExamViewModel Instance
-        //{ get { if (instance == null)
-        //            instance = new TakeExamViewModel();
-        //            return instance;
-        //      }
-        //}
-
-        //private TakeExamViewModel()
+        //public void LoadQuestions()
         //{
-        //    question = new Question();
-        //    Questions = new ObservableCollection<Question>();
+        //    _model = new StudentOverviewViewModel();
+        //    _model.ExamsToBeTaken = new List<Question>();
+            
+        //    foreach (Question q in _model.ExamsToBeTaken)
+        //    {
+
+        //    }
         //}
-       
+        
         
 
     }
