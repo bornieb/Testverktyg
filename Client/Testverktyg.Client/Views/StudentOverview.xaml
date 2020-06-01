@@ -110,11 +110,16 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock 
                                 Text="{x:Bind Subject}"
-                                FontFamily="Cambria"/>
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                                
                             <TextBlock 
                                 Text="{x:Bind ExamDate}"
                                 Margin="250,0,0,0"
-                                FontFamily="Cambria"/>
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
                         </StackPanel>
                         <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="7 dagar kvar"/>
@@ -180,13 +185,13 @@
                 BorderThickness="2"
                 FontFamily="Cambria"/>
         </StackPanel>
+        
         <ContentDialog
             x:Name="ContentTest"
-            
             FontFamily="Cambria"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Top"
-            CloseButtonText="Ok">
+            CloseButtonText="Ok" Height="120" VerticalAlignment="Top">
             <ListView
                 ItemsSource="{x:Bind viewModel.ExamsToBeTaken, Mode = OneWay}">
                 <ListView.ItemTemplate>
@@ -199,7 +204,7 @@
                                 Text="Ämne: "
                                 FontFamily="Cambria"
                                 FontWeight="Bold"
-                                Margin="20,0,0,0"/>
+                                />
                             <TextBlock 
                      Text="{x:Bind Subject}"
                     FontFamily="Cambria"
