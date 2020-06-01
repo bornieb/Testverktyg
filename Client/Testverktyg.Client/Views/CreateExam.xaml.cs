@@ -18,6 +18,7 @@ using Testverktyg.Client.Services;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.ObjectModel;
 using Windows.UI.Popups;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -61,10 +62,9 @@ namespace Testverktyg.Client.Views
             }
             else
             {
-                await new MessageDialog("Välj en giltigt klass!").ShowAsync();
+                await new MessageDialog("Vänligen välj en giltig klass.").ShowAsync();
             }
-
-
+            
             DateTime dt = new DateTime(ExamDatePicker.Date.Year, ExamDatePicker.Date.Month, ExamDatePicker.Date.Day,
             ExamStartTimePicker.Time.Hours, ExamStartTimePicker.Time.Minutes, ExamStartTimePicker.Time.Seconds);
 
@@ -75,11 +75,10 @@ namespace Testverktyg.Client.Views
             }
             else
             {
-                await new MessageDialog("Skriv in ett giltigt datum!").ShowAsync();
+                await DisplayError("Vänligen välj ett giltigt datum.");
             }
 
-            string timeSpan = TimeLimitTextBox.Text;
-            if (int.TryParse(timeSpan, out int examTimeSpan))
+            if (int.TryParse(TimeLimitTextBox.Text, out int examTimeSpan))
             {
 
                 if (examTimeSpan < 60)
@@ -97,7 +96,7 @@ namespace Testverktyg.Client.Views
             }
             else
             {
-                await new MessageDialog("Skriv in en giltig provtid i minuter!").ShowAsync();
+                await DisplayError("Vänligen skriv in en giltig provtid i minuter.");
             }
 
             if (!string.IsNullOrEmpty(SubjectTextBox.Text))
@@ -107,7 +106,7 @@ namespace Testverktyg.Client.Views
             }
             else
             {
-                await new MessageDialog("Skriv in en provtitel!").ShowAsync();
+                await DisplayError("Vänligen skriv in en titel till provet.");
             }
 
             if (createExamViewModel.QuestionCart.Count > 0) 
@@ -119,7 +118,7 @@ namespace Testverktyg.Client.Views
             }
             else
             {
-                await new MessageDialog("Lägg in frågor i provkundvagnen!").ShowAsync();
+                await DisplayError("Vänligen lägg in frågor som provet ska innehålla.");
             }
 
 
@@ -130,38 +129,29 @@ namespace Testverktyg.Client.Views
             }
             else
             {
-                await new MessageDialog("Skriv in en betygsgräns!").ShowAsync();
+                await DisplayError("Vänligen skriv in en betygsgräns till provet.");
             }
 
 
             exam.CurrentQuestion = 0;
             exam.ExamResult = 0;
             exam.ExamStatus = ExamStatus.Template;
-            
 
-            if((ExamType)ExamTypeDropDown.SelectedValue != null)
+            if(ExamTypeDropDown.SelectedValue != null)
             {
                 exam.ExamType = (ExamType)ExamTypeDropDown.SelectedValue;
             }
             else
             {
-                await new MessageDialog("Välj en provtyp!").ShowAsync();
+                await DisplayError("Vänligen välj en provtyp.");
             }
 
-            exam.ExamType = ((ExamType)ExamTypeDropDown.SelectedValue);
+            //exam.ExamType = ((ExamType)ExamTypeDropDown.SelectedValue);
 
             //Skapar provet
             if (validClass && validDate && validTimeSpan && validSubject && validQuestion && validGradeS) {
-                MessageDialog msg = new MessageDialog("Provet skapat!");
-                await msg.ShowAsync();
 
-                string Summary = $"Datum: {exam.ExamDate} Tid: {exam.ExamTimeSpan} Klass: {exam.ClassId} Ämne: {exam.Subject} Maxpoäng: {exam.TotalPoints} Antal frågor: {exam.NumberOfQuestions}" +
-                    $"{exam.GradeScale}{exam.ExamResult}{exam.ExamStatus}{exam.ExamType}";
-
-                MessageDialog sum = new MessageDialog(Summary);
-                await sum.ShowAsync();
-
-
+                await DisplayError($"Prov '{SubjectTextBox.Text}' i {CourseDropDown.SelectedValue.ToString()} skapat!");
                 await createExamViewModel.CreateExamAsync(exam);
             }
         }
@@ -181,6 +171,11 @@ namespace Testverktyg.Client.Views
             createExamViewModel.RemoveQuestion(question);
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
+        }
+
+        private async Task DisplayError(string message)
+        {
+            await new MessageDialog(message).ShowAsync();
         }
     }
 }
