@@ -129,6 +129,22 @@
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem
+                            x:Name="CorrectExamListBoxItem"
+                            Background="Transparent">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Text="✅"
+                                    FontSize="24"
+                                    HorizontalAlignment="Left"/>
+                                <TextBlock 
+                                    Text="Rätta&#x0a;prov"
+                                    FontSize="13"
+                                    FontFamily="Cambria"
+                                    HorizontalAlignment="Center"
+                                    Margin="26,0,0,0"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem
                             x:Name="ExitListBoxitem"
                             Background="Transparent">
                             <StackPanel Orientation="Horizontal">
@@ -143,6 +159,7 @@
                                        VerticalAlignment="Center"/>
                             </StackPanel>
                         </ListBoxItem>
+                        
                     </ListBox>
                 </StackPanel>
             </SplitView.Pane>
