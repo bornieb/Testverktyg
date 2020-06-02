@@ -99,6 +99,9 @@
             Grid.RowSpan="4" 
             Background="white" 
             Visibility="Visible"
+            HorizontalAlignment="Center"
+            
+            
             ItemsSource="{x:Bind CurrentQuestionAlternatives}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Alternative">
@@ -107,10 +110,11 @@
                             <Button 
                                 x:Name="Alternative"
                                 Content="{x:Bind AlternativeText}"
-                                Height="Auto"
-                                Width="Auto"
+                                Height="223"
+                                Width="505"
                                 FontFamily="Cambria"
-                                FontSize="36"/>
+                                FontSize="36"
+                                />
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>
