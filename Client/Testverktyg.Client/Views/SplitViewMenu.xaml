@@ -129,18 +129,20 @@
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem
-                            x:Name="CorrectExamListBoxitem"
+
+                            x:Name="CorrectExamListBoxItem"
                             Background="Transparent">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe UI Emoji"
-                                       FontSize="24"
-                                       Text="&#x2714;"
-                                       HorizontalAlignment="Left"/>
-                                <TextBlock Text="Correct&#x0a;Exam"
-                                       FontFamily="Cambria"
-                                       FontSize="13"
-                                       Margin="26,0,0,0"
-                                       VerticalAlignment="Center"/>
+                                <TextBlock
+                                    Text="✅"
+                                    FontSize="24"
+                                    HorizontalAlignment="Left"/>
+                                <TextBlock 
+                                    Text="Rätta&#x0a;prov"
+                                    FontSize="13"
+                                    FontFamily="Cambria"
+                                    HorizontalAlignment="Center"
+                                    Margin="26,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem
@@ -158,6 +160,7 @@
                                        VerticalAlignment="Center"/>
                             </StackPanel>
                         </ListBoxItem>
+                        
                     </ListBox>
                 </StackPanel>
             </SplitView.Pane>
