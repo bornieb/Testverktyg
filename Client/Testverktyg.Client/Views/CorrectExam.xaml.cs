@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Testverktyg.Client.ViewModels;
+using Testverktyg.Client.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,8 +23,9 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CorrectExam : Page
     {
-        CorrectExamViewModel correctExamViewModel;
 
+        private Teacher _teacher;
+        
         public CorrectExam()
         {
             this.InitializeComponent();
@@ -40,6 +41,11 @@ namespace Testverktyg.Client.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _teacher = (Teacher)e.Parameter;
         }
     }
 }

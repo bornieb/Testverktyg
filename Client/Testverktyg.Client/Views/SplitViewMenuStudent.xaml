@@ -29,12 +29,36 @@
                         />
                 <TextBlock 
                            x:Name="TitleTextblock" 
-                           Text="Welcome"
+                           Text="Välkommen"
                            Margin="20,0,0,0"
                            FontSize="16"
                            FontFamily="Cambria"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
+                <TextBlock
+                            x:Name="LoggedInAsLastTextBlock"
+                            Text="Inloggad som: "
+                            Margin="10,0,0,0"
+                            FontSize="16"
+                            FontFamily="Cambria"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                <TextBlock
+                            x:Name="LoginFirstTextBlock"
+                            Text="{x:Bind _student.FirstName}"
+                            Margin="3,0,0,0"
+                            FontSize="16"
+                            FontFamily="Cambria"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                <TextBlock
+                            x:Name="LoginLastTextBlock"
+                            Text="{x:Bind _student.LastName}"
+                            Margin="3,0,0,0"
+                            FontSize="16"
+                            FontFamily="Cambria"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
 
             </StackPanel>
         </RelativePanel>
@@ -63,30 +87,14 @@
                                        FontSize="24"
                                        Text="&#x1F3E1;"
                                        HorizontalAlignment="Left"/>
-                                <TextBlock Text="Home"
+                                <TextBlock Text="Hem"
                                        FontFamily="Cambria"
                                        FontSize="13"
                                        Margin="20,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem
-                            x:Name="TakeExamListBoxitem"
-                            Background="Transparent">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe UI Emoji"
-                                       FontSize="22"
-                                       Text="&#x270F;"
-                                       HorizontalAlignment="Left"
-                                       Margin="3,0,0,0"/>
-                                <TextBlock Text="Take&#x0a;Exam"    
-                                       FontFamily="Cambria"
-                                       FontSize="13"
-                                       Margin="20,0,0,0"
-                                       VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                     
+                                             
                         <ListBoxItem
                             x:Name="ExitListBoxitem"
                             Background="Transparent">
@@ -95,7 +103,7 @@
                                        FontSize="24"
                                        Text="&#x1F6AA;"
                                        HorizontalAlignment="Left"/>
-                                <TextBlock Text="Exit"
+                                <TextBlock Text="Avsluta"
                                        FontFamily="Cambria"
                                        FontSize="13"
                                        Margin="26,0,0,0"

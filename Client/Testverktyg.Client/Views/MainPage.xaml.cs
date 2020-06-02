@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Testverktyg.Client.Services;
 using Testverktyg.Client.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -24,6 +26,8 @@ namespace Testverktyg.Client
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private UserService userService = new UserService();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -31,18 +35,59 @@ namespace Testverktyg.Client
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
+            string userName = UserNameTextBox.Text;
+            string password = PasswordTextBox.Password;
+
             if (RadioButtonTeacher.IsChecked == true)
             {
-                this.Frame.Navigate(typeof(SplitViewMenu));
+                try
+                {
+                    var teacher = await userService.GetTeacher(userName, password);
+
+                    if (teacher == null)
+                    {
+                        await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    }
+                    else
+                    {
+                        this.Frame.Navigate(typeof(SplitViewMenu), teacher);
+                    }
+                }
+                catch(System.Net.Http.HttpRequestException ex)
+                {
+                    await DisplayError($"{ex.Message}\nNågot blev fel");
+                }
             }
             else if (RadioButtonStudent.IsChecked == true)
             {
-                this.Frame.Navigate(typeof(SplitViewMenuStudent));
+                try
+                {
+                    var student = await userService.GetStudent(userName, password);
+
+                    if (student == null)
+                    {
+                        await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    }
+                    else
+                    {
+                        this.Frame.Navigate(typeof(SplitViewMenuStudent), student);
+                    }
+                }
+                catch (System.Net.Http.HttpRequestException ex)
+                {
+                    await DisplayError($"{ex.Message}\nNågot blev fel");
+                }
             }
             else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
             {
-                await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+                await DisplayError("Du måste välja lärare eller student");
             }
+                       
+        }
+
+        private async Task DisplayError(string message)
+        {
+            await new MessageDialog(message).ShowAsync();
         }
     }
 }

@@ -51,7 +51,8 @@
             Text="Kommande prov" 
             TextWrapping="Wrap" 
             VerticalAlignment="Bottom" 
-            FontSize="32"/>
+            FontSize="32"
+            FontFamily="Cambria"/>
         <TextBox 
             x:Name="Search1TextBox" 
             Grid.Column="5" 
@@ -61,6 +62,7 @@
             VerticalAlignment="Bottom" 
             PlaceholderText="Sök" 
             Height="30" 
+            FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2"/>
 
@@ -75,7 +77,8 @@
             Text="Avslutade prov"                 
             TextWrapping="Wrap" 
             VerticalAlignment="Bottom" 
-            FontSize="32"/>
+            FontSize="32"
+            FontFamily="Cambria"/>
         <TextBox 
             x:Name="Search2TextBox" 
             Grid.Column="12" 
@@ -85,6 +88,7 @@
             VerticalAlignment="Bottom" 
             PlaceholderText="Sök" 
             Height="30"
+            FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2"/>
 
@@ -93,7 +97,8 @@
             Grid.ColumnSpan="5" 
             Grid.Row="2" 
             Grid.RowSpan="5" 
-            Background="LightGray" 
+            Background="LightGray"
+            FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2">
             <ListView.ItemTemplate>
@@ -119,7 +124,8 @@
                   Grid.RowSpan="3" 
                   Background="LightGray" 
                   BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                  BorderThickness="2">
+                  BorderThickness="2"
+                  FontFamily="Cambria">
             <ListView.ItemTemplate>
                 <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -143,6 +149,7 @@
                 CornerRadius="5" 
                 HorizontalAlignment="Left" 
                 FontSize="20" 
+                FontFamily="Cambria"
                 Margin="0,20,10,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                 BorderThickness="2" 
@@ -153,6 +160,7 @@
                 Height="40" 
                 Width="180" 
                 CornerRadius="5" 
+                FontFamily="Cambria"
                 HorizontalAlignment="Left" 
                 FontSize="20" 
                 Margin="10,20,0,0" 
@@ -167,6 +175,8 @@
                 CornerRadius="5" 
                 HorizontalAlignment="Right" 
                 FontSize="20" 
+                Foreground="White"
+                FontFamily="Cambria"
                 Margin="20,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                 BorderThickness="2" 
@@ -189,6 +199,7 @@
             CornerRadius="5"  
             HorizontalAlignment="Right" 
             FontSize="20" 
+            FontFamily="Cambria"
             Margin="0,20,10,0" 
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
             BorderThickness="2" 
@@ -201,6 +212,7 @@
                 CornerRadius="5"  
                 HorizontalAlignment="Right" 
                 FontSize="20" 
+                FontFamily="Cambria"
                 Margin="10,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                 BorderThickness="2" 
@@ -213,16 +225,13 @@
                 CornerRadius="5" 
                 HorizontalAlignment="Right" 
                 FontSize="20" 
+                FontFamily="Cambria"
+                Foreground="White"
                 Margin="20,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                 BorderThickness="2" 
                 Background="#990000"
                 Click="Remove2Button_Click"/>
-
         </StackPanel>
-
-
-
-
     </Grid>
 </Page>

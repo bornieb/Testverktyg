@@ -43,7 +43,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Skapa prov" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="40" />
+        <TextBlock Text="Skapa prov" 
+                   Grid.Column="1" 
+                   Grid.ColumnSpan="4"
+                   VerticalAlignment="Center" 
+                   FontSize="40"
+                   FontFamily="Cambria"/>
 
         <ComboBox 
             x:Name="CourseDropDown"
@@ -52,6 +57,7 @@
             Grid.Row="1"
             VerticalAlignment="Top"
             HorizontalAlignment="Stretch"
+            FontFamily="Cambria"
             PlaceholderText="Välj ämne"
             ItemsSource="{x:Bind createExamViewModel.ListOfCourses}"
             >
@@ -71,7 +77,8 @@
             Grid.Row="1"
             VerticalAlignment="Center"
              HorizontalAlignment="Stretch"
-            PlaceholderText="Välj provtyp">
+            PlaceholderText="Välj provtyp"
+            FontFamily="Cambria">
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="local1:QuestionType">
                     <TextBlock Text="{Binding }"></TextBlock>
@@ -86,10 +93,20 @@
                  VerticalAlignment="Bottom"
                  PlaceholderText="Sökord"
                  TextWrapping="Wrap" 
-
+                 FontFamily="Cambria"                
                  />
 
-        <Button x:Name="SearchBtn" Content="Sök" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+        <Button 
+            x:Name="SearchBtn" 
+            Content="Sök" 
+            Grid.Row="1"
+            Grid.Column="4" 
+            Width="70"
+            Margin="35,0,0,0"
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Bottom"
+            FontFamily="Cambria"
+            />
 
             <ListView x:Name="QuestionTextBox" 
                 Grid.Column="1"
@@ -98,34 +115,77 @@
                  Grid.Row="2" 
                  HorizontalAlignment="Stretch" 
                  Background="LightGray"
-                 Margin="10"
+                 Margin="0,10,0,0"
                  ItemsSource="{x:Bind createExamViewModel.ListOfQuestions}" 
-                  >
+                 FontFamily="Cambria">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:Question">
-                        <TextBlock Text="{Binding QuestionText}"></TextBlock>
+                        <TextBlock Text="{Binding QuestionText}"
+                                   FontFamily="Cambria"></TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-        <Button x:Name="AddToQCart" Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Lägg till fråga" Width="100" Height="37" CornerRadius="10" Background="Green" Foreground="White" FontSize="12" Click="AddToQCart_Click"></Button>
+        <Button 
+            x:Name="AddToQCart" 
+            Grid.Row="4" 
+            Grid.Column="6" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Top" 
+            Content="Lägg till fråga" 
+            Width="100" 
+            Height="37" 
+            CornerRadius="10" 
+            Background="Green" 
+            Foreground="White" 
+            FontSize="12" 
+            FontFamily="Cambria"
+            Click="AddToQCart_Click"></Button>
 
-        <StackPanel Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Vertical">
+        <StackPanel 
+            Grid.Row="6" 
+            Grid.RowSpan="2" 
+            Grid.Column="1" 
+            Grid.ColumnSpan="3" 
+            Orientation="Vertical">
 
-            <TextBlock Text="Prov" FontSize="30"/>
+            <TextBlock Text="Prov"
+                       FontSize="30"
+                       FontFamily="Cambria"/>
             <TextBlock></TextBlock>
-            <DatePicker x:Name="ExamDatePicker"  HorizontalAlignment="Stretch"/>
+            <DatePicker 
+                x:Name="ExamDatePicker" 
+                HorizontalAlignment="Stretch"
+                FontFamily="Cambria"/>
             <TextBlock></TextBlock>
-            <TimePicker x:Name="ExamStartTimePicker"  HorizontalAlignment="Stretch"></TimePicker>
+            <TimePicker 
+                x:Name="ExamStartTimePicker"  
+                HorizontalAlignment="Stretch"
+                FontFamily="Cambria"
+                ></TimePicker>
             <TextBlock></TextBlock>
-            <TextBox x:Name="TimeLimitTextBox" PlaceholderText="Provtid i minuter"  HorizontalAlignment="Stretch"/>
+            <TextBox 
+                x:Name="TimeLimitTextBox" 
+                PlaceholderText="Provtid i minuter"  
+                HorizontalAlignment="Stretch"
+                FontFamily="Cambria"/>
             <!--<TextBlock Text="Slutdatum"/>
             <DatePicker x:Name="ExamEndDatePicker"/>
             <TimePicker x:Name="ExamEndTime"></TimePicker>-->
         </StackPanel>
 
 
-        <TextBox x:Name="SubjectTextBox" Grid.Row="1" Grid.RowSpan="1" Grid.Column="9" Grid.ColumnSpan="2" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" PlaceholderText="Namnge prov" />
+        <TextBox 
+            x:Name="SubjectTextBox" 
+            Grid.Row="1" 
+            Grid.RowSpan="1" 
+            Grid.Column="9" 
+            Grid.ColumnSpan="2"
+            Width="250" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center"
+            PlaceholderText="Namnge prov"
+            FontFamily="Cambria"/>
 
         <ComboBox x:Name="ClassDropDown" 
                   Grid.Row="1" Grid.RowSpan="1" 
@@ -135,19 +195,42 @@
                   HorizontalAlignment="Right" 
                   VerticalAlignment="Center"  
                   PlaceholderText="Klass"
+                  FontFamily="Cambria"
                   ItemsSource="{x:Bind createExamViewModel.ListOfClasses}"
                   >
 
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding ClassName}"></TextBlock>
+                    <TextBlock Text="{Binding ClassName}"
+                               FontFamily="Cambria">
+                    </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <TextBlock x:Name="AmountOfQTextBlock" Text="Antal frågor: " x:DefaultBindMode="TwoWay" Grid.Row="1" Grid.RowSpan="1" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="25"></TextBlock>
+        <TextBlock 
+            x:Name="AmountOfQTextBlock" 
+            Text="Antal frågor: " 
+            x:DefaultBindMode="TwoWay" 
+            Grid.Row="1" 
+            Grid.RowSpan="1" 
+            Grid.Column="11" 
+            Grid.ColumnSpan="2" 
+            VerticalAlignment="Bottom" 
+            FontSize="25"
+            FontFamily="Cambria">
+        </TextBlock>
 
-        <ListView x:Name="QuestionCartListView" FontSize="30" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="2" Grid.RowSpan="5" Background="LightGray" ItemsSource="{x:Bind createExamViewModel.QuestionCart}">
+        <ListView 
+            x:Name="QuestionCartListView" 
+            FontSize="30"
+            FontFamily="Cambria"
+            Grid.Column="9"
+            Grid.ColumnSpan="4" 
+            Grid.Row="2" 
+            Grid.RowSpan="5" 
+            Background="LightGray" 
+            ItemsSource="{x:Bind createExamViewModel.QuestionCart}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -162,25 +245,80 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding QuestionText}"></TextBlock>
-                            <TextBlock Text="{Binding QuestionType}"></TextBlock>
-                            <TextBlock Text="{Binding Alternatives}"></TextBlock>
-                            <TextBlock Text="{Binding Keywords}"></TextBlock>
+                            <TextBlock Text="{Binding QuestionText}"
+                                       FontFamily="Cambria">
+                            </TextBlock>
+                            <TextBlock Text="{Binding QuestionType}"
+                                       FontFamily="Cambria">
+                            </TextBlock>
+                           
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <Button x:Name="RemoveQuestionBtn" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Center" Click="RemoveQuestionBtn_Click"/>
+                            <Button 
+                                x:Name="RemoveQuestionBtn" 
+                                FontFamily="Cambria"
+                                Content="-" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Center" 
+                                Click="RemoveQuestionBtn_Click"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock x:Name="TotalPointsTextBlock" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="7" Text="Maxpoäng: " FontSize="20"></TextBlock>
-        <TextBox x:Name="GradeScaleTextBox" Grid.Column="9" Grid.ColumnSpan="4" Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Top" PlaceholderText="Betygsgräns" Width="200"></TextBox>
+        <TextBlock 
+            x:Name="TotalPointsTextBlock" 
+            Grid.Column="9" 
+            Grid.ColumnSpan="4" 
+            Grid.Row="7"
+            Text="Maxpoäng: " 
+            FontSize="20"
+            FontFamily="Cambria">
+        </TextBlock>
+        <TextBox 
+            x:Name="GradeScaleTextBox" 
+            Grid.Column="9" 
+            Grid.ColumnSpan="4" 
+            Grid.Row="7" 
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Top" 
+            PlaceholderText="Betygsgräns"
+            FontFamily="Cambria"
+            Width="200">
+        </TextBox>
 
-
-        <Button x:Name="CreateExamBtn" Grid.Row="8" Grid.Column="11" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Skapa prov" Width="200" Height="75" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Click="CreateExamBtn_Click"></Button>
-        <Button x:Name="ClearFormBtn" Grid.Row="8" Grid.Column="9" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Rensa fält" Width="200" Height="75" CornerRadius="25" Background="#990000" Foreground="White" FontSize="30"></Button>
-
-        <TextBlock x:Name="CheckValues" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="8" FontSize="20" Text="TEXTBLOCK" ></TextBlock>
+        <Button 
+            x:Name="CreateExamBtn"
+            Grid.Row="8"
+            Grid.Column="11" 
+            Grid.ColumnSpan="2" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Right"
+            Content="Skapa prov"
+            Width="200" 
+            Height="75" 
+            CornerRadius="25" 
+            Background="Green" 
+            Foreground="White" 
+            FontSize="30" 
+            FontFamily="Cambria"
+            Click="CreateExamBtn_Click">
+        </Button>
+        <Button 
+            x:Name="ClearFormBtn"
+            Grid.Row="8"
+            Grid.Column="9" 
+            Grid.ColumnSpan="2" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Left"
+            Content="Rensa fält" 
+            Width="200" 
+            Height="75" 
+            CornerRadius="25"
+            Background="#990000" 
+            Foreground="White"
+            FontSize="30"
+            FontFamily="Cambria">
+        </Button>
     </Grid>
 </Page>

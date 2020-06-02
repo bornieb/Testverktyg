@@ -28,6 +28,15 @@ namespace TestverktygAPI.Controllers
             return await _context.Student.ToListAsync();
         }
 
+        [HttpGet("checkstudent")]
+        public ActionResult<Student> GetStudent(string userName, string password)
+        {
+            var student = _context.Student
+                .Where(s => s.UserNameEmail == userName && s.PassWord == password)
+                .FirstOrDefault();
+            return student;
+        }
+
         // GET: api/Student/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Student>> GetStudent(int id)
@@ -106,5 +115,7 @@ namespace TestverktygAPI.Controllers
         {
             return _context.Student.Any(e => e.UserId == id);
         }
+
+       
     }
 }

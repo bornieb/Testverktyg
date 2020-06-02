@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
 using Windows.UI.Popups;
+using Testverktyg.Client.ViewModels;
 
 namespace Testverktyg.Client.Services
 {
@@ -26,41 +27,30 @@ namespace Testverktyg.Client.Services
 
         public async Task PostExam(Exam exam)
         {
-            //var jsonExam1 = JsonConvert.SerializeObject(exam);
-            //var webClient = new WebClient();
-            //webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
-            //var response = webClient.UploadString(url, "POST", jsonExam1);
-
             var jsonExam = JsonConvert.SerializeObject(exam);
             HttpContent httpContent = new StringContent(jsonExam);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var jsonExamDB = await httpClient.PostAsync(url, httpContent);
-
-
-            //OUTPUT FÖR ATT KOLLA JSON
-            //MessageDialog msg = new MessageDialog(jsonExam1);
-            //await msg.ShowAsync();
-            //MessageDialog msg1 = new MessageDialog(response);
-            //await msg1.ShowAsync();
-            MessageDialog msg2 = new MessageDialog(jsonExam);
-            await msg2.ShowAsync();
-            MessageDialog msg3 = new MessageDialog(jsonExamDB.ToString());
-            await msg3.ShowAsync();
-
-
         }
-        public async Task<List<Exam>> GetExam()
+      
+        public List<Exam> GetStudentExams(int studentId, ExamStatus examStatus)
+        {
+            var requestUrl = $"{url}/student/{studentId}/{examStatus}";
+            var jsonExams = webClient.DownloadString(requestUrl);
+            var exams = JsonConvert.DeserializeObject<List<Exam>>(jsonExams);
+            return exams;
+        }
+        
+        public static async Task<List<Exam>> GetExamAsync()
         {
             var exams = new List<Exam>();
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage responseMessage;
-                responseMessage = await client.GetAsync($"{url}");
-                string examString;
-                examString = await responseMessage.Content.ReadAsStringAsync();
+                HttpResponseMessage responseMessage = await client.GetAsync($"{url}");
+                string examString = await responseMessage.Content.ReadAsStringAsync();
                 exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
                 return exams;
             }
-        }
+        }              
     }
 }

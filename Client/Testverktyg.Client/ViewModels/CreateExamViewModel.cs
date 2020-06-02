@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
 using Testverktyg.Client.Services;
+using Windows.UI.Popups;
+using Windows.UI.Text.Core;
 
 namespace Testverktyg.Client.ViewModels
 {
@@ -30,9 +32,17 @@ namespace Testverktyg.Client.ViewModels
             exam = new Exam();
         }
 
-        public void AddQuestion(Question question)
+        public async Task AddQuestionAsync(Question question)
         {
-            QuestionCart.Add(question);
+
+            if (QuestionCart.Contains(question))
+            {
+                await new MessageDialog("Frågan existerar redan i provet du vill skapa, vänligen välj en ny fråga.").ShowAsync();
+            }
+            else
+            {
+                QuestionCart.Add(question);
+            }
         }
 
         public void RemoveQuestion(Question question)
@@ -65,6 +75,31 @@ namespace Testverktyg.Client.ViewModels
             {
                 ListOfCourses.Add(course);
             }
+        }
+
+        public bool ValidateDateField(DateTime dateTime)
+        {
+            bool success = false;
+
+            if(DateTime.TryParse(dateTime.ToString(), out DateTime result))
+            {
+                success = true;
+            }
+            else
+            {
+                return success;
+            }
+            return success;
+        }
+
+        public bool ValidateTimeSpan(string timeSpan)
+        {
+            bool success = false;
+            if(int.TryParse(timeSpan, out int result))
+            {
+                success = true;
+            }
+            return success;
         }
 
         public async Task CreateExamAsync(Exam exam)

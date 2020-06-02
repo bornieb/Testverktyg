@@ -12,7 +12,6 @@ namespace TestverktygAPI.Models
         public int QuestionId { get; set; }
         [JsonIgnore]
         public virtual Exam Exam { get; set; }
-        [JsonIgnore]
         public virtual Question Question { get; set; }
     }
 }

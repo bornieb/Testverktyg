@@ -25,8 +25,79 @@ namespace TestverktygAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Exam>>> GetExam()
         {
-            return await _context.Exam.ToListAsync();
+            var result = await _context.Exam.Include(e => e.ExamQuestions)//Questionlista
+            .ThenInclude(eq => eq.Question)//Question
+            .Select(e => new
+            {
+            e.ExamId,
+            e.ClassId,
+            e.ExamDate,
+            e.ExamTimeSpan,
+            e.Subject,
+            e.TotalPoints,
+            e.GradeScale,
+            e.CurrentQuestion,
+            e.ExamResult,
+            e.ExamStatus,
+            e.ExamType,
+            question = e.ExamQuestions.Select
+            (eq => new
+            {
+                eq.Question.QuestionId,
+                eq.Question.CourseId,
+                eq.Question.GradeLevel,
+                eq.Question.QuestionText,
+                eq.Question.QuestionType,
+                //eq.Question.QuestionValue,
+                eq.Question.StudentsFreeAnswer,
+            }
+            )
+            }).ToListAsync();
+
+            return Ok(result);
+            //return await _context.Exam.ToListAsync();
         }
+
+        [HttpGet("student/{studentId}/{status}")]
+        public async Task<ActionResult<IEnumerable<Exam>>> GetStudentExams(int studentId, ExamStatus status)
+        {
+            var student = await _context.Student.FindAsync(studentId);
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            var exams = await _context.Exam
+                .Include(e => e.ExamQuestions)
+                    .ThenInclude(eq => eq.Question)
+                        .ThenInclude(q => q.Alternatives)
+                .Include(e => e.ExamQuestions)
+                    .ThenInclude(eq => eq.Question)
+                        .ThenInclude(q => q.Keywords)
+                .Where(e => e.ClassId == student.ClassId && e.ExamStatus == status)
+                .ToListAsync();
+
+            foreach(var exam in exams)
+            {
+                exam.Questions = exam.ExamQuestions.Select(eq => eq.Question).ToList();
+
+                foreach (var alt in exam.Questions)
+                {
+                    alt.Alternatives.ToList();
+                }
+                exam.ExamQuestions.Clear();
+            }
+
+            
+
+            return exams;
+
+            //var result = await _context.Exam.Include(e => e.ExamQuestions)
+            //    .ThenInclude(eq => eq.Question)
+            //    .Select()
+        }
+            
 
         // GET: api/Exam/5
         [HttpGet("{id}")]
