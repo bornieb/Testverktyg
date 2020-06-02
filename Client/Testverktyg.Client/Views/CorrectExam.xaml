@@ -64,10 +64,27 @@
         <ListView x:Name="QuestionListView" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="12" Grid.RowSpan="5" Background="White" ItemsSource="{x:Bind correctExamViewModel.ListOfExams}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Exam" >
-                    <StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="12" Grid.RowSpan="5">
                         <TextBlock Text="{x:Bind ExamDate}"/>
                         <TextBlock Text="{x:Bind Subject}"/>
-      
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <TextBox x:Name="PointsTextBox" PlaceholderText="Poäng" />
+                                <TextBlock Text="/" />
+                                <TextBlock Text="5" />
+                                <Button x:Name="GradeDoneButton" Content="Klar" HorizontalAlignment="Right" />
+
+                                <StackPanel Orientation="Horizontal" Spacing="5">
+                                    <TextBox PlaceholderText="Kommentar"/>
+                                    <Button Content="Klar"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                            
+                            
+                        </StackPanel>
+                        
+                        
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -83,12 +100,22 @@
 
         </ListView>
 
-        <Border Background="White" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3">
-            <TextBlock  />
-        </Border>
+        <!--<Border Background="White" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3">
+            <TextBlock x:Name="PointsTextBlock" />
+        </Border>-->
 
-        <Button  VerticalAlignment="Center" HorizontalAlignment="Right" Content="Klar" Width="270" Height="90" CornerRadius="25" Background="Green" Foreground="White" FontSize="30" Grid.Row="7" Grid.Column="11" Grid.ColumnSpan="2"></Button>
-        <Button  VerticalAlignment="Center" HorizontalAlignment="Right" Content="Ångra" Width="270" Height="90" CornerRadius="25" Background="Red" Foreground="White" FontSize="30" Grid.Row="7" Grid.Column="9" Grid.ColumnSpan="2"></Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Spacing="3">
+            <Button x:Name="AButton" Content="A" HorizontalAlignment="Right" Height="60" Width="60" FontSize="30"/>
+            <Button x:Name="BButton" Content="B" HorizontalAlignment="Right" Height="60" Width="60" FontSize="30"/>
+            <Button x:Name="CButton" Content="C" HorizontalAlignment="Right" Height="60" Width="60" FontSize="30"/>
+            <Button x:Name="DButton" Content="D" HorizontalAlignment="Right" Height="60" Width="60" FontSize="30"/>
+            <Button x:Name="EButton" Content="E" HorizontalAlignment="Right" Height="60" Width="60" FontSize="30"/>
+            <Button x:Name="FButton" Content="F" HorizontalAlignment="Right" Height="60" Width="60" FontSize="30"/>
+            <Button x:Name="GradeDoneButton" Content="Klar" HorizontalAlignment="Right" Height="70" Width="120" FontSize="30" Background="GreenYellow"/>
+        </StackPanel>
+
+        <Button  VerticalAlignment="Center" HorizontalAlignment="Right" Content="Klar" Width="270" Height="90" CornerRadius="25" Background="LightBlue" Foreground="Black" FontSize="30" Grid.Row="7" Grid.Column="11" Grid.ColumnSpan="2"></Button>
+
 
 
 
