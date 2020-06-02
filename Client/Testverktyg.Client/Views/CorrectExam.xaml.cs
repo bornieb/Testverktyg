@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Testverktyg.Client.Models;
+using Testverktyg.Client.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -23,7 +24,7 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CorrectExam : Page
     {
-
+        CorrectExamViewModel correctExamViewModel;
         private Teacher _teacher;
         
         public CorrectExam()

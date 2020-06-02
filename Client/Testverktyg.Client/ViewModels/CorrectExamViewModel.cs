@@ -20,7 +20,7 @@ namespace Testverktyg.Client.ViewModels
 
         public async void GetExams()
         {
-            var exams = await examService.GetExam();
+            var exams = await ExamService.GetExamAsync();
             foreach (var item in exams)
             {
                 ListOfExams.Add(item);
