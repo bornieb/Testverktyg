@@ -55,13 +55,7 @@ namespace Testverktyg.Client.Views
 
         private void SplitViewMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (TakeExamListBoxitem.IsSelected)
-            {
-                PageFrame.Navigate(typeof(TakeExam), _student);
-                TitleTextblock.Text = "Prov";
-            }
-        
-            else if (HomeListBoxItem.IsSelected)
+            if (HomeListBoxItem.IsSelected)
             {
                 PageFrame.Navigate(typeof(StudentOverview), _student);
                 TitleTextblock.Text = "Välkommen";

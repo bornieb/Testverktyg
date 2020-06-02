@@ -129,6 +129,7 @@
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem
+
                             x:Name="CorrectExamListBoxItem"
                             Background="Transparent">
                             <StackPanel Orientation="Horizontal">

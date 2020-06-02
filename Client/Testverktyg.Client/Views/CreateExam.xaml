@@ -106,7 +106,7 @@
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Bottom"
             FontFamily="Cambria"
-            Click="SearchBtn_Click"/>
+            />
 
             <ListView x:Name="QuestionTextBox" 
                 Grid.Column="1"
@@ -251,12 +251,7 @@
                             <TextBlock Text="{Binding QuestionType}"
                                        FontFamily="Cambria">
                             </TextBlock>
-                            <TextBlock Text="{Binding Alternatives}"
-                                       FontFamily="Cambria">
-                            </TextBlock>
-                            <TextBlock Text="{Binding Keywords}"
-                                       FontFamily="Cambria">
-                            </TextBlock>
+                           
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <Button 

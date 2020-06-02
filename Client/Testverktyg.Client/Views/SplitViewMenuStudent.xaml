@@ -94,23 +94,7 @@
                                        VerticalAlignment="Center"/>
                             </StackPanel>
                         </ListBoxItem>
-                        <ListBoxItem
-                            x:Name="TakeExamListBoxitem"
-                            Background="Transparent">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe UI Emoji"
-                                       FontSize="22"
-                                       Text="&#x270F;"
-                                       HorizontalAlignment="Left"
-                                       Margin="3,0,0,0"/>
-                                <TextBlock Text="Gör&#x0a;prov"    
-                                       FontFamily="Cambria"
-                                       FontSize="13"
-                                       Margin="20,0,0,0"
-                                       VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </ListBoxItem>
-                     
+                                             
                         <ListBoxItem
                             x:Name="ExitListBoxitem"
                             Background="Transparent">

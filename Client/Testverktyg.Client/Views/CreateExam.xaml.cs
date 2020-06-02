@@ -18,6 +18,7 @@ using Testverktyg.Client.Services;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections.ObjectModel;
 using Windows.UI.Popups;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -52,58 +53,149 @@ namespace Testverktyg.Client.Views
 
         private async void CreateExamBtn_Click(object sender, RoutedEventArgs e)
         {
+            #region
+            bool validClass = false;
+            bool validDate = false;
+            bool validTimeSpan = false;
+            bool validSubject = false;
+            bool validQuestion = false;
+            bool validGradeS = false;
+            #endregion
 
             Exam exam = new Exam();
 
-            exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
-
-            exam.ExamDate = new DateTime(ExamDatePicker.Date.Year, ExamDatePicker.Date.Month, ExamDatePicker.Date.Day,
-            ExamStartTimePicker.Time.Hours, ExamStartTimePicker.Time.Minutes, ExamStartTimePicker.Time.Seconds);
-
-            int examTimeSpan = Convert.ToInt32(TimeLimitTextBox.Text);
-
-            if (examTimeSpan < 60)
+            #region
+            if((Class)ClassDropDown.SelectedValue != null)
             {
-                exam.ExamTimeSpan = new TimeSpan(0, examTimeSpan, 0);
+                exam.ClassId = ((Class)ClassDropDown.SelectedValue).ClassId;
+                validClass = true;
             }
             else
             {
-                int hours = examTimeSpan / 60;
-                int minutes = examTimeSpan % 60;
-                exam.ExamTimeSpan = new TimeSpan(hours, minutes, 0);
+                await DisplayError("Vänligen välj en giltig klass.");
+            }
+            
+            DateTime dt = new DateTime(ExamDatePicker.Date.Year, ExamDatePicker.Date.Month, ExamDatePicker.Date.Day,
+            ExamStartTimePicker.Time.Hours, ExamStartTimePicker.Time.Minutes, ExamStartTimePicker.Time.Seconds);
+
+            if (createExamViewModel.ValidateDateField(dt))
+            {
+                exam.ExamDate = dt;
+                validDate = true;
+            }
+            else
+            {
+                await DisplayError("Vänligen välj ett giltigt datum.");
             }
 
-            exam.Subject = SubjectTextBox.Text;
-            exam.TotalPoints = createExamViewModel.QuestionCart.Count;
-            exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
-            exam.GradeScale = Convert.ToInt32(GradeScaleTextBox.Text);
+            if (int.TryParse(TimeLimitTextBox.Text, out int examTimeSpan))
+            {
+
+                if (examTimeSpan < 60)
+                {
+                    exam.ExamTimeSpan = new TimeSpan(0, examTimeSpan, 0);
+                    validTimeSpan = true;
+                }
+                else
+                {
+                    int hours = examTimeSpan / 60;
+                    int minutes = examTimeSpan % 60;
+                    exam.ExamTimeSpan = new TimeSpan(hours, minutes, 0);
+                    validTimeSpan = true;
+                }
+            }
+            else
+            {
+                await DisplayError("Vänligen skriv in en giltig provtid i minuter.");
+            }
+
+            if (!string.IsNullOrEmpty(SubjectTextBox.Text))
+            {
+                exam.Subject = SubjectTextBox.Text;
+                validSubject = true;
+            }
+            else
+            {
+                await DisplayError("Vänligen skriv in en titel till provet.");
+            }
+
+            var duplicateList = createExamViewModel.QuestionCart.GroupBy(x => x)
+                  .Where(g => g.Count() > 1)
+                  .Select(y => y.Key)
+                  .ToList();
+
+            if (createExamViewModel.QuestionCart.Count > 0) 
+            {
+                if (duplicateList.Count > 0)
+                {
+                    await DisplayError("Det existerar två eller fler likadana frågor i provet, vänligen ta bort en och försök igen.");
+                }
+                else
+                {
+                    exam.TotalPoints = createExamViewModel.QuestionCart.Count;
+                    exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
+                    exam.Questions = createExamViewModel.QuestionCart;
+                    validQuestion = true;
+                }
+            }
+            else
+            {
+                await DisplayError("Vänligen lägg in frågor som provet ska innehålla.");
+            }
+
+
+                
+
+
+            if(int.TryParse(GradeScaleTextBox.Text, out int result))
+            {
+                exam.GradeScale = result;
+                validGradeS = true;
+            }
+            else
+            {
+                await DisplayError("Vänligen skriv in en betygsgräns till provet.");
+            }
+
+
             exam.CurrentQuestion = 0;
             exam.ExamResult = 0;
             exam.ExamStatus = ExamStatus.Template;
-            exam.ExamType = ((ExamType)ExamTypeDropDown.SelectedValue);
-            exam.Questions = createExamViewModel.QuestionCart;
 
-            //Skapar provet
-            MessageDialog msg = new MessageDialog("Provet skapat!");
-            await msg.ShowAsync();
+            if(ExamTypeDropDown.SelectedValue != null)
+            {
+                exam.ExamType = (ExamType)ExamTypeDropDown.SelectedValue;
+            }
+            else
+            {
+                await DisplayError("Vänligen välj en provtyp.");
+            }
 
-            string Summary = $"Datum: {exam.ExamDate} Tid: {exam.ExamTimeSpan} Klass: {exam.ClassId} Ämne: {exam.Subject} Maxpoäng: {exam.TotalPoints} Antal frågor: {exam.NumberOfQuestions}" +
-                $"{exam.GradeScale}{exam.ExamResult}{exam.ExamStatus}{exam.ExamType}";
+            #endregion
 
-            MessageDialog sum = new MessageDialog(Summary);
-            await sum.ShowAsync();
+            //Creates the exam
+            if (validClass && validDate && validTimeSpan && validSubject && validQuestion && validGradeS) {
 
 
-            await createExamViewModel.CreateExamAsync(exam);
+                string Summary =    $"Provdatum: {exam.ExamDate.ToString("dddd, dd MMMM yyyy")} \n" +
+                                    $"Provtitel: {SubjectTextBox.Text} \n" +
+                                    $"Antal frågor: {createExamViewModel.QuestionCart.Count} \n" +
+                                    $"Provtid i minuter: {examTimeSpan}";
+
+                await createExamViewModel.CreateExamAsync(exam);
+                await new MessageDialog(Summary, "Provet har skapats!").ShowAsync();
+                createExamViewModel.QuestionCart.Clear();
+                GradeScaleTextBox.Text = "";
+                SubjectTextBox.Text = "";
+                TimeLimitTextBox.Text = "";
+            }
         }
 
-        private void AddToQCart_Click(object sender, RoutedEventArgs e)
+        private async void AddToQCart_Click(object sender, RoutedEventArgs e)
         {
-            createExamViewModel.AddQuestion((Question)QuestionTextBox.SelectedItem);
+            await createExamViewModel.AddQuestionAsync((Question)QuestionTextBox.SelectedItem);
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
-            //AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.exam.NumberOfQuestions}";
-
         }
 
         private void RemoveQuestionBtn_Click(object sender, RoutedEventArgs e)
@@ -114,9 +206,10 @@ namespace Testverktyg.Client.Views
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
         }
 
-        private void SearchBtn_Click(object sender, RoutedEventArgs e)
-        {
 
+        private async Task DisplayError(string message)
+        {
+            await new MessageDialog(message).ShowAsync();
         }
     }
 }
