@@ -251,12 +251,7 @@
                             <TextBlock Text="{Binding QuestionType}"
                                        FontFamily="Cambria">
                             </TextBlock>
-                            <TextBlock Text="{Binding Alternatives}"
-                                       FontFamily="Cambria">
-                            </TextBlock>
-                            <TextBlock Text="{Binding Keywords}"
-                                       FontFamily="Cambria">
-                            </TextBlock>
+                           
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <Button 

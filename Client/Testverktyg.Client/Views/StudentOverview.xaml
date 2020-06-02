@@ -208,25 +208,27 @@
                             <TextBlock 
                      Text="{x:Bind Subject}"
                     FontFamily="Cambria"
-                                Margin="20,0,0,0"/>
+                                Margin="10,0,0,0"/>
+                            
                             <TextBlock
-                                Text="Typ av prov: "
+                                Text="Tid: "
                                 FontFamily="Cambria"
                                 FontWeight="Bold"
-                                Margin="20,0,0,0"/>
-                            <TextBlock 
-                        Text="{x:Bind ExamType}"
-                        FontFamily="Cambria"
-                        Margin="20,0,0,0"/>
+                                Margin="10,0,0,0"/>
+                            <TextBlock
+                                Text="{x:Bind ExamTimeSpan}"
+                                FontFamily="Cambria"
+                                Margin="10,0,0,0"/>
                             <TextBlock
                                 Text="Max poäng: "
                                 FontFamily="Cambria"
                                 FontWeight="Bold"
-                                Margin="20,0,0,0"/>
+                                Margin="10,0,0,0"/>
+                            
                             <TextBlock
                          Text="{x:Bind TotalPoints}"
                                 FontFamily="Cambria"
-                                Margin="20,0,0,0"/>
+                                Margin="10,0,0,0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
