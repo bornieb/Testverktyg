@@ -106,7 +106,7 @@
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Bottom"
             FontFamily="Cambria"
-            Click="SearchBtn_Click"/>
+            />
 
             <ListView x:Name="QuestionTextBox" 
                 Grid.Column="1"
