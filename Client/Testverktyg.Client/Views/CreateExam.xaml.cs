@@ -176,8 +176,8 @@ namespace Testverktyg.Client.Views
                                     $"Antal frågor: {createExamViewModel.QuestionCart.Count} \n" +
                                     $"Provtid i minuter: {examTimeSpan}";
 
-                await new MessageDialog(Summary, "Provet har skapats!").ShowAsync();
                 await createExamViewModel.CreateExamAsync(exam);
+                await new MessageDialog(Summary, "Provet har skapats!").ShowAsync();
                 createExamViewModel.QuestionCart.Clear();
                 GradeScaleTextBox.Text = "";
                 SubjectTextBox.Text = "";
