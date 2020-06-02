@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Testverktyg.Client.Services;
 using Testverktyg.Client.Views;
 using Windows.Foundation;
@@ -35,25 +36,58 @@ namespace Testverktyg.Client
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
             string userName = UserNameTextBox.Text;
-            string password = PasswordTextBox.Text;
+            string password = PasswordTextBox.Password;
 
-            var user = await userService.GetUser(userName, password);
-
-            if (user != null)
+            if (RadioButtonTeacher.IsChecked == true)
             {
-                if (RadioButtonTeacher.IsChecked == true)
+                try
                 {
-                    this.Frame.Navigate(typeof(SplitViewMenu));
+                    var teacher = await userService.GetTeacher(userName, password);
+
+                    if (teacher == null)
+                    {
+                        await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    }
+                    else
+                    {
+                        this.Frame.Navigate(typeof(SplitViewMenu), teacher);
+                    }
                 }
-                else if (RadioButtonStudent.IsChecked == true)
+                catch(System.Net.Http.HttpRequestException ex)
                 {
-                    this.Frame.Navigate(typeof(SplitViewMenuStudent));
-                }
-                else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
-                {
-                    await new MessageDialog("You have to choose either Teacher or Student").ShowAsync();
+                    await DisplayError($"{ex.Message}\nNågot blev fel");
                 }
             }
+            else if (RadioButtonStudent.IsChecked == true)
+            {
+                try
+                {
+                    var student = await userService.GetStudent(userName, password);
+
+                    if (student == null)
+                    {
+                        await DisplayError("Kunde inte logga in. Kontrollera uppgifterna och försök igen.");
+                    }
+                    else
+                    {
+                        this.Frame.Navigate(typeof(SplitViewMenuStudent), student);
+                    }
+                }
+                catch (System.Net.Http.HttpRequestException ex)
+                {
+                    await DisplayError($"{ex.Message}\nNågot blev fel");
+                }
+            }
+            else if (RadioButtonStudent.IsChecked == false && RadioButtonTeacher.IsChecked == false)
+            {
+                await DisplayError("Du måste välja lärare eller student");
+            }
+                       
+        }
+
+        private async Task DisplayError(string message)
+        {
+            await new MessageDialog(message).ShowAsync();
         }
     }
 }

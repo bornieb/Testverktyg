@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
 using Windows.UI.Popups;
+using Testverktyg.Client.ViewModels;
 
 namespace Testverktyg.Client.Services
 {
@@ -47,5 +48,25 @@ namespace Testverktyg.Client.Services
             MessageDialog msg3 = new MessageDialog(jsonExamDB.ToString());
             await msg3.ShowAsync();
         }
+
+        public List<Exam> GetStudentExams(int studentId, ExamStatus examStatus)
+        {
+            var requestUrl = $"{url}/student/{studentId}/{examStatus}";
+            var jsonExams = webClient.DownloadString(requestUrl);
+            var exams = JsonConvert.DeserializeObject<List<Exam>>(jsonExams);
+            return exams;
+        }
+        
+        public static async Task<List<Exam>> GetExamAsync()
+        {
+            var exams = new List<Exam>();
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage responseMessage = await client.GetAsync($"{url}");
+                string examString = await responseMessage.Content.ReadAsStringAsync();
+                exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
+                return exams;
+            }
+        }              
     }
 }

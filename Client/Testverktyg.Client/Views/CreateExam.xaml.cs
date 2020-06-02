@@ -30,6 +30,8 @@ namespace Testverktyg.Client.Views
     public sealed partial class CreateExam : Page
     {
         CreateExamViewModel createExamViewModel;
+        private Teacher _teacher;
+
         public CreateExam()
         {
             this.InitializeComponent();
@@ -43,6 +45,12 @@ namespace Testverktyg.Client.Views
             createExamViewModel.GetQuestions();
             ExamTypeDropDown.ItemsSource = Enum.GetValues(typeof(ExamType));
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _teacher = (Teacher)e.Parameter;
+        }
+
         private async void CreateExamBtn_Click(object sender, RoutedEventArgs e)
         {
             #region
@@ -111,8 +119,6 @@ namespace Testverktyg.Client.Views
                 await DisplayError("Vänligen skriv in en titel till provet.");
             }
 
-
-            //Denna lösningen eller den andra? Contains
             var duplicateList = createExamViewModel.QuestionCart.GroupBy(x => x)
                   .Where(g => g.Count() > 1)
                   .Select(y => y.Key)
@@ -199,6 +205,7 @@ namespace Testverktyg.Client.Views
             AmountOfQTextBlock.Text = $"Antal frågor: {createExamViewModel.QuestionCart.Count}";
             TotalPointsTextBlock.Text = $"Maxpoäng: {createExamViewModel.QuestionCart.Count}";
         }
+
 
         private async Task DisplayError(string message)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Testverktyg.Client.Models;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,10 +23,11 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class SplitViewMenu : Page
     {
+        private Teacher _teacher;
+
         public SplitViewMenu()
         {
             this.InitializeComponent();
-            PageFrame.Navigate(typeof(TeacherOverview));
         }
 
         private void CollapseButton_Click(object sender, RoutedEventArgs e)
@@ -42,26 +44,32 @@ namespace Testverktyg.Client.Views
             }
         }
 
-       
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _teacher = (Teacher)e.Parameter;
+            PageFrame.Navigate(typeof(TeacherOverview), _teacher);
+        }
+
         private void SplitViewMenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(CreateQuestionListBoxitem.IsSelected)
             {
-                PageFrame.Navigate(typeof(CreateQuestion));
-                TitleTextblock.Text = "Create question";
+                PageFrame.Navigate(typeof(CreateQuestion), _teacher);
+                TitleTextblock.Text = "Skapa fråga";
             }
             else if(CreateExamListBoxitem.IsSelected)
             {
-                PageFrame.Navigate(typeof(CreateExam));
-                TitleTextblock.Text = "Create Exam";
+                PageFrame.Navigate(typeof(CreateExam), _teacher);
+                TitleTextblock.Text = "Skapa prov";
             }
             else if(HomeListBoxItem.IsSelected)
             {
-                PageFrame.Navigate(typeof(TeacherOverview));
-                TitleTextblock.Text = "Welcome";
+                PageFrame.Navigate(typeof(TeacherOverview), _teacher);
+                TitleTextblock.Text = "Välkommen";
             }
             else if(ExitListBoxitem.IsSelected)
             {
+                _teacher = null;
                 this.Frame.Navigate(typeof(MainPage));
             }
         }
