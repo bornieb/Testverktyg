@@ -67,6 +67,11 @@ namespace Testverktyg.Client.Views
                 PageFrame.Navigate(typeof(TeacherOverview), _teacher);
                 TitleTextblock.Text = "Välkommen";
             }
+            else if (CorrectExamListBoxitem.IsSelected)
+            {
+                PageFrame.Navigate(typeof(CorrectExam));
+                TitleTextblock.Text = "Correct Exam";
+            }
             else if(ExitListBoxitem.IsSelected)
             {
                 _teacher = null;

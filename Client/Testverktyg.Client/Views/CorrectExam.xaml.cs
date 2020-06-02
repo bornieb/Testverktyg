@@ -23,11 +23,24 @@ namespace Testverktyg.Client.Views
     /// </summary>
     public sealed partial class CorrectExam : Page
     {
-        private Teacher _teacher;
 
+        private Teacher _teacher;
+        
         public CorrectExam()
         {
             this.InitializeComponent();
+            correctExamViewModel = new CorrectExamViewModel();
+            Init();
+        }
+
+        public void Init()
+        {
+            correctExamViewModel.GetExams();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -32,7 +32,7 @@ namespace Testverktyg.Client.Services
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var jsonExamDB = await httpClient.PostAsync(url, httpContent);
         }
-
+      
         public List<Exam> GetStudentExams(int studentId, ExamStatus examStatus)
         {
             var requestUrl = $"{url}/student/{studentId}/{examStatus}";
