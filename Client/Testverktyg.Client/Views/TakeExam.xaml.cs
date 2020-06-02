@@ -36,7 +36,7 @@ namespace Testverktyg.Client.Views
         private string placeHolder="";
         private int questionIndex = 0;
         private string currentQuestion { get { return _exam.Questions[questionIndex].QuestionText; } set { value = placeHolder; NotifyPropertyChanged("currentQuestion"); } }
-        public List<Alternative> CurrentQuestionAlternatives;
+        public ObservableCollection<Alternative> CurrentQuestionAlternatives;
         
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -75,15 +75,17 @@ namespace Testverktyg.Client.Views
 
         private void NextQuestionButton_Click(object sender, RoutedEventArgs e)
         {
+            PreviousQuestionButton.Visibility = Visibility.Visible;
             questionIndex++;
             if (questionIndex == _exam.Questions.Count)
             {
                 NextQuestionButton.Visibility = Visibility.Collapsed;
+                
             }
             else
             {
                 currentQuestion = _exam.Questions[questionIndex].QuestionText;
-                NextQuestionButton.Visibility = Visibility.Visible;
+                CurrentTestQuestion(questionIndex);
             }
         }
 
@@ -97,7 +99,7 @@ namespace Testverktyg.Client.Views
 
         private void PreviousQuestionButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            NextQuestionButton.Visibility = Visibility.Visible;
             if (questionIndex == 0)
             {
                 PreviousQuestionButton.Visibility = Visibility.Collapsed;
@@ -106,22 +108,24 @@ namespace Testverktyg.Client.Views
             {
                 questionIndex--;
                 currentQuestion = _exam.Questions[questionIndex].QuestionText;
+                CurrentTestQuestion(questionIndex);
             }
         }
 
         private void Init()
         {
-            CurrentQuestionAlternatives = new List<Alternative>();
+            CurrentQuestionAlternatives = new ObservableCollection<Alternative>();
             
         }
 
         private void CurrentTestQuestion(int questionIndex)
         {
-            
-               foreach (var alt in _exam.Questions[questionIndex].Alternatives)
-               {
+            CurrentQuestionAlternatives.Clear();
+
+            foreach (var alt in _exam.Questions[questionIndex].Alternatives)
+            {
                     CurrentQuestionAlternatives.Add(alt);
-               }
+            }
             
         }
 
@@ -131,17 +135,6 @@ namespace Testverktyg.Client.Views
             await new MessageDialog(message).ShowAsync();
         }
 
-        //private void ExamLogic()
-        //{
-        //    string questionText = "";
-        //    for (int i = 0; i <= _exam.Questions.Count; i++)
-        //    {
-        //        foreach (Question q in _exam.Questions)
-        //        {
-        //            questionText = q.QuestionText;
-        //        }
-        //        QuestionTextBlock.Text = $"{questionText}";
-        //    }
-        //}
+       
     }
 }
