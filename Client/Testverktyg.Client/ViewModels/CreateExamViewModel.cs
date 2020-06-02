@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Testverktyg.Client.Models;
 using Testverktyg.Client.Services;
+using Windows.UI.Popups;
 using Windows.UI.Text.Core;
 
 namespace Testverktyg.Client.ViewModels
@@ -31,9 +32,17 @@ namespace Testverktyg.Client.ViewModels
             exam = new Exam();
         }
 
-        public void AddQuestion(Question question)
+        public async Task AddQuestionAsync(Question question)
         {
-            QuestionCart.Add(question);
+
+            if (QuestionCart.Contains(question))
+            {
+                await new MessageDialog("Frågan existerar redan i provet du vill skapa, vänligen välj en ny fråga.").ShowAsync();
+            }
+            else
+            {
+                QuestionCart.Add(question);
+            }
         }
 
         public void RemoveQuestion(Question question)
