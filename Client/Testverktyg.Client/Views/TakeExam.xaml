@@ -182,6 +182,18 @@
                 FontSize="25"
                 FontFamily="Cambria"
                 Click="NextQuestionButton_Click"/>
+            <Button
+                x:Name="SubmitTestButton"
+                Content="Lämna in"
+                Width="250"
+                Height="75"
+                CornerRadius="25"
+                Background="Green"
+                Foreground="White"
+                FontSize="25"
+                FontFamily="Cambria"
+                Visibility="Collapsed"
+                Click="SubmitTestButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>
