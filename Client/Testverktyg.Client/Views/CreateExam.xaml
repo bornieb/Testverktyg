@@ -118,7 +118,10 @@
                  Background="LightGray"
                  Margin="0,10,0,0"
                  ItemsSource="{x:Bind createExamViewModel.ListOfQuestions}" 
-                 FontFamily="Cambria">
+                 FontFamily="Cambria"
+                 ItemClick="QuestionListView_ItemClick"
+                      DoubleTapped="QuestionListView_DoubleTapped"
+                 >
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:Question">
                         <TextBlock Text="{Binding QuestionText}"
@@ -217,7 +220,8 @@
             Grid.RowSpan="1" 
             Grid.Column="11" 
             Grid.ColumnSpan="2" 
-            VerticalAlignment="Bottom" 
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
             FontSize="25"
             FontFamily="Cambria">
         </TextBlock>

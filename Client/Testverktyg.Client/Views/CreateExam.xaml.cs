@@ -111,23 +111,23 @@ namespace Testverktyg.Client.Views
                 //await DisplayError("Vänligen skriv in en titel till provet.");
             }
 
-            var duplicateList = createExamViewModel.QuestionCart.GroupBy(x => x)
-                  .Where(g => g.Count() > 1)
-                  .Select(y => y.Key)
-                  .ToList();
+            //var duplicateList = createExamViewModel.QuestionCart.GroupBy(x => x)
+            //      .Where(g => g.Count() > 1)
+            //      .Select(y => y.Key)
+            //      .ToList();
 
             if (createExamViewModel.QuestionCart.Count > 0) 
             {
-                if (duplicateList.Count > 0)
-                {
-                    await DisplayError("Det existerar två eller fler likadana frågor i provet, vänligen ta bort en och försök igen.");
-                }
-                else
-                {
+                //if (duplicateList.Count > 0)
+                //{
+                //    await DisplayError("Det existerar två eller fler likadana frågor i provet, vänligen ta bort en och försök igen.");
+                //}
+                //else
+                //{
                     exam.TotalPoints = createExamViewModel.QuestionCart.Count;
                     exam.NumberOfQuestions = createExamViewModel.QuestionCart.Count;
                     exam.Questions = createExamViewModel.QuestionCart;
-                }
+                //}
             }
             else
             {
@@ -169,9 +169,9 @@ namespace Testverktyg.Client.Views
             if (ErrorMessages.Count == 0)
             {
                 string Summary = $"Provdatum: {exam.ExamDate.ToString("dddd, dd MMMM yyyy")} \n" +
-                    $"Provtitel: {SubjectTextBox.Text} \n" +
-                    $"Antal frågor: {createExamViewModel.QuestionCart.Count} \n" +
-                    $"Provtid i minuter: {examTimeSpan}";
+                                 $"Provtitel: {SubjectTextBox.Text} \n" +
+                                 $"Antal frågor: {createExamViewModel.QuestionCart.Count} \n" +
+                                 $"Provtid i minuter: {examTimeSpan}";
 
                 await createExamViewModel.CreateExamAsync(exam);
                 await new MessageDialog(Summary, "Provet har skapats!").ShowAsync();
@@ -231,6 +231,18 @@ namespace Testverktyg.Client.Views
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void QuestionListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            await createExamViewModel.AddQuestionAsync((Question)QuestionListView.SelectedItem);
+            AddToTextBlocks();
+        }
+
+        private async void QuestionListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            await createExamViewModel.AddQuestionAsync((Question)QuestionListView.SelectedItem);
+            AddToTextBlocks();
         }
     }
 }
