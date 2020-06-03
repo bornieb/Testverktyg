@@ -16,6 +16,7 @@ namespace Testverktyg.Client.ViewModels
     public class TakeExamViewModel
     {
         public StudentOverviewViewModel _model = new StudentOverviewViewModel();
+        private ExamService service = new ExamService();
 
 
         //public void LoadQuestions()
@@ -28,7 +29,7 @@ namespace Testverktyg.Client.ViewModels
 
         //    }
         //}
-        public async void SecureSubmit()
+        public async void SecureSubmit(Exam exam)
         {
             ContentDialog dialog = new ContentDialog();
 
@@ -39,7 +40,7 @@ namespace Testverktyg.Client.ViewModels
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-
+                await service.PostTakenExam(exam);
             }
             else if (result == ContentDialogResult.Secondary)
             {
