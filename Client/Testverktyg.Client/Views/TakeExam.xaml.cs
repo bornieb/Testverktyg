@@ -175,7 +175,8 @@ namespace Testverktyg.Client.Views
         private void SubmitTestButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.SecureSubmit();
-            this.Frame.Navigate(typeof(StudentOverview));
+            //För att navigera tillbaka när provet är färdigt
+            //this.Frame.Navigate(typeof(StudentOverview));
         }
 
         
