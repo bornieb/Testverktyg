@@ -104,23 +104,28 @@
             Background="white" 
             Visibility="Visible"
             HorizontalAlignment="Center"
-            
+            SelectionChanged="MultipleChoicesGridView_SelectionChanged"
             
             ItemsSource="{x:Bind CurrentQuestionAlternatives}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Alternative">
                     <StackPanel>
                         <StackPanel>
-                            <Button 
-                                x:Name="Alternative"
+                            <ToggleButton 
+                                x:Name="AlternativeButton"
                                 Content="{x:Bind AlternativeText}"
                                 Height="223"
                                 Width="505"
+                                Background="Transparent"
                                 FontFamily="Cambria"
                                 FontSize="36"
                                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
                                 BorderThickness="3"
-                                />
+                                Click="AlternativeButton_Click"
+                                IsChecked="{x:Bind StudentAnswer, Mode=TwoWay}"
+                            />
+
+
                         </StackPanel>
                     </StackPanel>
                 </DataTemplate>

@@ -12,6 +12,7 @@ using Testverktyg.Client.ViewModels;
 using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -86,7 +87,11 @@ namespace Testverktyg.Client.Views
             {
                 currentQuestion = _exam.Questions[questionIndex].QuestionText;
                 CurrentTestQuestion(questionIndex);
+              
             }
+
+            
+
         }
 
         private void NotifyPropertyChanged(string caller = "")
@@ -109,6 +114,7 @@ namespace Testverktyg.Client.Views
                 questionIndex--;
                 currentQuestion = _exam.Questions[questionIndex].QuestionText;
                 CurrentTestQuestion(questionIndex);
+                
             }
         }
 
@@ -135,6 +141,31 @@ namespace Testverktyg.Client.Views
             await new MessageDialog(message).ShowAsync();
         }
 
-       
+        //private void AlternativeButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    {
+        //        var selected = MultipleChoicesGridView.SelectedItem;
+        //        foreach (var answer in _exam.Questions[questionIndex].Alternatives)
+        //        {
+                    
+        //        }
+        //    }
+        //}
+
+        private void AlternativeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Alternative alt = (Alternative)((FrameworkElement)sender).DataContext;
+            alt.StudentAnswer =! alt.StudentAnswer;
+        }
+
+        private void MultipleChoicesGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+          
+        }
+
+        private void MultipleChoicesGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
