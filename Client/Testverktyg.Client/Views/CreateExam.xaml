@@ -106,9 +106,10 @@
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Bottom"
             FontFamily="Cambria"
+            Click="SearchBtn_Click"
             />
 
-            <ListView x:Name="QuestionTextBox" 
+            <ListView x:Name="QuestionListView" 
                 Grid.Column="1"
                  Grid.ColumnSpan="5"
                  Grid.RowSpan="4"
@@ -318,7 +319,9 @@
             Background="#990000" 
             Foreground="White"
             FontSize="30"
-            FontFamily="Cambria">
+            FontFamily="Cambria"
+            Click="ClearFormBtn_Click"
+            >
         </Button>
     </Grid>
 </Page>
