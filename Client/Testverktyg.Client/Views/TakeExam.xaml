@@ -106,6 +106,7 @@
             HorizontalAlignment="Center"
             SelectionChanged="MultipleChoicesGridView_SelectionChanged"
             
+            
             ItemsSource="{x:Bind CurrentQuestionAlternatives}">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Alternative">
@@ -114,8 +115,9 @@
                             <ToggleButton 
                                 x:Name="AlternativeButton"
                                 Content="{x:Bind AlternativeText}"
-                                Height="223"
+                                Height="215"
                                 Width="505"
+                                CornerRadius="25"
                                 Background="Transparent"
                                 FontFamily="Cambria"
                                 FontSize="36"
@@ -151,49 +153,62 @@
             <Button 
                 x:Name="TestButton" 
                 Click="TestButton_Click"
-                Content="Markera fråga"    
+                Content="Markera fråga 💭"    
                 Width="250" 
                 Height="75"
                 CornerRadius="25" 
-                Background="Green" 
-                Foreground="White" 
+                Background="#FFE8FF00" 
+                Foreground="Black" 
                 FontSize="25"
-                FontFamily="Cambria"/>
+                FontFamily="Cambria"
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="3"
+                />
             <Button 
+                
                 x:Name="PreviousQuestionButton"
-                Content="Föregående fråga" 
+                Content="⬅ Föregående fråga" 
                 Width="250" 
                 Height="75"
                 CornerRadius="25" 
-                Background="Green" 
+                Background="#FF006AD4" 
                 Foreground="White" 
                 FontSize="25"
                 FontFamily="Cambria"
                 Click="PreviousQuestionButton_Click"
-                Visibility="Collapsed"/>
+                Visibility="Collapsed"
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="3"
+                />
             <Button 
                 x:Name="NextQuestionButton"
-                Content="Nästa fråga"      
+                Content="Nästa fråga ➡"      
                 Width="250"
                 Height="75" 
                 CornerRadius="25" 
-                Background="Green" 
+                Background="#FF006AD4" 
                 Foreground="White" 
                 FontSize="25"
                 FontFamily="Cambria"
-                Click="NextQuestionButton_Click"/>
+                Click="NextQuestionButton_Click"
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="3"
+                />
             <Button
                 x:Name="SubmitTestButton"
-                Content="Lämna in"
+                Content="Lämna in ✔"
                 Width="250"
                 Height="75"
                 CornerRadius="25"
-                Background="Green"
+                Background="#FF03B203"
                 Foreground="White"
                 FontSize="25"
                 FontFamily="Cambria"
                 Visibility="Collapsed"
-                Click="SubmitTestButton_Click"/>
+                Click="SubmitTestButton_Click"
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="3"
+                />
         </StackPanel>
     </Grid>
 </Page>

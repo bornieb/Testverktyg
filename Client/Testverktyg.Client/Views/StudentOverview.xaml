@@ -15,7 +15,7 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Grid Background="#e7e7e7">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -66,7 +66,7 @@
             PlaceholderText="Sök"
             Height="30" 
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2"
+            BorderThickness="3"
             FontFamily="Cambria"/>
 
 
@@ -92,7 +92,7 @@
             PlaceholderText="Sök"
             Height="30"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2"
+            BorderThickness="3"
             FontFamily="Cambria"/>
 
         <ListView
@@ -102,7 +102,7 @@
             Grid.RowSpan="5" 
             FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2"
+            BorderThickness="3"
             ItemsSource="{x:Bind viewModel.ExamsToBeTaken, Mode=OneWay}" IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Exam">
@@ -136,7 +136,7 @@
             Grid.Row="2" 
             Grid.RowSpan="3" 
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2"
+            BorderThickness="3"
             FontFamily="Cambria"
             ItemsSource="{x:Bind viewModel.CorrectedExams, Mode=OneWay}">
             <ListView.ItemTemplate>
@@ -165,7 +165,7 @@
                 FontSize="20" 
                 Margin="0,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2" 
+                BorderThickness="3" 
                 FontFamily="Cambria"
                 Click="DetailsButton_Click"/>
 
@@ -182,7 +182,7 @@
                 FontSize="20" 
                 Margin="0,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2"
+                BorderThickness="3"
                 FontFamily="Cambria"/>
         </StackPanel>
         

@@ -42,12 +42,12 @@ namespace Testverktyg.Client.Views
             if (MenuSplit.IsPaneOpen)
             {
                 MenuSplit.IsPaneOpen = false;
-                CollapseButton.Width = 56;
+                CollapseButton.Width = 54;
             }
             else
             {
                 MenuSplit.IsPaneOpen = true;
-                CollapseButton.Width = 130;
+                CollapseButton.Width = 128;
             }
         }
 

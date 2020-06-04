@@ -60,6 +60,8 @@
             FontFamily="Cambria"
             PlaceholderText="Välj ämne"
             ItemsSource="{x:Bind createExamViewModel.ListOfCourses}"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
             >
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="local1:Course">
@@ -78,7 +80,10 @@
             VerticalAlignment="Center"
              HorizontalAlignment="Stretch"
             PlaceholderText="Välj provtyp"
-            FontFamily="Cambria">
+            FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            >
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="local1:QuestionType">
                     <TextBlock Text="{Binding }"></TextBlock>
@@ -93,7 +98,9 @@
                  VerticalAlignment="Bottom"
                  PlaceholderText="Sökord"
                  TextWrapping="Wrap" 
-                 FontFamily="Cambria"                
+                 FontFamily="Cambria" 
+                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                 BorderThickness="3"
                  />
 
         <Button 
@@ -101,12 +108,15 @@
             Content="Sök" 
             Grid.Row="1"
             Grid.Column="4" 
+            Background="Transparent"
             Width="70"
             Margin="35,0,0,0"
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Bottom"
             FontFamily="Cambria"
             Click="SearchBtn_Click"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
             />
 
             <ListView x:Name="QuestionListView" 
@@ -120,13 +130,15 @@
                  ItemsSource="{x:Bind createExamViewModel.ListOfQuestions}" 
                  FontFamily="Cambria"
                  ItemClick="QuestionListView_ItemClick"
-                      DoubleTapped="QuestionListView_DoubleTapped"
+                 DoubleTapped="QuestionListView_DoubleTapped"
+                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                 BorderThickness="3"
                  >
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:Question">
-                        <TextBlock Text="{Binding QuestionText}"
-                                   FontFamily="Cambria"></TextBlock>
-                    </DataTemplate>
+                    <TextBlock Text="{Binding QuestionText}"
+                                   FontFamily="Cambria"/>
+                </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
@@ -144,7 +156,10 @@
             Foreground="White" 
             FontSize="12" 
             FontFamily="Cambria"
-            Click="AddToQCart_Click"></Button>
+            Click="AddToQCart_Click"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />
 
         <StackPanel 
             Grid.Row="6" 
@@ -156,18 +171,23 @@
             <TextBlock Text="Prov"
                        FontSize="30"
                        FontFamily="Cambria"/>
-            <TextBlock></TextBlock>
+            <TextBlock/>
             <DatePicker 
                 x:Name="ExamDatePicker" 
                 HorizontalAlignment="Stretch"
-                FontFamily="Cambria"/>
-            <TextBlock></TextBlock>
+                FontFamily="Cambria"
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="3"
+                />
+            <TextBlock/>
             <TimePicker 
                 x:Name="ExamStartTimePicker"  
                 HorizontalAlignment="Stretch"
                 FontFamily="Cambria"
-                ></TimePicker>
-            <TextBlock></TextBlock>
+                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                BorderThickness="3"
+                />
+            <TextBlock/>
             <TextBox 
                 x:Name="TimeLimitTextBox" 
                 PlaceholderText="Provtid i minuter"  
@@ -201,6 +221,8 @@
                   PlaceholderText="Klass"
                   FontFamily="Cambria"
                   ItemsSource="{x:Bind createExamViewModel.ListOfClasses}"
+                  BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                  BorderThickness="3"
                   >
 
             <ComboBox.ItemTemplate>
@@ -235,7 +257,10 @@
             Grid.Row="2" 
             Grid.RowSpan="5" 
             Background="LightGray" 
-            ItemsSource="{x:Bind createExamViewModel.QuestionCart}">
+            ItemsSource="{x:Bind createExamViewModel.QuestionCart}"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -251,12 +276,12 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <TextBlock Text="{Binding QuestionText}"
-                                       FontFamily="Cambria">
-                            </TextBlock>
+                                       FontFamily="Cambria"/>
+
                             <TextBlock Text="{Binding QuestionType}"
-                                       FontFamily="Cambria">
-                            </TextBlock>
-                           
+                                       FontFamily="Cambria"/>
+
+
                         </StackPanel>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
                             <Button 
@@ -265,7 +290,10 @@
                                 Content="-" 
                                 HorizontalAlignment="Stretch" 
                                 VerticalAlignment="Center" 
-                                Click="RemoveQuestionBtn_Click"/>
+                                Click="RemoveQuestionBtn_Click"
+                                BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                                BorderThickness="3"
+                                />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -289,8 +317,11 @@
             VerticalAlignment="Top" 
             PlaceholderText="Betygsgräns"
             FontFamily="Cambria"
-            Width="200">
-        </TextBox>
+            Width="200"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />
+
 
         <Button 
             x:Name="CreateExamBtn"
@@ -307,8 +338,11 @@
             Foreground="White" 
             FontSize="30" 
             FontFamily="Cambria"
-            Click="CreateExamBtn_Click">
-        </Button>
+            Click="CreateExamBtn_Click"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />
+
         <Button 
             x:Name="ClearFormBtn"
             Grid.Row="8"
@@ -325,7 +359,9 @@
             FontSize="30"
             FontFamily="Cambria"
             Click="ClearFormBtn_Click"
-            >
-        </Button>
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />
+
     </Grid>
 </Page>
