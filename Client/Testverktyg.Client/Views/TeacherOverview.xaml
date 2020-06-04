@@ -79,18 +79,27 @@
             VerticalAlignment="Bottom" 
             FontSize="32"
             FontFamily="Cambria"/>
-        <TextBox 
-            x:Name="Search2TextBox" 
-            Grid.Column="12" 
-            Margin="0,0,0,20" 
-            Grid.Row="1" 
-            TextWrapping="Wrap" 
-            VerticalAlignment="Bottom" 
-            PlaceholderText="Sök" 
-            Height="30"
-            FontFamily="Cambria"
-            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2"/>
+        
+        <ComboBox x:Name="ClassDropDown" 
+                  Grid.Row="1" Grid.RowSpan="1" 
+                  Grid.Column="11" 
+                  Grid.ColumnSpan="2" 
+                  Width="250" 
+                  HorizontalAlignment="Right" 
+                  VerticalAlignment="Bottom"  
+                  PlaceholderText="Klass"
+                  FontFamily="Cambria"
+                  ItemsSource="{x:Bind teacherOverviewViewModel.ListCourse}" 
+                  >
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding ClassName}"
+                               FontFamily="Cambria">
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <ListView 
             Grid.Column="1" 
@@ -205,8 +214,8 @@
             BorderThickness="2" 
             Click="CorrectTestButton_Click"/>
             <Button                 
-                x:Name="ReUseButton"
-                Content="Återanvänd" 
+                x:Name="GetTests"
+                Content="Hämta prov" 
                 Height="40" 
                 Width="180" 
                 CornerRadius="5"  
@@ -216,7 +225,7 @@
                 Margin="10,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                 BorderThickness="2" 
-                Click="ReUseButton_Click"/>
+                Click="GetTests_Click"/>
             <Button 
                 x:Name="Remove2Button" 
                 Content="Ta bort" 
