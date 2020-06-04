@@ -11,20 +11,30 @@ namespace Testverktyg.Client.ViewModels
 {
     public class TeacherOverviewViewModel
     {
-        CourseService courseService = new CourseService();
-        public ObservableCollection<Course> ListCourse { get; set; } = new ObservableCollection<Course>();
+        ClassService classService  = new ClassService();
+        public ObservableCollection<Class> ListOfClasses { get; set; } = new ObservableCollection<Class>();
+        public ObservableCollection<Exam> TakenExams { get; set; } = new ObservableCollection<Exam>();
+        ExamService examService = new ExamService();
         
-
         
-        
-        public void GetCourses()
+        public async void GetClasses()
         {
-            var courses = courseService.GetCourses();
-            foreach (Course course in courses)
+            var classes = await classService.GetClassesAsync();
+            foreach (Class sClass in classes)
             {
-                ListCourse.Add(course);
+                ListOfClasses.Add(sClass);
             }
         }
+
+        public void GetTakenExams(int classId)
+        {
+            var takenExams = examService.GetTakenExams(classId);
+            foreach (Exam exam in takenExams)
+            {
+                TakenExams.Add(exam);
+            }
+        }
+
 
     }
 }

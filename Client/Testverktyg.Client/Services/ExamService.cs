@@ -83,7 +83,7 @@ namespace Testverktyg.Client.Services
         public List<Exam> GetTakenExams(int classId)
         {
             
-            var requestUrl = $"{url}/{classId}/Taken";
+            var requestUrl = $"{url}/{classId}/2";
             var jsonExams = webClient.DownloadString(requestUrl);
             var exams = JsonConvert.DeserializeObject<List<Exam>>(jsonExams);
             return exams;

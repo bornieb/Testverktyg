@@ -34,7 +34,8 @@ namespace Testverktyg.Client.Views
         public TeacherOverview()
         {
             this.InitializeComponent();
-            examService = new ExamService();
+            Init();
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -72,11 +73,13 @@ namespace Testverktyg.Client.Views
             //GetTakenExams(ClassDropDown.SelectedItem);
 
             bool validClass = false;
-            int classId=0;     
+            int classId=0; 
+            
 
             if ((Class)ClassDropDown.SelectedValue != null)
             {
                 classId = ((Class)ClassDropDown.SelectedValue).ClassId;
+                teacherOverviewViewModel.GetTakenExams(classId);
                 validClass = true;
             }
             else
@@ -93,6 +96,13 @@ namespace Testverktyg.Client.Views
         private async Task DisplayError(string message)
         {
             await new MessageDialog(message).ShowAsync();
+        }
+
+        private void Init()
+        {
+            examService = new ExamService();
+            teacherOverviewViewModel = new TeacherOverviewViewModel();
+            teacherOverviewViewModel.GetClasses();
         }
     }
 }

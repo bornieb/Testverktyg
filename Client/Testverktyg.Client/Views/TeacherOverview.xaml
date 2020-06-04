@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Testverktyg.Client.Views"
+    xmlns:local1="using:Testverktyg.Client.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -86,10 +87,10 @@
                   Grid.ColumnSpan="2" 
                   Width="250" 
                   HorizontalAlignment="Right" 
-                  VerticalAlignment="Bottom"  
+                  VerticalAlignment="Center"  
                   PlaceholderText="Klass"
                   FontFamily="Cambria"
-                  ItemsSource="{x:Bind teacherOverviewViewModel.ListCourse}" 
+                  ItemsSource="{x:Bind teacherOverviewViewModel.ListOfClasses}" 
                   >
 
             <ComboBox.ItemTemplate>
@@ -134,14 +135,16 @@
                   Background="LightGray" 
                   BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                   BorderThickness="2"
-                  FontFamily="Cambria">
+                  FontFamily="Cambria"
+                  ItemsSource="{x:Bind teacherOverviewViewModel.TakenExams}"
+                  >
             <ListView.ItemTemplate>
-                <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Klass 7B"/>
-                            <TextBlock Text="Matteprov Algebra"/>
-                            <TextBlock Text="15/05/20"/>
-                        </StackPanel>
+                <DataTemplate x:DataType="local1:Exam">
+                    <TextBlock Text="{x:Bind Subject}"/>
+
+
+
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
