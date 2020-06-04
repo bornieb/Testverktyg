@@ -46,5 +46,6 @@ namespace TestverktygAPI.Data
         public DbSet<TestverktygAPI.Models.User> User { get; set; }
 
         public DbSet<TestverktygAPI.Models.ExamQuestion> ExamQuestion { get; set; }
+        public DbSet<TestverktygAPI.Models.UserExam> UserExam { get; set; }
     }
 }

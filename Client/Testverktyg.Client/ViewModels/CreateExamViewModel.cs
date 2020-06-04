@@ -102,9 +102,9 @@ namespace Testverktyg.Client.ViewModels
             return success;
         }
 
-        public async Task CreateExamAsync(Exam exam)
+        public async Task CreateExamAsync(Exam exam, int userId)
         {
-            await examService.PostExam(exam);
+            await examService.PostExam(exam, userId);
         }
     }
 }

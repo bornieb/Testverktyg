@@ -148,9 +148,10 @@ namespace TestverktygAPI.Controllers
         // POST: api/Exam
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Exam>> PostExam(Exam exam)
+        [HttpPost("userexam/{userId}")]
+        public async Task<ActionResult<Exam>> PostExam(Exam exam, int userId)
         {
+            var userExam = new UserExam() { Exam = exam, UserId = userId };
             var examQuestions = exam.Questions
                 .Select(q => new ExamQuestion
                 {
@@ -158,13 +159,16 @@ namespace TestverktygAPI.Controllers
                     Exam = exam
                 }).ToList();
             exam.Questions.Clear();
+            _context.UserExam.Add(userExam);
             _context.ExamQuestion.AddRange(examQuestions);
             _context.Exam.Add(exam);
 
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetExam", new { id = exam.ExamId }, exam);
+
         }
+
 
         // DELETE: api/Exam/5
         [HttpDelete("{id}")]

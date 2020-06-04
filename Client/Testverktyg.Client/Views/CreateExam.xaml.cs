@@ -71,14 +71,21 @@ namespace Testverktyg.Client.Views
             DateTime dt = new DateTime(ExamDatePicker.Date.Year, ExamDatePicker.Date.Month, ExamDatePicker.Date.Day,
             ExamStartTimePicker.Time.Hours, ExamStartTimePicker.Time.Minutes, ExamStartTimePicker.Time.Seconds);
 
-            if (createExamViewModel.ValidateDateField(dt))
+            if (dt != null)
             {
-                exam.ExamDate = dt;
+                if (createExamViewModel.ValidateDateField(dt))
+                {
+                    exam.ExamDate = dt;
+                }
+                else
+                {
+                    ErrorMessages.Add("Vänligen välj ett giltigt datum. \n");
+                    //await DisplayError("Vänligen välj ett giltigt datum.");
+                }
             }
             else
             {
                 ErrorMessages.Add("Vänligen välj ett giltigt datum. \n");
-                //await DisplayError("Vänligen välj ett giltigt datum.");
             }
 
             if (int.TryParse(TimeLimitTextBox.Text, out int examTimeSpan))
@@ -173,7 +180,8 @@ namespace Testverktyg.Client.Views
                                  $"Antal frågor: {createExamViewModel.QuestionCart.Count} \n" +
                                  $"Provtid i minuter: {examTimeSpan}";
 
-                await createExamViewModel.CreateExamAsync(exam);
+                int userId = _teacher.UserId;
+                await createExamViewModel.CreateExamAsync(exam, _teacher.UserId);
                 await new MessageDialog(Summary, "Provet har skapats!").ShowAsync();
                 ClearFields();
             }
