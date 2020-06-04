@@ -78,6 +78,15 @@ namespace Testverktyg.Client.Services
                 exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
                 return exams;
             }
-        }              
+        }
+
+        public List<Exam> GetTakenExams(int classId)
+        {
+            
+            var requestUrl = $"{url}/{classId}/2";
+            var jsonExams = webClient.DownloadString(requestUrl);
+            var exams = JsonConvert.DeserializeObject<List<Exam>>(jsonExams);
+            return exams;
+        }
     }
 }
