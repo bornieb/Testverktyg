@@ -12,6 +12,7 @@ using Testverktyg.Client.ViewModels;
 using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -36,6 +37,7 @@ namespace Testverktyg.Client.Views
         private string placeHolder="";
         private int questionIndex = 0;
         private string currentQuestion { get { return _exam.Questions[questionIndex].QuestionText; } set { value = placeHolder; NotifyPropertyChanged("currentQuestion"); } }
+        
         public ObservableCollection<Alternative> CurrentQuestionAlternatives;
         
 
@@ -48,6 +50,7 @@ namespace Testverktyg.Client.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            viewModel = new TakeExamViewModel();
             //_student = (Student)e.Parameter;
             _exam = (Exam)e.Parameter;
             CurrentTestQuestion(questionIndex);
@@ -80,13 +83,18 @@ namespace Testverktyg.Client.Views
             if (questionIndex == _exam.Questions.Count)
             {
                 NextQuestionButton.Visibility = Visibility.Collapsed;
+                SubmitTestButton.Visibility = Visibility.Visible;
                 
             }
             else
             {
                 currentQuestion = _exam.Questions[questionIndex].QuestionText;
                 CurrentTestQuestion(questionIndex);
+              
             }
+
+            
+
         }
 
         private void NotifyPropertyChanged(string caller = "")
@@ -100,6 +108,7 @@ namespace Testverktyg.Client.Views
         private void PreviousQuestionButton_Click(object sender, RoutedEventArgs e)
         {
             NextQuestionButton.Visibility = Visibility.Visible;
+            SubmitTestButton.Visibility = Visibility.Collapsed;
             if (questionIndex == 0)
             {
                 PreviousQuestionButton.Visibility = Visibility.Collapsed;
@@ -109,6 +118,7 @@ namespace Testverktyg.Client.Views
                 questionIndex--;
                 currentQuestion = _exam.Questions[questionIndex].QuestionText;
                 CurrentTestQuestion(questionIndex);
+                
             }
         }
 
@@ -135,6 +145,42 @@ namespace Testverktyg.Client.Views
             await new MessageDialog(message).ShowAsync();
         }
 
+        //private void AlternativeButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    {
+        //        var selected = MultipleChoicesGridView.SelectedItem;
+        //        foreach (var answer in _exam.Questions[questionIndex].Alternatives)
+        //        {
+                    
+        //        }
+        //    }
+        //}
+
+        private void AlternativeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Alternative alt = (Alternative)((FrameworkElement)sender).DataContext;
+            //alt.StudentAnswer =! alt.StudentAnswer;
+        }
+
+        private void MultipleChoicesGridView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+          
+        }
+
+        private void MultipleChoicesGridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void SubmitTestButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.SecureSubmit(_exam);
+            //För att navigera tillbaka när provet är färdigt
+            //this.Frame.Navigate(typeof(StudentOverview));
+        }
+
+        
        
+
     }
 }

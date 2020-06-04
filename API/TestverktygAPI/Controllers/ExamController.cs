@@ -97,7 +97,34 @@ namespace TestverktygAPI.Controllers
             //    .ThenInclude(eq => eq.Question)
             //    .Select()
         }
-            
+
+        [HttpGet("{classId}/{status}")]
+        public async Task<ActionResult<IEnumerable<Exam>>> GetTakenExams(int classId, ExamStatus status)
+        {
+            var exams = await _context.Exam
+                .Include(e => e.ExamQuestions)
+                    .ThenInclude(eq => eq.Question)
+                        .ThenInclude(q => q.Alternatives)
+                .Include(e => e.ExamQuestions)
+                    .ThenInclude(eq => eq.Question)
+                        .ThenInclude(q => q.Keywords)
+                .Where(e => e.ClassId == classId && e.ExamStatus == status)
+                .ToListAsync();
+
+            foreach (var exam in exams)
+            {
+                exam.Questions = exam.ExamQuestions.Select(eq => eq.Question).ToList();
+
+                foreach (var alt in exam.Questions)
+                {
+                    alt.Alternatives.ToList();
+                }
+                exam.ExamQuestions.Clear();
+            }
+
+            return exams;
+        }
+
 
         // GET: api/Exam/5
         [HttpGet("{id}")]

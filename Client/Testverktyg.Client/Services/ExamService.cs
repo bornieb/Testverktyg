@@ -19,6 +19,8 @@ namespace Testverktyg.Client.Services
         private const string url = "http://localhost:60485/api/exam";
         private WebClient webClient = new WebClient();
         HttpClient httpClient;
+        QuestionService service = new QuestionService();
+
         public ExamService()
         {
             httpClient = new HttpClient();
@@ -31,6 +33,32 @@ namespace Testverktyg.Client.Services
             HttpContent httpContent = new StringContent(jsonExam);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var jsonExamDB = await httpClient.PostAsync(cUrl, httpContent);
+        }
+
+        public async Task PostTakenExam(Exam exam)
+        {
+            foreach (var question in exam.Questions) 
+            {
+                question.QuestionId = 0;
+                question.Keywords.Clear();
+
+                foreach (var alternative in question.Alternatives)
+                {
+                    alternative.AlternativeId = 0;
+                    alternative.QuestionId = 0;
+                }
+
+                var newQuestion = service.AddQuestion(question);
+                question.QuestionId = newQuestion.QuestionId;
+            }
+
+            exam.ExamStatus = ExamStatus.Taken;
+            exam.ExamId = 0;
+
+            var jsonExam = JsonConvert.SerializeObject(exam);
+            HttpContent httpContent = new StringContent(jsonExam);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var jsonExamDB = await httpClient.PostAsync(url, httpContent);
         }
       
         public List<Exam> GetStudentExams(int studentId, ExamStatus examStatus)
@@ -51,6 +79,15 @@ namespace Testverktyg.Client.Services
                 exams = JsonConvert.DeserializeObject<List<Exam>>(examString);
                 return exams;
             }
-        }              
+        }
+
+        public List<Exam> GetTakenExams(int classId)
+        {
+            
+            var requestUrl = $"{url}/{classId}/2";
+            var jsonExams = webClient.DownloadString(requestUrl);
+            var exams = JsonConvert.DeserializeObject<List<Exam>>(jsonExams);
+            return exams;
+        }
     }
 }

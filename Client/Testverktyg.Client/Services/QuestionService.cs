@@ -19,12 +19,13 @@ namespace Testverktyg.Client.Services
             httpClient = new HttpClient();
         }
 
-        public void AddQuestion(Question question)
+        public Question AddQuestion(Question question)
         {
             var jsonQuestion = JsonConvert.SerializeObject(question);
             var webClient = new WebClient();
             webClient.Headers.Add(HttpRequestHeader.ContentType, "application/json");
             var response = webClient.UploadString(url, "POST", jsonQuestion);
+            return JsonConvert.DeserializeObject<Question>(response);
         }
 
         
