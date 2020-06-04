@@ -106,9 +106,10 @@
             HorizontalAlignment="Stretch" 
             VerticalAlignment="Bottom"
             FontFamily="Cambria"
+            Click="SearchBtn_Click"
             />
 
-            <ListView x:Name="QuestionTextBox" 
+            <ListView x:Name="QuestionListView" 
                 Grid.Column="1"
                  Grid.ColumnSpan="5"
                  Grid.RowSpan="4"
@@ -117,7 +118,10 @@
                  Background="LightGray"
                  Margin="0,10,0,0"
                  ItemsSource="{x:Bind createExamViewModel.ListOfQuestions}" 
-                 FontFamily="Cambria">
+                 FontFamily="Cambria"
+                 ItemClick="QuestionListView_ItemClick"
+                      DoubleTapped="QuestionListView_DoubleTapped"
+                 >
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:Question">
                         <TextBlock Text="{Binding QuestionText}"
@@ -216,7 +220,8 @@
             Grid.RowSpan="1" 
             Grid.Column="11" 
             Grid.ColumnSpan="2" 
-            VerticalAlignment="Bottom" 
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
             FontSize="25"
             FontFamily="Cambria">
         </TextBlock>
@@ -318,7 +323,9 @@
             Background="#990000" 
             Foreground="White"
             FontSize="30"
-            FontFamily="Cambria">
+            FontFamily="Cambria"
+            Click="ClearFormBtn_Click"
+            >
         </Button>
     </Grid>
 </Page>
