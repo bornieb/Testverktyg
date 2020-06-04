@@ -64,7 +64,7 @@ namespace Testverktyg.Client.ViewModels
                 }
                 if (checkPoint == question.Alternatives.Count)
                 {
-                    exam.TotalPoints++;
+                    exam.ExamResult++;
                 }
             }
         }
