@@ -40,11 +40,32 @@ namespace Testverktyg.Client.ViewModels
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
+                CountTotalPoints(exam);
                 await service.PostTakenExam(exam);
             }
             else if (result == ContentDialogResult.Secondary)
             {
 
+            }
+        }
+
+        public void CountTotalPoints(Exam exam)
+        {
+            int checkPoint = 0;
+
+            foreach (var question in exam.Questions)
+            {
+                foreach (var alternative in question.Alternatives)
+                {
+                    if (alternative.IsCorrect == alternative.StudentAnswer)
+                    {
+                        checkPoint++;
+                    }
+                }
+                if (checkPoint == question.Alternatives.Count)
+                {
+                    exam.TotalPoints++;
+                }
             }
         }
 
