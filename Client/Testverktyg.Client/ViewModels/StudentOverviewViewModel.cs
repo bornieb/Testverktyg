@@ -27,38 +27,5 @@ namespace Testverktyg.Client.ViewModels
             ExamsToBeTaken = examService.GetStudentExams(Student.UserId, ExamStatus.Template);
             CorrectedExams = examService.GetStudentExams(Student.UserId, ExamStatus.Corrected);
         }
-        
-      //  private static StudentOverviewViewModel instance;
-      //  public Exam exam { get; set; }
-      //  public ObservableCollection<Exam> AllExams;
-
-      //  public static StudentOverviewViewModel Instance
-      //  { get { if (instance == null)
-      //              instance = new StudentOverviewViewModel();
-      //          return instance;
-      //        }
-
-      //  }
-      //  private StudentOverviewViewModel()
-      //  {
-      //      exam = new Exam();
-      //      AllExams = new ObservableCollection<Exam>();
-      //      //GetExams();
-      //  }
-      //public async void GetExams()
-      //  {
-      //      try
-      //      {
-      //          List<Exam> temp = await ExamService.GetExamAsync();
-      //          foreach (Exam exam in temp)
-      //          {
-      //              AllExams.Add(exam);
-      //          }
-      //      }
-      //      catch (System.Net.Http.HttpRequestException ex)
-      //      {
-      //          await new MessageDialog(ex.Message).ShowAsync();
-      //      }
-      //  }
     }
 }

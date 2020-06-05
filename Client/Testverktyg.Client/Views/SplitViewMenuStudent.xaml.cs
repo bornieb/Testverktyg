@@ -59,6 +59,7 @@ namespace Testverktyg.Client.Views
             {
                 PageFrame.Navigate(typeof(StudentOverview), _student);
                 TitleTextblock.Text = "Välkommen";
+                HomeListBoxItem.IsSelected = false;
             }
             else if (ExitListBoxitem.IsSelected)
             {
