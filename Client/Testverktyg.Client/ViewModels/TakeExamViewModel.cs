@@ -29,7 +29,7 @@ namespace Testverktyg.Client.ViewModels
 
         //    }
         //}
-        public async void SecureSubmit(Exam exam)
+        public async void SecureSubmit(Exam exam, int userId)
         {
             ContentDialog dialog = new ContentDialog();
 
@@ -41,7 +41,7 @@ namespace Testverktyg.Client.ViewModels
             if (result == ContentDialogResult.Primary)
             {
                 CountTotalPoints(exam);
-                await service.PostTakenExam(exam);
+                await service.PostTakenExam(exam, userId);
             }
             else if (result == ContentDialogResult.Secondary)
             {

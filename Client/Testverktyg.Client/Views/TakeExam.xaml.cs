@@ -50,9 +50,13 @@ namespace Testverktyg.Client.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            
             viewModel = new TakeExamViewModel();
-            //_student = (Student)e.Parameter;
-            _exam = (Exam)e.Parameter;
+            UserExam us = new UserExam();
+            us = (UserExam)e.Parameter;
+
+            _student = us.student;
+            _exam = us.exam;
             CurrentTestQuestion(questionIndex);
         }
 
@@ -174,7 +178,8 @@ namespace Testverktyg.Client.Views
 
         private void SubmitTestButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.SecureSubmit(_exam);
+            
+            viewModel.SecureSubmit(_exam, _student.UserId);
             //För att navigera tillbaka när provet är färdigt
             //this.Frame.Navigate(typeof(StudentOverview));
         }

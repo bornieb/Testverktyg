@@ -126,6 +126,7 @@
     <Compile Include="Models\GradeLevel.cs" />
     <Compile Include="Models\Keyword.cs" />
     <Compile Include="Models\QuestionType.cs" />
+    <Compile Include="Models\UserExam.cs" />
     <Compile Include="Services\ClassService.cs" />
     <Compile Include="Services\CourseService.cs" />
     <Compile Include="Services\ExamService.cs" />

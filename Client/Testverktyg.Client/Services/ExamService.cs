@@ -35,7 +35,7 @@ namespace Testverktyg.Client.Services
             var jsonExamDB = await httpClient.PostAsync(cUrl, httpContent);
         }
 
-        public async Task PostTakenExam(Exam exam)
+        public async Task PostTakenExam(Exam exam, int userId)
         {
             foreach (var question in exam.Questions) 
             {
@@ -55,10 +55,12 @@ namespace Testverktyg.Client.Services
             exam.ExamStatus = ExamStatus.Taken;
             exam.ExamId = 0;
 
+            var sUrl = "http://localhost:60485/api/exam/userexam/" + userId;
+
             var jsonExam = JsonConvert.SerializeObject(exam);
             HttpContent httpContent = new StringContent(jsonExam);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var jsonExamDB = await httpClient.PostAsync(url, httpContent);
+            var jsonExamDB = await httpClient.PostAsync(sUrl, httpContent);
         }
       
         public List<Exam> GetStudentExams(int studentId, ExamStatus examStatus)
