@@ -46,7 +46,7 @@ namespace Testverktyg.Client.ViewModels
             }
             else if (result == ContentDialogResult.Secondary)
             {
-
+                
             }
         }
 

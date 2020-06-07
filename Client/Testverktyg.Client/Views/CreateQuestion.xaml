@@ -42,14 +42,15 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <TextBlock 
+       
+            <TextBlock 
             Text="Skapa fråga" 
             Grid.Column="1" 
             Grid.ColumnSpan="4" 
             VerticalAlignment="Center" 
             FontSize="40" 
             FontFamily="Cambria"/>
+        
 
         <ComboBox 
             x:Name="CourseDropDown"
@@ -60,6 +61,8 @@
             Width="400"
             PlaceholderText="Välj ämne"
             FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
             ItemsSource="{x:Bind ListOfCourses}">
             <ComboBox.ItemTemplate>
                 <DataTemplate x:DataType="model:Course">
@@ -76,6 +79,8 @@
             Width="400"
             PlaceholderText="Välj frågetyp"
             FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
             />
         <ComboBox 
             x:Name="GradeLevelDropDown"
@@ -86,6 +91,8 @@
             Width="400"
             PlaceholderText="Välj årskurs"
             FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
             />
         
         <TextBox x:Name="QuestionTextBox" 
@@ -100,6 +107,8 @@
                  Height="350"
                  Margin="0,5,0,0"
                  FontFamily="Cambria"
+                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                 BorderThickness="3"
                  />
         <TextBox x:Name="AlternativeTextBox" 
                  Grid.Column="1"
@@ -113,6 +122,8 @@
                  Width="700"
                  Height="150"
                  FontFamily="Cambria"
+                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                 BorderThickness="3"
                  />
         <TextBox x:Name="KeywordTextBox" 
                  Grid.Column="1"
@@ -126,6 +137,8 @@
                  Width="200"
                  Height="40"
                  FontFamily="Cambria"
+                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                 BorderThickness="3"
                  />
         <Button 
             x:Name="AddKeyword" 
@@ -136,7 +149,10 @@
             HorizontalAlignment="Center"  
             Content="Lägg till sökord" 
             Click="AddKeyword_Click"
-            FontFamily="Cambria"/>
+            FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />        
         <ListView x:Name="KeywordListView" 
                   Background="AliceBlue" 
                   Grid.Column="1" 
@@ -146,7 +162,10 @@
                   Height="100" 
                   VerticalAlignment="Center"
                   FontFamily="Cambria"
-                  ItemsSource="{x:Bind viewModel.Keywords}">
+                  ItemsSource="{x:Bind viewModel.Keywords}"
+                  BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                  BorderThickness="3"
+                  >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -188,7 +207,8 @@
                 Content="Rätt svar"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center"
-                FontFamily="Cambria"/>
+                FontFamily="Cambria"
+                />
             <TextBlock></TextBlock>
             <RadioButton 
                 x:Name="WrongAnswerRadioBtn" 
@@ -209,7 +229,10 @@
             Content="Lägg till alternativ" 
             HorizontalAlignment="Center"
             Click="AddAlternativeBtn_Click" 
-            FontFamily="Cambria"/>
+            FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />
         <ListView x:Name="AlternativeListView" 
                   Header="Tillagda alternativ:" 
                   FontSize="30" 
@@ -219,7 +242,10 @@
                   Grid.RowSpan="5" 
                   Background="LightGray"
                   FontFamily="Cambria"
-                  ItemsSource="{x:Bind viewModel.Alternatives}">
+                  ItemsSource="{x:Bind viewModel.Alternatives}"
+                  BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                  BorderThickness="3"
+                  >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -250,12 +276,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-
-
-
-
-
         <Button 
             x:Name="SaveQuestionBtn" 
             Grid.Row="7" 
@@ -272,8 +292,10 @@
             Foreground="White" 
             FontSize="30" 
             Click="SaveQuestionBtn_Click"
-            FontFamily="Cambria">
-        </Button>
+            FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />
         <Button 
             x:Name="ClearInputBtn" 
             Grid.Row="7" 
@@ -290,8 +312,9 @@
             Foreground="White" 
             FontSize="30" 
             Click="ClearInputBtn_Click"
-            FontFamily="Cambria">
-            
-        </Button>
+            FontFamily="Cambria"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            />
     </Grid>
 </Page>

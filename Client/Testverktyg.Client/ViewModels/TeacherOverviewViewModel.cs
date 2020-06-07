@@ -28,6 +28,7 @@ namespace Testverktyg.Client.ViewModels
 
         public void GetTakenExams(int classId)
         {
+            TakenExams.Clear();
             var takenExams = examService.GetTakenExams(classId);
             foreach (Exam exam in takenExams)
             {

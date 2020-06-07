@@ -104,5 +104,10 @@ namespace Testverktyg.Client.Views
             teacherOverviewViewModel = new TeacherOverviewViewModel();
             teacherOverviewViewModel.GetClasses();
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CorrectExam));
+        }
     }
 }

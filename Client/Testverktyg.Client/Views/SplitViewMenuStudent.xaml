@@ -17,7 +17,9 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <RelativePanel>
+        <RelativePanel 
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="2">
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="CollapseButton"
                         Width="130"

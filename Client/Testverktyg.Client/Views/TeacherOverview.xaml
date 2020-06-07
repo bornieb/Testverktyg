@@ -65,7 +65,7 @@
             Height="30" 
             FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2"/>
+            BorderThickness="3"/>
 
 
         <TextBlock 
@@ -90,7 +90,9 @@
                   VerticalAlignment="Center"  
                   PlaceholderText="Klass"
                   FontFamily="Cambria"
-                  ItemsSource="{x:Bind teacherOverviewViewModel.ListOfClasses}" 
+                  ItemsSource="{x:Bind teacherOverviewViewModel.ListOfClasses}"
+                  BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                  BorderThickness="3"
                   >
 
             <ComboBox.ItemTemplate>
@@ -110,7 +112,7 @@
             Background="LightGray"
             FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2">
+            BorderThickness="3">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -134,10 +136,10 @@
                   Grid.RowSpan="3" 
                   Background="LightGray" 
                   BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                  BorderThickness="2"
+                  BorderThickness="3"
                   FontFamily="Cambria"
                   ItemsSource="{x:Bind teacherOverviewViewModel.TakenExams}"
-                  >
+                  SelectionChanged="ListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Exam">
                     <TextBlock Text="{x:Bind Subject}"/>
@@ -159,25 +161,27 @@
                 Content="Skapa prov" 
                 Height="40" Width="180" 
                 CornerRadius="5" 
+                Background="Transparent"
                 HorizontalAlignment="Left" 
                 FontSize="20" 
                 FontFamily="Cambria"
                 Margin="0,20,10,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2" 
+                BorderThickness="3" 
                 Click="CreateTestButton_Click"/>
             <Button 
                 x:Name="EditButton" 
                 Content="Ändra" 
                 Height="40" 
                 Width="180" 
+                Background="Transparent"
                 CornerRadius="5" 
                 FontFamily="Cambria"
                 HorizontalAlignment="Left" 
                 FontSize="20" 
                 Margin="10,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2" 
+                BorderThickness="3" 
                 Click="EditButton_Click"/>
             <Button 
                 x:Name="Remove1Button" 
@@ -191,7 +195,7 @@
                 FontFamily="Cambria"
                 Margin="20,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2" 
+                BorderThickness="3" 
                 Background="#990000"
                 Click="Remove1Button_Click"/>
 
@@ -208,26 +212,28 @@
             Content="Rätta prov" 
             Height="40" 
             Width="180" 
+            Background="Transparent"
             CornerRadius="5"  
             HorizontalAlignment="Right" 
             FontSize="20" 
             FontFamily="Cambria"
             Margin="0,20,10,0" 
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2" 
+            BorderThickness="3" 
             Click="CorrectTestButton_Click"/>
             <Button                 
                 x:Name="GetTests"
                 Content="Hämta prov" 
                 Height="40" 
                 Width="180" 
+                Background="Transparent"
                 CornerRadius="5"  
                 HorizontalAlignment="Right" 
                 FontSize="20" 
                 FontFamily="Cambria"
                 Margin="10,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2" 
+                BorderThickness="3" 
                 Click="GetTests_Click"/>
             <Button 
                 x:Name="Remove2Button" 
@@ -241,7 +247,7 @@
                 Foreground="White"
                 Margin="20,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2" 
+                BorderThickness="3" 
                 Background="#990000"
                 Click="Remove2Button_Click"/>
         </StackPanel>

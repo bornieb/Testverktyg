@@ -71,7 +71,7 @@
                 FontSize="16"
                 FontFamily="Cambria"
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
-                BorderThickness="2"/>
+                BorderThickness="3"/>
             <PasswordBox 
                 x:Name="PasswordTextBox"
                 HorizontalAlignment="Left"
@@ -87,7 +87,7 @@
                 FontFamily="Cambria"
                 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
-                BorderThickness="2"/>
+                BorderThickness="3"/>
             <Button 
                 x:Name="Login" 
                 Content="Log in" 
@@ -100,7 +100,7 @@
                 CornerRadius="20" 
                 FontSize="32"
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
-                BorderThickness="2"
+                BorderThickness="3"
                 Background="Transparent"
                 />
         </StackPanel>
