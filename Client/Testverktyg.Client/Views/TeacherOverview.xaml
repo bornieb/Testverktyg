@@ -110,20 +110,26 @@
             Background="LightGray"
             FontFamily="Cambria"
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-            BorderThickness="2">
+            BorderThickness="2"
+            ItemsSource="{x:Bind teacherOverviewViewModel.NotTakenExams}">
             <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Klass 7B"/>
-                            <TextBlock Text="Matteprov Algebra"/>
-                            <TextBlock Text="15/05/20"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="7 dagar kvar"/>
-                            <TextBlock Text="Orättade prov"/>
-                            <TextBlock Text="20"/>
-                        </StackPanel>
+                <DataTemplate x:DataType="local1:Exam">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Subject}"
+                                Margin="0,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                        <TextBlock  Text="{x:Bind ExamDate}"
+                                Margin="0,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                        <TextBlock  Text="{x:Bind NmbrOfQuestions}"
+                                Margin="250,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -136,15 +142,26 @@
                   BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                   BorderThickness="2"
                   FontFamily="Cambria"
-                  ItemsSource="{x:Bind teacherOverviewViewModel.TakenExams}"
-                  >
+                  ItemsSource="{x:Bind teacherOverviewViewModel.TakenExams}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Exam">
-                    <TextBlock Text="{x:Bind Subject}"/>
-
-
-
-
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Subject}"
+                                Margin="0,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                        <TextBlock  Text="{x:Bind ExamDate}"
+                                Margin="0,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                        <TextBlock  Text="{x:Bind ShowResult}"
+                                Margin="250,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -167,8 +184,8 @@
                 BorderThickness="2" 
                 Click="CreateTestButton_Click"/>
             <Button 
-                x:Name="EditButton" 
-                Content="Ändra" 
+                x:Name="GetNotTaken" 
+                Content="Hämta prov" 
                 Height="40" 
                 Width="180" 
                 CornerRadius="5" 
@@ -177,8 +194,8 @@
                 FontSize="20" 
                 Margin="10,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
-                BorderThickness="2" 
-                Click="EditButton_Click"/>
+                BorderThickness="2"
+                />
             <Button 
                 x:Name="Remove1Button" 
                 Content="Ta bort" 

@@ -48,10 +48,6 @@ namespace Testverktyg.Client.Views
 
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Remove1Button_Click(object sender, RoutedEventArgs e)
         {
@@ -80,6 +76,7 @@ namespace Testverktyg.Client.Views
             {
                 classId = ((Class)ClassDropDown.SelectedValue).ClassId;
                 teacherOverviewViewModel.GetTakenExams(classId);
+                teacherOverviewViewModel.GetNotTakenExams(classId);
                 validClass = true;
             }
             else
@@ -90,6 +87,7 @@ namespace Testverktyg.Client.Views
             if (validClass)
             {
                 examService.GetTakenExams(classId);
+                examService.GetNotTakenExams(classId);
             }
 
         }
@@ -104,5 +102,7 @@ namespace Testverktyg.Client.Views
             teacherOverviewViewModel = new TeacherOverviewViewModel();
             teacherOverviewViewModel.GetClasses();
         }
+
+
     }
 }

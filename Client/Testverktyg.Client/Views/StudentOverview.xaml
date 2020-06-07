@@ -116,6 +116,12 @@
                                 
                             <TextBlock 
                                 Text="{x:Bind ExamDate}"
+                                Margin="0,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                            <TextBlock 
+                                Text="{x:Bind NmbrOfQuestions}"
                                 Margin="250,0,0,0"
                                 FontFamily="Cambria"
                                 Height="Auto"
@@ -142,9 +148,21 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local1:Exam">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{x:Bind Subject}"/>
-                        <TextBlock Text="{x:Bind ExamDate}"/>
-                        <TextBlock Text="{x:Bind ExamResult}"/>
+                        <TextBlock Text="{x:Bind Subject}"
+                                Margin="0,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                        <TextBlock Text="{x:Bind ExamDate}"
+                                Margin="0,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"/>
+                        <TextBlock Text="{x:Bind ShowResult}"                                                                   
+                                Margin="250,0,0,0"
+                                FontFamily="Cambria"
+                                Height="Auto"
+                                Width="150"                                   />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
