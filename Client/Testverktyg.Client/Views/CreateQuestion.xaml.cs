@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Testverktyg.Client.Models;
 using Testverktyg.Client.ViewModels;
 using Testverktyg.Client.Services;
 using Windows.UI.Popups;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -72,15 +64,68 @@ namespace Testverktyg.Client.Views
         private async void SaveQuestionBtn_Click(object sender, RoutedEventArgs e)
         {
             Question question = new Question();
-            question.QuestionText = QuestionTextBox.Text;
-            question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
-            question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
-            question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
-            question.Alternatives.AddRange(viewModel.Alternatives);
+            List<string> errorMessages = new List<string>();
+
+
+            if (string.IsNullOrWhiteSpace(QuestionTextBox.Text))
+            {
+                errorMessages.Add("Vänligen fyll i en fråga.");
+            }
+            else
+            {
+                question.QuestionText = QuestionTextBox.Text;
+            }
+
+            if (GradeLevelDropDown.SelectedValue == null)
+            {
+                errorMessages.Add("Vänligen välj en årskurs.");
+            }
+            else
+            {
+                question.GradeLevel = (GradeLevel)GradeLevelDropDown.SelectedValue;
+            }
+            
+            if (QuestionTypeDropDown.SelectedValue == null)
+            {
+                errorMessages.Add("Vänligen välj en frågetyp.");
+            }
+            else
+            {
+                question.QuestionType = (QuestionType)QuestionTypeDropDown.SelectedValue;
+            }
+
+            if (CourseDropDown.SelectedValue == null)
+            {
+                errorMessages.Add("Vänligen välj ämne.");
+            }
+            else
+            {
+                question.CourseId = ((Course)CourseDropDown.SelectedValue).CourseId;
+            }
+
+            if (question.QuestionType == QuestionType.MultipleChoice && viewModel.Alternatives.Count == 0)
+            {
+                errorMessages.Add("Vänligen lägg till alternativ.");
+            }
+            else
+            {
+                question.Alternatives.AddRange(viewModel.Alternatives);
+            }
+
             question.Keywords.AddRange(viewModel.Keywords);
-            questionService.AddQuestion(question);
-            await new MessageDialog("Din fråga har sparats").ShowAsync();
-            ClearAllInputs();
+
+            if (errorMessages.Count == 0)
+            {
+                questionService.AddQuestion(question);
+                await new MessageDialog("Din fråga har sparats").ShowAsync();
+                ClearAllInputs();
+            }
+            else
+            {
+                string error = string.Join("\n", errorMessages);
+                await DisplayError(error);
+            }
+            
         }
 
         private void RemoveAlternativeBtn_Click(object sender, RoutedEventArgs e)
@@ -109,6 +154,11 @@ namespace Testverktyg.Client.Views
         private void ClearInputBtn_Click(object sender, RoutedEventArgs e)
         {
             ClearAllInputs();
+        }
+
+        private async Task DisplayError(string message)
+        {
+            await new MessageDialog(message).ShowAsync();
         }
     }
 }

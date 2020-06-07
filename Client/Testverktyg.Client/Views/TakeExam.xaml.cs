@@ -50,9 +50,13 @@ namespace Testverktyg.Client.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            
             viewModel = new TakeExamViewModel();
-            //_student = (Student)e.Parameter;
-            _exam = (Exam)e.Parameter;
+            UserExam us = new UserExam();
+            us = (UserExam)e.Parameter;
+
+            _student = us.student;
+            _exam = us.exam;
             CurrentTestQuestion(questionIndex);
         }
 

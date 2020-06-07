@@ -29,9 +29,10 @@ namespace Testverktyg.Client.Services
         }
 
         
-        public async Task<ObservableCollection<Question>> GetQuestionsAsync()
+        public async Task<ObservableCollection<Question>> GetTemplateQuestions()
         {
-            var jsonQuestions = await httpClient.GetStringAsync(url);
+            var templateUrl = url + "/template";
+            var jsonQuestions = await httpClient.GetStringAsync(templateUrl);
             var questions = JsonConvert.DeserializeObject<ObservableCollection<Question>>(jsonQuestions);
             return questions;
         }

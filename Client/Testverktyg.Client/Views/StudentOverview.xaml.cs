@@ -45,7 +45,10 @@ namespace Testverktyg.Client.Views
 
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-           this.Frame.Navigate(typeof(TakeExam),e.ClickedItem);
+            UserExam userExam = new UserExam();
+            userExam.student = _student;
+            userExam.exam = (Exam)e.ClickedItem;
+           this.Frame.Navigate(typeof(TakeExam), userExam);
         }
 
         private void Init()

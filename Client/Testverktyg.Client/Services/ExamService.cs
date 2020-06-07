@@ -55,10 +55,12 @@ namespace Testverktyg.Client.Services
             exam.ExamStatus = ExamStatus.Taken;
             exam.ExamId = 0;
 
+            var sUrl = "http://localhost:60485/api/exam/userexam/" + userId;
+
             var jsonExam = JsonConvert.SerializeObject(exam);
             HttpContent httpContent = new StringContent(jsonExam);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var jsonExamDB = await httpClient.PostAsync($"url/userexam/" +userId, httpContent);
+            var jsonExamDB = await httpClient.PostAsync(sUrl, httpContent);
         }
       
         public List<Exam> GetStudentExams(int studentId, ExamStatus examStatus)
