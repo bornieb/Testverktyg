@@ -42,12 +42,12 @@ namespace Testverktyg.Client.Views
             if (MenuSplit.IsPaneOpen)
             {
                 MenuSplit.IsPaneOpen = false;
-                CollapseButton.Width = 56;
+                CollapseButton.Width = 54;
             }
             else
             {
                 MenuSplit.IsPaneOpen = true;
-                CollapseButton.Width = 130;
+                CollapseButton.Width = 128;
             }
         }
 
@@ -59,6 +59,7 @@ namespace Testverktyg.Client.Views
             {
                 PageFrame.Navigate(typeof(StudentOverview), _student);
                 TitleTextblock.Text = "Välkommen";
+                HomeListBoxItem.IsSelected = false;
             }
             else if (ExitListBoxitem.IsSelected)
             {

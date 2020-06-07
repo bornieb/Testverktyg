@@ -26,6 +26,15 @@ namespace TestverktygAPI.Controllers
             return await _context.Question.ToListAsync();
         }
 
+        [HttpGet("template")]
+        public async Task<ActionResult<IEnumerable<Question>>> GetTemplateQuestion()
+        {
+            return await _context.ExamQuestion
+                .Where(eq => eq.Exam.ExamStatus == ExamStatus.Template)
+                .Select(eq => eq.Question)
+                .ToListAsync();
+        }
+
         // GET: api/Question/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Question>> GetQuestion(int id)

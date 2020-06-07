@@ -17,10 +17,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <RelativePanel>
+        <RelativePanel BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                       BorderThickness="2">
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="CollapseButton"
-                        Width="130"
+                        Width="128"
                         FontFamily="Segoe MDL2 Assets"
                         FontSize="20"
                         Content="&#xE700;"
@@ -72,7 +73,8 @@
             DisplayMode="CompactInline"
             CompactPaneLength="56"
             OpenPaneLength="130"
-            IsPaneOpen="True">
+            IsPaneOpen="True"
+         >
 
             <SplitView.Pane>
                 <StackPanel>
@@ -82,7 +84,8 @@
                              >
                         <ListBoxItem
                             x:Name="HomeListBoxItem"
-                            Background="Transparent">
+                            Background="Transparent"
+                            >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="Segoe UI Emoji"
                                        FontSize="24"
@@ -97,7 +100,8 @@
                         </ListBoxItem>
                         <ListBoxItem
                             x:Name="CreateQuestionListBoxitem"
-                            Background="Transparent">
+                            Background="Transparent"
+                            >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="Segoe UI Emoji"
                                        FontSize="24"
@@ -113,7 +117,8 @@
                         </ListBoxItem>
                         <ListBoxItem
                             x:Name="CreateExamListBoxitem"
-                            Background="Transparent">
+                            Background="Transparent"
+                            >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock 
                                        FontFamily="Segoe UI Emoji"
@@ -131,7 +136,8 @@
                         <ListBoxItem
 
                             x:Name="CorrectExamListBoxItem"
-                            Background="Transparent">
+                            Background="Transparent"
+                            >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     Text="✅"
@@ -142,12 +148,14 @@
                                     FontSize="13"
                                     FontFamily="Cambria"
                                     HorizontalAlignment="Center"
-                                    Margin="26,0,0,0"/>
+                                    Margin="22,0,0,0"/>
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem
                             x:Name="ExitListBoxitem"
-                            Background="Transparent">
+                            Background="Transparent"
+                           
+                            >
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock FontFamily="Segoe UI Emoji"
                                        FontSize="24"
@@ -156,7 +164,7 @@
                                 <TextBlock Text="Avsluta"
                                        FontFamily="Cambria"
                                        FontSize="13"
-                                       Margin="26,0,0,0"
+                                       Margin="27,0,0,0"
                                        VerticalAlignment="Center"/>
                             </StackPanel>
                         </ListBoxItem>

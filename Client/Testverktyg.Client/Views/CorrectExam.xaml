@@ -8,6 +8,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Transitions>
+        <TransitionCollection>
+            <EdgeUIThemeTransition Edge="Left"/>
+        </TransitionCollection>
+    </Page.Transitions>
 
     <Grid Background="#e7e7e7">
         <Grid.ColumnDefinitions>
@@ -44,7 +49,8 @@
             Grid.ColumnSpan="4" 
             VerticalAlignment="Center" 
             FontSize="40" 
-            Foreground="Black"/>
+            Foreground="Black"
+            FontFamily="Cambria"/>
 
         <StackPanel 
             Grid.Row="1" 
@@ -61,7 +67,8 @@
                     Text="Prov i Matematik: 
                     Algebra" 
                     VerticalAlignment="Center" 
-                    Padding="5"/>
+                    Padding="5"
+                    FontFamily="Cambria"/>
             </Border>
 
             <Border 
@@ -71,7 +78,8 @@
                     x:Name="StudentNameTextBlock" 
                     Text="Elev: Jöns Glennson" 
                     VerticalAlignment="Center"  
-                    Padding="5"/>
+                    Padding="5"
+                    FontFamily="Cambria"/>
             </Border>
         </StackPanel>
         
@@ -89,7 +97,8 @@
                     x:Name="ResultTextBlock" 
                     Text="Resultat:"  
                     VerticalAlignment="Center"  
-                    Padding="5"/>
+                    Padding="5"
+                    FontFamily="Cambria"/>
             </Border>
             
             <Border
@@ -99,7 +108,8 @@
                     x:Name="GradeTextBlock"  
                     Text="Betyg:" 
                     VerticalAlignment="Center"  
-                    Padding="5" />
+                    Padding="5" 
+                    FontFamily="Cambria"/>
             </Border>
             
             <Border 
@@ -109,7 +119,8 @@
                     x:Name="ClassTextBlock"  
                     Text="Klass: 7B" 
                     VerticalAlignment="Center"  
-                    Padding="5" />
+                    Padding="5" 
+                    FontFamily="Cambria"/>
             </Border>
         </StackPanel>
 
@@ -120,7 +131,8 @@
             Grid.ColumnSpan="12" 
             Grid.RowSpan="5" 
             Background="White" 
-            ItemsSource="{x:Bind correctExamViewModel.ListOfExams}">
+            ItemsSource="{x:Bind correctExamViewModel.ListOfExams}"
+            FontFamily="Cambria">
             <ListView.ItemTemplate>
                 <DataTemplate 
                     x:DataType="local1:Exam" >
@@ -130,31 +142,38 @@
                         Grid.ColumnSpan="12" 
                         Grid.RowSpan="5">
                         <TextBlock 
-                            Text="{x:Bind ExamDate}"/>
+                            Text="{x:Bind ExamDate}"
+                            FontFamily="Cambria"/>
                         <TextBlock 
-                            Text="{x:Bind Subject}"/>
+                            Text="{x:Bind Subject}"
+                            FontFamily="Cambria"/>
                         <StackPanel>
                             <StackPanel 
                                 Orientation="Horizontal" 
                                 Spacing="5">
                                 <TextBox 
                                     x:Name="PointsTextBox" 
-                                    PlaceholderText="Poäng" />
+                                    PlaceholderText="Poäng" 
+                                    FontFamily="Cambria"/>
                                 <TextBlock 
-                                    Text="/" />
+                                    Text="/" 
+                                    FontFamily="Cambria"/>
                                 <TextBlock 
-                                    Text="5" />
+                                    Text="5" 
+                                    FontFamily="Cambria"/>
                                 <Button 
                                     x:Name="GradeDoneButton" 
                                     Content="Klar" 
-                                    HorizontalAlignment="Right" />
+                                    HorizontalAlignment="Right"
+                                    FontFamily="Cambria"/>
 
                                 <StackPanel 
                                     Orientation="Horizontal" Spacing="5">
                                     <TextBox 
                                         PlaceholderText="Kommentar"/>
                                     <Button 
-                                        Content="Klar"/>
+                                        Content="Klar"
+                                        FontFamily="Cambria"/>
                                 </StackPanel>
 
                             </StackPanel>
@@ -173,7 +192,8 @@
                     x:DataType="local1:Question">
                     <StackPanel>
                         <TextBlock 
-                            Text="{x:Bind QuestionText}"/>
+                            Text="{x:Bind QuestionText}"
+                            FontFamily="Cambria"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -191,42 +211,51 @@
                 HorizontalAlignment="Right" 
                 Height="60" 
                 Width="60" 
-                FontSize="30"/>
+                FontSize="30"
+                FontFamily="Cambria"
+                />
             <Button 
                 x:Name="BButton" 
                 Content="B" 
                 HorizontalAlignment="Right" 
                 Height="60" 
                 Width="60" 
-                FontSize="30"/>
+                FontSize="30"
+                FontFamily="Cambria"
+                />
             <Button 
                 x:Name="CButton" 
                 Content="C" 
                 HorizontalAlignment="Right" 
                 Height="60" 
                 Width="60" 
-                FontSize="30"/>
+                FontSize="30"
+                FontFamily="Cambria"/>
             <Button 
                 x:Name="DButton" 
                 Content="D" 
                 HorizontalAlignment="Right" 
                 Height="60" 
                 Width="60" 
-                FontSize="30"/>
+                FontSize="30"
+                FontFamily="Cambria"/>
             <Button 
                 x:Name="EButton" 
                 Content="E" 
                 HorizontalAlignment="Right" 
                 Height="60" 
                 Width="60" 
-                FontSize="30"/>
+                FontSize="30"
+                FontFamily="Cambria"/>
             <Button 
                 x:Name="FButton" 
                 Content="F" 
                 HorizontalAlignment="Right" 
                 Height="60" 
                 Width="60" 
-                FontSize="30"/>
+                FontSize="30"
+                FontFamily="Cambria"               
+                />
             <Button 
                 x:Name="GradeDoneButton" 
                 Content="Klar" 
@@ -234,7 +263,9 @@
                 Height="70" 
                 Width="120" 
                 FontSize="30" 
-                Background="GreenYellow"/>
+                Background="GreenYellow"
+                FontFamily="Cambria"
+                />
         </StackPanel>
 
         <Button  
@@ -247,8 +278,9 @@
             Foreground="Black" 
             FontSize="30" 
             Grid.Row="7" 
-            Grid.Column="11" 
-            Grid.ColumnSpan="2">
+            Grid.Column="10" 
+            Grid.ColumnSpan="3"
+            FontFamily="Cambria">
             
         </Button>
 

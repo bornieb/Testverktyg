@@ -42,11 +42,27 @@ namespace Testverktyg.Client.ViewModels
             {
                 CountTotalPoints(exam);
                 await service.PostTakenExam(exam, userId);
+                await ShowGradeDialog(exam);
             }
             else if (result == ContentDialogResult.Secondary)
             {
-
+                
             }
+        }
+
+        private async Task ShowGradeDialog(Exam exam)
+        {
+            string gradeMessage;
+            if (exam.ExamResult >= exam.GradeScale)
+            {
+                gradeMessage = "GODKÄNT";
+            }
+            else
+            {
+                gradeMessage = "ICKE GODKÄNT";
+            }
+            MessageDialog messageDialog = new MessageDialog($"Ditt resultat är {gradeMessage} ({exam.ExamResult}/{exam.TotalPoints})");
+            await messageDialog.ShowAsync();
         }
 
         public void CountTotalPoints(Exam exam)
