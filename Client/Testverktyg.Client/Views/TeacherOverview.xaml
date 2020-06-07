@@ -202,7 +202,7 @@
                 Margin="10,20,0,0" 
                 BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}" 
                 BorderThickness="3" 
-                Click="EditButton_Click"/>
+                />
 
             <Button 
                 x:Name="Remove1Button" 
