@@ -12,6 +12,8 @@ namespace Testverktyg.Client.Models
 {
     public class Exam : INotifyPropertyChanged
     {
+        //private string showResult;
+        //private string nmbrOfQuestions;
         public int ExamId { get; set; }
         public int ClassId { get; set; }
         public DateTime ExamDate { get; set; }
@@ -26,20 +28,30 @@ namespace Testverktyg.Client.Models
         public ExamType ExamType { get; set; }
         public ObservableCollection<Question> Questions { get; set; } = new ObservableCollection<Question>();
 
-        //public Exam(int examid,  int classid, string subject, int maxpoints, int numquestions, int grade, int currentq, int examresult)
-        //{
-        //    ExamId = examid;
-        //    ClassId = classid;
-        //    Subject = subject;
-        //    MaxAmountOfPoints = maxpoints;
-        //    NumberOfQuestions = numquestions;
-        //    GradeScale = grade;
-        //    CurrentQuestion = currentq;
-        //    ExamResult = examresult;
-        //    Questions = new List<Question>();
-        //}
+        public string ShowResult 
+        {
+            get { return "Resultat: " + ExamResult + "/" + TotalPoints; }
+        }
+        public string NmbrOfQuestions
+        {
+            get { return "Antal frågor: " + Questions.Count; }
+        }
 
-        public Exam()
+
+//public Exam(int examid,  int classid, string subject, int maxpoints, int numquestions, int grade, int currentq, int examresult)
+//{
+//    ExamId = examid;
+//    ClassId = classid;
+//    Subject = subject;
+//    MaxAmountOfPoints = maxpoints;
+//    NumberOfQuestions = numquestions;
+//    GradeScale = grade;
+//    CurrentQuestion = currentq;
+//    ExamResult = examresult;
+//    Questions = new List<Question>();
+//}
+
+public Exam()
         {
 
         }

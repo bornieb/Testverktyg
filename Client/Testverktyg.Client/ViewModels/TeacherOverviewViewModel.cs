@@ -14,6 +14,7 @@ namespace Testverktyg.Client.ViewModels
         ClassService classService  = new ClassService();
         public ObservableCollection<Class> ListOfClasses { get; set; } = new ObservableCollection<Class>();
         public ObservableCollection<Exam> TakenExams { get; set; } = new ObservableCollection<Exam>();
+        public ObservableCollection<Exam> NotTakenExams { get; set; } = new ObservableCollection<Exam>();
         ExamService examService = new ExamService();
         
         
@@ -36,6 +37,16 @@ namespace Testverktyg.Client.ViewModels
             }
         }
 
+        //Glenn, GetNotTaken
+        public void GetNotTakenExams(int classId)
+        {
+            NotTakenExams.Clear();
+            var notTakenExams = examService.GetNotTakenExams(classId);
+            foreach (Exam exam in notTakenExams)
+            {
+                NotTakenExams.Add(exam);
+            }       
+        }
 
     }
 }

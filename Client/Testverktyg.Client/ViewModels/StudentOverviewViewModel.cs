@@ -15,7 +15,7 @@ namespace Testverktyg.Client.ViewModels
         public Student Student { get; set; }
         public List<Exam> ExamsToBeTaken { get; set; } = new List<Exam>();
         public List<Exam> CorrectedExams { get; set; } = new List<Exam>();
-
+        //public List<Exam> TakenExams { get; set; } = new List<Exam>();
         public StudentOverviewViewModel()
         {
         }
@@ -26,6 +26,7 @@ namespace Testverktyg.Client.ViewModels
             var examService = new ExamService();
             ExamsToBeTaken = examService.GetStudentExams(Student.UserId, ExamStatus.Template);
             CorrectedExams = examService.GetStudentExams(Student.UserId, ExamStatus.Corrected);
+            //TakenExams = examService.GetStudentExams(Student.UserId, ExamStatus.Taken);
         }
     }
 }
