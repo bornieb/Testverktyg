@@ -70,29 +70,30 @@
 
         <TextBlock 
             x:Name="FinishedTests" 
+            Grid.Row="1"
             Grid.Column="8" 
             Grid.ColumnSpan="2" 
             HorizontalAlignment="Left" 
-            Margin="0,0,0,20" 
-            Grid.Row="1" 
             Text="Avslutade prov"                 
             TextWrapping="Wrap" 
-            VerticalAlignment="Bottom" 
+            VerticalAlignment="Bottom"
+            Margin="0,0,0,20"
             FontSize="32"
             FontFamily="Cambria"/>
-        
+
         <ComboBox x:Name="ClassDropDown" 
                   Grid.Row="1" Grid.RowSpan="1" 
                   Grid.Column="11" 
                   Grid.ColumnSpan="2" 
                   Width="250" 
-                  HorizontalAlignment="Right" 
-                  VerticalAlignment="Center"  
+                  HorizontalAlignment="Right"  
+                  VerticalAlignment="Bottom"
                   PlaceholderText="Klass"
                   FontFamily="Cambria"
+                  Margin="0,0,0,20"
                   ItemsSource="{x:Bind teacherOverviewViewModel.ListOfClasses}"
                   BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
-                  BorderThickness="3"
+                  BorderThickness="3" 
                   >
 
             <ComboBox.ItemTemplate>
@@ -228,7 +229,7 @@
             Orientation="Horizontal" 
             VerticalAlignment="Top" 
             Width="Auto">
-        <Button 
+            <Button 
             x:Name="CorrectTestButton" 
             Content="Rätta prov" 
             Height="40" 
