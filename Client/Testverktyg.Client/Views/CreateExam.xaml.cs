@@ -234,6 +234,9 @@ namespace Testverktyg.Client.Views
             ClassDropDown.SelectedIndex = -1;
             CourseDropDown.SelectedIndex = -1;
             ExamTypeDropDown.SelectedIndex = -1;
+            AmountOfQTextBlock.Text = $"Antal frågor: ";
+            TotalPointsTextBlock.Text = $"Maxpoäng: ";
+
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
