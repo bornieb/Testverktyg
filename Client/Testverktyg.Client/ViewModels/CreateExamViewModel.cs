@@ -61,6 +61,15 @@ namespace Testverktyg.Client.ViewModels
 
         public async void GetQuestions()
         {
+            var questions = await questionService.GetQuestions();
+            foreach (Question question in questions)
+            {
+                ListOfQuestions.Add(question);
+            }
+        }
+
+        public async void GetTemplateQuestions()
+        {
             var questions = await questionService.GetTemplateQuestions();
             foreach (Question question in questions)
             {

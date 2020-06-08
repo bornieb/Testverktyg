@@ -118,8 +118,21 @@
             BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
             BorderThickness="3"
             />
+        <CheckBox
+            x:Name ="CheckQuestion"
+            Content="Visa tidigare frågor"
+            Grid.Row="1"
+            Grid.Column="5"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Bottom"
+            Background="Transparent"
+            BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+            BorderThickness="3"
+            Click="CheckQuestion_Click"
+                       
+            />
 
-            <ListView x:Name="QuestionListView" 
+        <ListView x:Name="QuestionListView" 
                 Grid.Column="1"
                  Grid.ColumnSpan="5"
                  Grid.RowSpan="4"

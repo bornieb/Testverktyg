@@ -252,5 +252,19 @@ namespace Testverktyg.Client.Views
             await createExamViewModel.AddQuestionAsync((Question)QuestionListView.SelectedItem);
             AddToTextBlocks();
         }
+
+        private void CheckQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            if(CheckQuestion.IsChecked == true)
+            {
+                createExamViewModel.ListOfQuestions.Clear();
+                createExamViewModel.GetTemplateQuestions();
+            }
+            else
+            {
+                createExamViewModel.ListOfQuestions.Clear();
+                createExamViewModel.GetQuestions();
+            }
+        }
     }
 }
