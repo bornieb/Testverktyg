@@ -133,6 +133,7 @@
     <Compile Include="Services\KeywordService.cs" />
     <Compile Include="Services\QuestionService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\CorrectExamViewModel.cs" />
     <Compile Include="ViewModels\CreateExamViewModel.cs" />
     <Compile Include="ViewModels\CreateQuestionViewModel.cs" />
@@ -161,6 +162,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\SplitViewMenu.xaml.cs">
       <DependentUpon>SplitViewMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplitViewMenuAdmin.xaml.cs">
+      <DependentUpon>SplitViewMenuAdmin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SplitViewMenuStudent.xaml.cs">
       <DependentUpon>SplitViewMenuStudent.xaml</DependentUpon>
@@ -213,6 +217,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SplitViewMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplitViewMenuAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

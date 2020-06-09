@@ -35,7 +35,9 @@
             Source="/Assets/götlaborgskolan.jpg"  
             HorizontalAlignment="Center"
             Height="264" 
-            VerticalAlignment="Center" />
+            VerticalAlignment="Center"
+            IsDoubleTapEnabled="True"
+            DoubleTapped="StartLogo_DoubleTapped"/>
 
         <StackPanel 
             Grid.Row="2" 
@@ -90,7 +92,7 @@
                 BorderThickness="3"/>
             <Button 
                 x:Name="Login" 
-                Content="Log in" 
+                Content="Logga in" 
                 FontFamily="Cambria"
                 Margin="20,20,20,20" 
                 VerticalAlignment="center"
@@ -104,6 +106,33 @@
                 Background="Transparent"
                 />
         </StackPanel>
-
+        <ContentDialog
+            x:Name="AdminLoginContent"
+            FontFamily="Cambria"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Top"
+            CloseButtonText="Avsluta"
+            PrimaryButtonText="Logga in"
+            Height="120" 
+            VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical">
+                <TextBox 
+                    x:Name="AdminLoginTextBox"
+                    Header="Användarnamn"
+                    PlaceholderText="Skriv in ditt användarnamn"
+                    FontFamily="Cambria"
+                    BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                    BorderThickness="3"
+                    />
+                <PasswordBox
+                    x:Name="AdminPasswordBox"
+                    Header="Lösenord"
+                    FontFamily="Cambria"
+                    PlaceholderText="Skriv in ditt lösenord"
+                    BorderBrush="{ThemeResource SystemControlBackgroundListMediumRevealBorderBrush}"
+                    BorderThickness="3"
+                    />
+            </StackPanel>
+        </ContentDialog>
     </Grid>
 </Page>

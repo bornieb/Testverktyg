@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Testverktyg.Client.Services;
@@ -88,6 +89,19 @@ namespace Testverktyg.Client
         private async Task DisplayError(string message)
         {
             await new MessageDialog(message).ShowAsync();
+        }
+
+        private async void StartLogo_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            try
+            {
+                    await AdminLoginContent.ShowAsync();
+                    this.Frame.Navigate(typeof(SplitViewMenuAdmin));
+            }
+            catch (System.Net.Http.HttpRequestException ex)
+            {
+                await DisplayError($"{ex.Message}\nNågot blev fel");
+            }
         }
     }
 }
